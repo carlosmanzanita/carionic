@@ -1,7 +1,81 @@
-  <ion-toolbar>
-    <ion-title>
-      <div align="center">
-        <img src="assets\img\I - Logo definitivo.png" width="100" height="100">
-      </div>
-    </ion-title>
-  </ion-toolbar>
+<section
+  class="grid grid-cols-5 gap-2 text-center m-4"
+>
+  <article></article>
+  <article
+    class="col-span-3"
+  >
+    <img 
+      src="assets\img\I - Logo definitivo.png" 
+      class="w-6/12 mx-auto"
+    >
+  </article>
+  <article></article>
+
+  <article></article>
+  <article
+    class="col-span-3 "
+  >
+    Registrate <i class="fa-solid fa-user"></i>
+  </article>
+  <article></article>
+
+  <article
+    class="col-span-5"
+  >
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">
+          Correo <i class="fa-regular fa-envelope"></i>
+        </ion-label>
+        <ion-input 
+          placeholder="Indica tu correo"
+          [(ngModel)] = "registro.email"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">
+          Teléfono
+        </ion-label>
+        <ion-input 
+          placeholder="Indica tu teléfono"
+          [(ngModel)] = "registro.telefono"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">
+          URL
+        </ion-label>
+        <ion-input 
+          placeholder="Indica tu url"
+          [(ngModel)] = "registro.url"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+  </article>
+
+  <article></article>
+  <article
+    class="col-span-3"
+  >
+    <p>
+      {{ errores.email }}
+    </p>
+    <p>
+      {{ errores.telefono }}
+    </p>
+    <ion-button (click) = "registroUsuario()" color="success">
+      Registrate
+    </ion-button>
+    <br>
+    <br>
+    <i 
+      *ngIf="cargando"
+      class="fa-2x fa-solid fa-frog fa-bounce text-green-600"
+      style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "
+    ></i>
+  </article>
+  <article></article>
+
+
+</section>
