@@ -1,0 +1,42 @@
+<ion-app>
+  <ion-split-pane when="sm" content-id="main-content">
+    <ion-menu content-id="main-content">
+      <ion-header>
+        <ion-toolbar color="dark">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item button>
+              <ion-icon slot="start" name="document-outline"></ion-icon>
+              <ion-label> Crear publicación </ion-label>
+            </ion-item>
+            <ion-item button>
+              <ion-icon slot="start" name="key-outline"></ion-icon>
+              <ion-label> Cerrar sesión </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <div class="ion-page" id="main-content">  
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-toggle>
+            <ion-button>
+              <ion-icon slot="icon-only" name="menu"></ion-icon>
+            </ion-button>
+          </ion-menu-toggle>
+        </ion-buttons>
+      </ion-toolbar>
+      
+      <ion-content class="ion-padding">
+        <h1>Aqui van las publicaciones del feed</h1>
+      </ion-content>
+    </div>
+  </ion-split-pane>
+</ion-app>
