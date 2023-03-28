@@ -13,11 +13,12 @@
   </article>
   <article></article>
 
-  <article class="col-span-4 text-left">Paso 1: Introduce los siguientes datos</article>
 
   <article class="col-span-5">
     <ion-list>
-
+      <ion-item>
+        Paso 1: Introduce los siguientes datos
+      </ion-item>
       <ion-item>
         <ion-label position="floating">
           Correo <i class="fa-regular fa-envelope"></i>
@@ -37,8 +38,15 @@
           [(ngModel)] = "registro.telefono"
         ></ion-input>
       </ion-item>
-
       <ion-item>
+        Paso 2: Escanea el codigo QR de tu credencial institucional
+      </ion-item>
+      <ion-item>
+        <ion-button color = "tertiary" (click) = "startScan()">
+          scanner
+        </ion-button>
+      </ion-item>
+      <!-- <ion-item>
         <ion-label position="floating">
           URL
         </ion-label>
@@ -46,7 +54,7 @@
           placeholder="Indica tu url"
           [(ngModel)] = "registro.url"
         ></ion-input>
-      </ion-item>
+      </ion-item> -->
       
     </ion-list>
   </article>
@@ -73,6 +81,8 @@
     ></i>
   </article>
   <article></article>
+
+  
 
 
 </section>
