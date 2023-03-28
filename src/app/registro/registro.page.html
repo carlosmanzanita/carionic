@@ -2,28 +2,22 @@
   class="grid grid-cols-5 gap-2 text-center m-4"
 >
   <article></article>
-  <article
-    class="col-span-3"
-  >
-    <img 
-      src="assets\img\I - Logo definitivo.png" 
-      class="w-6/12 mx-auto"
-    >
-  </article>
+    <article class="col-span-3">
+    <img src="assets\img\I - Logo definitivo.png" class="w-6/12 mx-auto">
+    </article>
   <article></article>
 
   <article></article>
-  <article
-    class="col-span-3 "
-  >
-    Registrate <i class="fa-solid fa-user"></i>
+  <article class="col-span-3">
+    Bienvenido <!--<i class="fa-solid fa-user"></i> -->
   </article>
   <article></article>
 
-  <article
-    class="col-span-5"
-  >
+  <article class="col-span-4 text-left">Paso 1: Introduce los siguientes datos</article>
+
+  <article class="col-span-5">
     <ion-list>
+
       <ion-item>
         <ion-label position="floating">
           Correo <i class="fa-regular fa-envelope"></i>
@@ -33,6 +27,7 @@
           [(ngModel)] = "registro.email"
         ></ion-input>
       </ion-item>
+
       <ion-item>
         <ion-label position="floating">
           Teléfono
@@ -42,6 +37,7 @@
           [(ngModel)] = "registro.telefono"
         ></ion-input>
       </ion-item>
+
       <ion-item>
         <ion-label position="floating">
           URL
@@ -51,6 +47,7 @@
           [(ngModel)] = "registro.url"
         ></ion-input>
       </ion-item>
+      
     </ion-list>
   </article>
 
