@@ -1,25 +1,23 @@
 import { Router } from '@angular/router';
-import { RegistroService } from './registro.service';
+import { InicioSesionService } from './inicio-sesion.service';
 import { Component, OnInit } from '@angular/core';
-import { Registro } from './registro';
+import { InicioSesion } from './inicio-sesion';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.page.html',
-  styleUrls: ['./registro.page.scss'],
+  selector: 'app-inicio-sesion',
+  templateUrl: './inicio-sesion.page.html',
+  styleUrls: ['./inicio-sesion.page.scss'],
 })
-export class RegistroPage implements OnInit {
+export class InicioSesionPage implements OnInit {
 
-  public registro:Registro = {
+  public iniciosesion:InicioSesion = {
     email:"",
-    telefono:"",
     url:""
   }
 
-  public errores:Registro = {
+  public errores:InicioSesion = {
     email:"",
-    telefono:"",
     url:""
   }
 
@@ -27,30 +25,31 @@ export class RegistroPage implements OnInit {
 
   constructor(
     public router:Router,
-    public registroService:RegistroService
+    public inicioSesionService:InicioSesionService
   ) { }
 
   ngOnInit() {
     this.verSiSesion()
   }
 
-  registroUsuario(){
+  inicioSesionUsuario(){
     //este es para que salte la ranita
     this.cargando = true;
 
     // esta asignación limpia los errores
     this.errores = {
       email:"",
-      telefono:"",
       url:""
     }
 
     //Enviamos la petición de registro al servicio
-    const res = this.registroService.registroUsuario(this.registro)
+    const res = this.inicioSesionService.iniciosesionUsuario(this.iniciosesion)
     
     res.then((response) => {
+      console.log("🚀 ~ file: inicio-sesion.page.ts:48 ~ InicioSesionPage ~ res.then ~ response:", response)
       // colocamos el token el LocalStorage
       localStorage.setItem('token', response.data.token)
+      console.log("🚀 ~ file: inicio-sesion.page.ts:50 ~ InicioSesionPage ~ res.then ~ response:", response)
       //Matamos a la rana
       this.cargando = false;
       this.router.navigate(['feed']);
@@ -65,9 +64,9 @@ export class RegistroPage implements OnInit {
     console.log("🚀 ~ res:", res)
   }
 
-  inicioSesion(){
+  registro(){
     // Para redirigir a la pagina de inicio de sesion
-    this.router.navigate(['inicio-sesion']);
+    this.router.navigate(['registro']);
   }
 
   async startScan (){
@@ -84,7 +83,7 @@ export class RegistroPage implements OnInit {
     // if the result has content
     if (result.hasContent) {
       console.log(result.content); // log the raw scanned content
-      this.registro.url = result.content
+      this.iniciosesion.url = result.content
     }
   };
 
@@ -94,7 +93,7 @@ export class RegistroPage implements OnInit {
   };
 
   verSiSesion(){
-    const res = this.registroService.verSiSesion();
+    const res = this.inicioSesionService.verSiSesion();
     res.then((response) => {
       console.log("🚀 ~ file: inicio-sesion.page.ts:95 ~ InicioSesionPage ~ res.then ~ response:", response)
       this.router.navigate(["feed"])

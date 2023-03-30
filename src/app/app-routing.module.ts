@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'feed',
     loadChildren: () => import('./feed/feed.module').then( m => m.FeedPageModule)
   },
+  {
+    path: 'inicio-sesion',
+    loadChildren: () => import('./inicio-sesion/inicio-sesion.module').then( m => m.InicioSesionPageModule)
+  },
 
 
 ];

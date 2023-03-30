@@ -9,7 +9,7 @@
 
   <article></article>
   <article class="col-span-3">
-    Bienvenido <!--<i class="fa-solid fa-user"></i> -->
+    Inicio de sesión <!--<i class="fa-solid fa-user"></i> -->
   </article>
   <article></article>
 
@@ -25,17 +25,7 @@
         </ion-label>
         <ion-input 
           placeholder="Indica tu correo"
-          [(ngModel)] = "registro.email"
-        ></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">
-          Teléfono
-        </ion-label>
-        <ion-input 
-          placeholder="Indica tu teléfono"
-          [(ngModel)] = "registro.telefono"
+          [(ngModel)] = "iniciosesion.email"
         ></ion-input>
       </ion-item>
       <ion-item>
@@ -52,7 +42,7 @@
         </ion-label>
         <ion-input 
           placeholder="Indica tu url"
-          [(ngModel)] = "registro.url"
+          [(ngModel)] = "iniciosesion.url"
         ></ion-input>
       </ion-item> -->
       
@@ -66,16 +56,13 @@
     <p>
       {{ errores.email }}
     </p>
-    <p>
-      {{ errores.telefono }}
-    </p>
-    <ion-button (click) = "registroUsuario()" color="success">
-      Registrate
+    <ion-button (click) = "inicioSesionUsuario()" color="success">
+      Iniciar sesión
     </ion-button>
     <br>
     <br>
-    <ion-button (click) = "inicioSesion()">
-      O iniciar sesión
+    <ion-button (click) = "registro()">
+      O registrate
     </ion-button>
     <i 
       *ngIf="cargando"

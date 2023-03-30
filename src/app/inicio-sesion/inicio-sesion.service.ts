@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { Registro } from './registro';
+import { InicioSesion } from './inicio-sesion';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RegistroService {
+export class InicioSesionService {
 
-  //Uri para registro de usuario
-  private apiURI = "http://carpool.test/api/auth/registro";
+  // URI para iniciar sesión
+  private apiURI = "http://carpool.test/api/auth/iniciar-sesion";
   private apiVer = "http://carpool.test/api/auth/ver-sesion";
-
+  
   constructor() { }
 
-  async registroUsuario(registro:Registro){
+  async iniciosesionUsuario(inicioSesion:InicioSesion){
     //pertición http a la URI de laravel
-    let res = await axios.post(this.apiURI, registro)
+    let res = await axios.post(this.apiURI, inicioSesion)
     return res;
   }
 
