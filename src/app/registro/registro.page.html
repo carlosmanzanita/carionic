@@ -1,5 +1,4 @@
-<section
-  class="grid grid-cols-5 gap-2 text-center m-4"
+<section class="grid grid-cols-5 gap-2 text-center m-4"
 >
   <article></article>
     <article class="col-span-3">
@@ -9,54 +8,61 @@
 
   <article></article>
   <article class="col-span-3">
-    Bienvenido <!--<i class="fa-solid fa-user"></i> -->
+    Bienvenido
   </article>
   <article></article>
 
+  <p class="col-span-5 text-left m-4" >Paso 1: Ingresa tus datos</p>
 
-  <article class="col-span-5">
-    <ion-list>
-      <ion-item>
-        Paso 1: Introduce los siguientes datos
-      </ion-item>
-      <ion-item>
+  <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Correo electrónico
+      </label>
+      <div class="md:w-2/3">
+        <input [(ngModel)]="registro.email" [ngModelOptions]=" {standalone: true}" class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" placeholder="|" >
+      </div>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Teléfono
+      </label>
+      <div class="md:w-2/3">
+        <input [(ngModel)]="registro.telefono" [ngModelOptions]=" {standalone: true}" class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" placeholder="|" >
+      </div>
+    </div>
+    </form>
+
+  <!--<article class="col-span-5">
+    <ion-list class="bg-fondo" [inset]="true">
+    
+      <ion-item >
         <ion-label position="floating">
           Correo <i class="fa-regular fa-envelope"></i>
         </ion-label>
-        <ion-input 
+        <ion-input
           placeholder="Indica tu correo"
-          [(ngModel)] = "registro.email"
+          [([(ngmodel)])] = "registro.email"
         ></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">
-          Teléfono
+          Teléfono <ion-icon name="call-outline"></ion-icon>
         </ion-label>
         <ion-input 
           placeholder="Indica tu teléfono"
-          [(ngModel)] = "registro.telefono"
+          [([(ngmodel)])] = "registro.telefono"
         ></ion-input>
       </ion-item>
-      <ion-item>
-        Paso 2: Escanea el codigo QR de tu credencial institucional
-      </ion-item>
-      <ion-item>
-        <ion-button color = "tertiary" (click) = "startScan()">
-          scanner
-        </ion-button>
-      </ion-item>
-      <!-- <ion-item>
-        <ion-label position="floating">
-          URL
-        </ion-label>
-        <ion-input 
-          placeholder="Indica tu url"
-          [(ngModel)] = "registro.url"
-        ></ion-input>
-      </ion-item> -->
       
     </ion-list>
+  </article>-->
+  <p class="col-span-5 text-left m-4" >Paso 2: Toca el ícono para escanear el codigo QR al reverso de tu credencial IPN</p>
+  <br>
+
+  <article class="col-span-5">
+    <img src="assets\img\qr.png" class="w-3/12 mx-auto" (click)="startScan()" >
   </article>
 
   <article></article>
@@ -68,15 +74,29 @@
     </p>
     <p>
       {{ errores.telefono }}
+    <br>
     </p>
-    <ion-button (click) = "registroUsuario()" color="success">
+    <br>
+
+    <ion-button (click) = "registroUsuario()" fill="outline" color="dark">
       Registrate
     </ion-button>
     <br>
     <br>
-    <ion-button (click) = "inicioSesion()">
-      O iniciar sesión
-    </ion-button>
+    <p>
+      si tienes una cuenta prueba a
+      <span
+        class = " text-blue-300 font-extrabold"
+        (click) = "inicioSesion()"
+      >
+        Iniciar Sesión 
+      </span>
+    </p>
+    <!-- <ion-button  fill="outline" color="dark">
+      Iniciar sesión
+    </ion-button> -->
+    <br>
+    <br>
     <i 
       *ngIf="cargando"
       class="fa-2x fa-solid fa-frog fa-bounce text-green-600"
