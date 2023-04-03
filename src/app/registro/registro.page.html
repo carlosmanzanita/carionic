@@ -33,31 +33,6 @@
     </div>
     </form>
 
-  <!--<article class="col-span-5">
-    <ion-list class="bg-fondo" [inset]="true">
-    
-      <ion-item >
-        <ion-label position="floating">
-          Correo <i class="fa-regular fa-envelope"></i>
-        </ion-label>
-        <ion-input
-          placeholder="Indica tu correo"
-          [([(ngmodel)])] = "registro.email"
-        ></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">
-          Teléfono <ion-icon name="call-outline"></ion-icon>
-        </ion-label>
-        <ion-input 
-          placeholder="Indica tu teléfono"
-          [([(ngmodel)])] = "registro.telefono"
-        ></ion-input>
-      </ion-item>
-      
-    </ion-list>
-  </article>-->
   <p class="col-span-5 text-left m-4" >Paso 2: Toca el ícono para escanear el codigo QR al reverso de tu credencial IPN</p>
   <br>
 
@@ -69,9 +44,7 @@
   <article
     class="col-span-3"
   >
-    <p>
-      {{ errores.email }}
-    </p>
+    <p>{{ errores.email }}</p>
     <p>
       {{ errores.telefono }}
     <br>
@@ -92,9 +65,6 @@
         Iniciar Sesión 
       </span>
     </p>
-    <!-- <ion-button  fill="outline" color="dark">
-      Iniciar sesión
-    </ion-button> -->
     <br>
     <br>
     <i 

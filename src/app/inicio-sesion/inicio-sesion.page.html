@@ -1,5 +1,4 @@
-<section
-  class="grid grid-cols-5 gap-2 text-center m-4"
+<section class="grid grid-cols-5 gap-2 text-center m-4"
 >
   <article></article>
     <article class="col-span-3">
@@ -9,61 +8,54 @@
 
   <article></article>
   <article class="col-span-3">
-    Inicio de sesión <!--<i class="fa-solid fa-user"></i> -->
+    Bienvenido
   </article>
   <article></article>
 
+  <p class="col-span-5 text-left m-4" >Paso 1: Ingresa tus datos</p>
+
+  <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Correo electrónico
+      </label>
+      <div class="md:w-2/3">
+        <input [(ngModel)]="iniciosesion.email" [ngModelOptions]=" {standalone: true}" class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" placeholder="|" >
+      </div>
+    </div> 
+    </form>
+
+  <p class="col-span-5 text-left m-4" >Paso 2: Toca el ícono para escanear el codigo QR al reverso de tu credencial IPN</p>
+  <br>
 
   <article class="col-span-5">
-    <ion-list>
-      <ion-item>
-        Paso 1: Introduce los siguientes datos
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">
-          Correo <i class="fa-regular fa-envelope"></i>
-        </ion-label>
-        <ion-input 
-          placeholder="Indica tu correo"
-          [(ngModel)] = "iniciosesion.email"
-        ></ion-input>
-      </ion-item>
-      <ion-item>
-        Paso 2: Escanea el codigo QR de tu credencial institucional
-      </ion-item>
-      <ion-item>
-        <ion-button color = "tertiary" (click) = "startScan()">
-          scanner
-        </ion-button>
-      </ion-item>
-      <!-- <ion-item>
-        <ion-label position="floating">
-          URL
-        </ion-label>
-        <ion-input 
-          placeholder="Indica tu url"
-          [(ngModel)] = "iniciosesion.url"
-        ></ion-input>
-      </ion-item> -->
-      
-    </ion-list>
+    <img src="assets\img\qr.png" class="w-3/12 mx-auto" (click)="startScan()" >
   </article>
 
   <article></article>
   <article
     class="col-span-3"
   >
-    <p>
-      {{ errores.email }}
-    </p>
-    <ion-button (click) = "inicioSesionUsuario()" color="success">
+    <p>{{ errores.email }}</p>
+   
+    <br>
+
+    <ion-button (click) = "inicioSesionUsuario()" fill="outline" color="dark">
       Iniciar sesión
     </ion-button>
     <br>
     <br>
-    <ion-button (click) = "registro()">
-      O registrate
-    </ion-button>
+    <p>
+      Si no estas registrado entonces
+      <span
+        class = " text-blue-300 font-extrabold"
+        (click) = "registro()"
+      >
+        Registrate
+      </span>
+    </p>
+    <br>
+    <br>
     <i 
       *ngIf="cargando"
       class="fa-2x fa-solid fa-frog fa-bounce text-green-600"
