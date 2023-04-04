@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'inicio-sesion',
     loadChildren: () => import('./inicio-sesion/inicio-sesion.module').then( m => m.InicioSesionPageModule)
   },
+  {
+    path: 'auto',
+    loadChildren: () => import('./auto/auto.module').then( m => m.AutoPageModule)
+  },
 
 
 ];
