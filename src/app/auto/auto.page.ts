@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
 import { AutoService } from './auto.service';
 import { Component, OnInit } from '@angular/core';
+import { publicDecrypt } from 'crypto';
+import { Auto } from './auto';
 
 @Component({
   selector: 'app-auto',
@@ -8,6 +10,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auto.page.scss'],
 })
 export class AutoPage implements OnInit {
+
+  public registroAuto:Auto = {
+        placa:"",
+        color:"",
+        tipo:"",
+        marca:""
+  }
+  
+  // public errores:AutoPage = {
+  //   placa:"",
+  //   color:"",
+  //   tipo:"",
+  //   marca:""
+  // }
 
   constructor(
   public  autoService:AutoService,
