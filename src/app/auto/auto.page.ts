@@ -17,6 +17,8 @@ export class AutoPage implements OnInit {
         tipo:"",
         marca:""
   }
+
+  //lo correcto sería registroAuto.placa, así es como se debe poner el html
   
   // public errores:AutoPage = {
   //   placa:"",
