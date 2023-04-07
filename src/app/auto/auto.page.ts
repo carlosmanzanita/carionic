@@ -1,8 +1,9 @@
 import { Router } from '@angular/router';
 import { AutoService } from './auto.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { publicDecrypt } from 'crypto';
 import { Auto } from './auto';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-auto',
@@ -18,15 +19,7 @@ export class AutoPage implements OnInit {
         marca:""
   }
 
-  //lo correcto sería registroAuto.placa, así es como se debe poner el html
   
-  // public errores:AutoPage = {
-  //   placa:"",
-  //   color:"",
-  //   tipo:"",
-  //   marca:""
-  // }
-
   constructor(
   public  autoService:AutoService,
   public router:Router, 

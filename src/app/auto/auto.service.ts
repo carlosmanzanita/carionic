@@ -28,6 +28,8 @@ export class AutoService {
     return res;
   }
 
+  
+
   async cerrarSesion(){
     // obtenemos el token de localStorage
     const token = localStorage.getItem('token')
