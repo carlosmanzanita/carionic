@@ -18,8 +18,13 @@
             <ion-item>
               <button [routerLink]="['/auto']" class="AutoStyle">Tus autos</button>
             <ion-icon slot="start" name="car-sport-outline"></ion-icon>
-            
           </ion-item>
+          
+          <ion-item>
+            <button [routerLink]="['/destinos']" class="AutoStyle">Destinos</button>
+          <ion-icon slot="start" name="map-outline"></ion-icon>
+        </ion-item>
+
             <ion-item button (click) = 'cerrarSesion()'>
               <ion-icon slot="start" name="key-outline"></ion-icon>
               <ion-label> Cerrar sesión </ion-label>
