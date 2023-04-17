@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'auto',
     loadChildren: () => import('./auto/auto.module').then( m => m.AutoPageModule)
   },
+  {
+    path: 'destinos',
+    loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule)
+  },
 
 
 ];
