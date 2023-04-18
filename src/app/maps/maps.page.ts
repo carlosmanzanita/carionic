@@ -55,7 +55,26 @@ export class MapsPage implements OnInit {
           // lng: -99.1166965,
       },
       draggable: false,
-  });
+    });
+    this.newMap.setOnMapClickListener((event:any) => {
+      this.newMap.removeMarker(this.marker);
+      this.addMarker(event);
+    });
    
+  }
+  async addMarker(nuevoPunto:any){
+    console.log("🚀 ~ ", nuevoPunto)
+
+  
+    this.marker = await this.newMap.addMarker({
+      coordinate: {
+        lat: nuevoPunto.latitude,
+        lng: nuevoPunto.longitude,
+          // lat: 19.3302747,
+          // lng: -99.1166965,
+      },
+      draggable: true,
+    });
+
   }
 }
