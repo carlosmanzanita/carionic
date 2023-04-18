@@ -1,4 +1,4 @@
-<section class="grid grid-cols-5 gap-2 text-center m-4"
+<section class="bg-gray-900 text-white grid grid-cols-5 gap-2 text-center p-8 h-full"
 >
   <article></article>
     <article class="col-span-3">
@@ -8,7 +8,7 @@
 
   <article></article>
   <article class="col-span-3">
-    Bienvenido
+    Bienvenidos
   </article>
   <article></article>
 
@@ -16,19 +16,19 @@
 
   <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
     <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2">
+      <label class="block text-sm font-bold mb-2">
         Correo electrónico
       </label>
       <div class="md:w-2/3">
-        <input [(ngModel)]="registro.email" [ngModelOptions]=" {standalone: true}" class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" placeholder="|" >
+        <input [(ngModel)]="registro.email" [ngModelOptions]=" {standalone: true}" class=" text-gray-100 bg-gray-800 rounded-2xl w-full py-3 px-4 text-fondo" placeholder="|" >
       </div>
     </div>
     <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2">
+      <label class="block text-sm font-bold mb-2">
         Teléfono
       </label>
       <div class="md:w-2/3">
-        <input [(ngModel)]="registro.telefono" [ngModelOptions]=" {standalone: true}" class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" placeholder="|" >
+        <input [(ngModel)]="registro.telefono" [ngModelOptions]=" {standalone: true}" class=" text-gray-100 bg-gray-800 rounded-2xl w-full py-3 px-4 text-fondo" placeholder="|" >
       </div>
     </div>
     </form>
@@ -51,9 +51,20 @@
     </p>
     <br>
 
-    <ion-button (click) = "registroUsuario()" fill="outline" color="dark">
+    <span 
+      (click) = "registroUsuario()" 
+      class="border-2 rounded-md p-2 cursor-pointer"
+    >
       Registrate
-    </ion-button>
+    </span>
+    
+    <!-- <ion-button 
+      (click) = "registroUsuario()" 
+      fill="outline" 
+      color="dark"
+    >
+      Registrate
+    </ion-button> -->
     <br>
     <br>
     <p>
