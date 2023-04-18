@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DestinosPageRoutingModule } from './destinos-routing.module';
+import { MapsPageRoutingModule } from './maps-routing.module';
 
-import { DestinosPage } from './destinos.page';
-
+import { MapsPage } from './maps.page';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -16,10 +15,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     CommonModule,
     FormsModule,
     IonicModule,
-    DestinosPageRoutingModule
+    MapsPageRoutingModule
   ],
-  declarations: [DestinosPage], 
+  declarations: [MapsPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
-export class DestinosPageModule {}
+export class MapsPageModule {}
