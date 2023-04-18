@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'maps',
     loadChildren: () => import('./maps/maps.module').then( m => m.MapsPageModule)
   },
+  {
+    path: 'ver-auto',
+    loadChildren: () => import('./ver-auto/ver-auto.module').then( m => m.VerAutoPageModule)
+  },
 
 
 ];
