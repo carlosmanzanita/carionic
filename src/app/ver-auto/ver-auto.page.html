@@ -1,9 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>VerAuto</ion-title>
-  </ion-toolbar>
-</ion-header>
+<section class="gir gir-cols-5 gap-2 text-center m-4">
+  <article></article>
+  <article class="col-span-3">
+    <p class="titulo-esime">
+      Tus Autos
+    </p>
+  </article>
+  <article></article>
+    <ion-item>
+      <button [routerLink]="['/feed']" class="AutoStyle">Volver</button>
+      <ion-icon slot="start" name="chevron-back-circle-outline"></ion-icon>
+    </ion-item>
+ 
 
-<ion-content>
-
-</ion-content>
+  <p class="col-span-5 text-justify m-4">
+    Autos Registrados
+  </p>
+</section>
