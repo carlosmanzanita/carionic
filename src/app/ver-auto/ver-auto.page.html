@@ -1,4 +1,4 @@
-<section class="gir gir-cols-5 gap-2 text-center m-4">
+<section class=" bg-gray-900 text-white grid grid-cols-5 gap-2 text-center p-8 h-full">
   <article></article>
   <article class="col-span-3">
     <p class="titulo-esime">
@@ -10,8 +10,15 @@
       <button [routerLink]="['/feed']" class="AutoStyle">Volver</button>
       <ion-icon slot="start" name="chevron-back-circle-outline"></ion-icon>
     </ion-item>
+  
+  <div class="wrapper">
+    <div class="block" **ngFor="
+      let primero = first;">
 
-  <p class="col-span-5 text-justify m-4">
+    </div>
+  </div>
+
+  <p class="col-span-5 text-left p-4">
     Autos Registrados
   </p>
 </section>

@@ -24,4 +24,8 @@ export class VerAutoService {
       let res = await axios.get(this.apiAuto,config)
       return res;
   }
+
+  async postAuto(){
+    
+  }
 }
