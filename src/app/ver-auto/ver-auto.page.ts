@@ -18,6 +18,8 @@ export class VerAutoPage implements OnInit {
     this.getVehiculos();
   }
 
+  Carros:Array<any> = [this.verAutoService.getAutos()]
+
   getVehiculos(){
     const res=this.verAutoService.getAutos();
     res.then((response) => {

@@ -1,10 +1,10 @@
 <section class=" bg-gray-900 text-white grid-cols-5 text-center p-8 h-full">
-  <article></article>
+  <!-- <article></article>
   <article class="col-span-3">
     <p class="titulo-esime">
       Tus Autos
     </p>
-  </article>
+  </article> -->
   <ion-item>
     <button [routerLink]="['/feed']" class= "bg-gray-800 rounded-2xl w-full py-2 px-3 text-white p-8 h-full" >
       <ion-icon slot="start" name="car-sport-outline"></ion-icon>
@@ -22,12 +22,12 @@
       </ion-label>
     </ion-item> -->
 
-    <h1 class="container bg-black text-white text-center my-4 py-4">[ngFor]</h1>
+    <h1 class="container bg-gray-900 text-white text-center my-4 py-4">[Tus autos]</h1>
 
-    <div>
+    <!-- <div>
         <table class="table">
             <thead>
-              <tr>
+              <tr *ngFor="let Carro of Carros; index as i">
                 <th scope= "col">#</th>
                 <th scope= "col">placa</th>
                 <th scope= "col">color</th>
@@ -37,15 +37,19 @@
             </thead>
             <tbody>
               <tr>
-
+                <th scope="row">{{ i }}</th>
+                <th >{{ Carro.placa }}</th>
+                <th >{{ Carro.color }}</th>
+                <th >{{ Carro.tipo }}</th>
+                <th >{{ Carro.marca }}</th>
               </tr>
             </tbody>
         </table>
 
-    </div>
+    </div> -->
 
   <p class="col-span-3">
-    Autos Registrados
+   
   </p>
 </section>
 
