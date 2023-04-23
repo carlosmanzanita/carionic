@@ -32,6 +32,7 @@ export class AutoPage implements OnInit {
     const res=this.autoService.guardarAuto(this.registroAuto)
     res.then((response) => {
       console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
+      this.router.navigate(["ver-auto"])
       // Si hay sesion, no se hace nada
     }).catch((error) => {
       console.log(error.response.status);
@@ -40,6 +41,7 @@ export class AutoPage implements OnInit {
       this.router.navigate(["inicio-sesion"])
     }) 
   }
+
 
   verNoSesion(){
     const res = this.autoService.verNoSesion();

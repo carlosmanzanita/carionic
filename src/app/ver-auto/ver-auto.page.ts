@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerAutoPage implements OnInit {
 
+  public Carros:any = []
+
   constructor(
     public verAutoService:VerAutoService,
     public router:Router
@@ -18,13 +20,14 @@ export class VerAutoPage implements OnInit {
     this.getVehiculos();
   }
 
-  Carros:Array<any> = [this.verAutoService.getAutos()]
-
   getVehiculos(){
     const res=this.verAutoService.getAutos();
     res.then((response) => {
       console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
       // Si hay sesion, no se hace nada
+      this.Carros=response.data;
+      console.log("🚀 ~ file: ver-auto.page.ts:29 ~ VerAutoPage ~ res.then ~ this.Carros:", this.Carros)
+    
     }).catch((error) => {
       console.log(error.response.status);
       console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
@@ -33,5 +36,12 @@ export class VerAutoPage implements OnInit {
     }) 
   
   }
+
+  editar(auto_id:any){
+    window.location.href="edit-auto/"+auto_id
+  }
+  eliminar(auto_id:any){
+    this.router.navigate(["editar_auto/"+auto_id])
+  } 
   
 }

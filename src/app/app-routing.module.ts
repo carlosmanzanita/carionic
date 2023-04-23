@@ -38,6 +38,10 @@ const routes: Routes = [
     path: 'ver-auto',
     loadChildren: () => import('./ver-auto/ver-auto.module').then( m => m.VerAutoPageModule)
   },
+  {
+    path: 'edit-auto',
+    loadChildren: () => import('./edit-auto/edit-auto.module').then( m => m.EditAutoPageModule)
+  },
 
 
 ];

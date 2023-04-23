@@ -25,7 +25,7 @@
     <h1 class="container bg-gray-900 text-white text-center my-4 py-4">[Tus autos]</h1>
 
     <div>
-        <section class="grid grid-cols-5" *ngFor="let Carro of Carros">
+        <section class="grid grid-cols-5" >
               <article >
                 <p class="uppercase">
                   placa
@@ -52,13 +52,7 @@
               </article>
 
               <article>
-                <span [routerLink]="`['/edit-auto/${Carro.id}']`">
-                  editar
-                </span>
-                <span (click)="eliminar(Carro.id)">
-                  eliminar
-                </span>
-
+              
               </article>
         </section>
         
@@ -76,4 +70,3 @@
     <ion-icon slot="start" name="car-sport-outline"></ion-icon>
     Registrar Auto</button>
 </ion-item>
-

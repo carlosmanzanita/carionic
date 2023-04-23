@@ -25,7 +25,18 @@ export class VerAutoService {
       return res;
   }
 
-  async postAuto(){
-    
-  }
+  async getAuto(auto_id:any){
+    // obtenemos el token de localStorage
+    const token = localStorage.getItem('token')
+    // asignamos el token a la validacion para comprobar si existe una sesion
+    const config = {
+      headers:{
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+token 
+      }
+    }
+    //pertición http a la URI de laravel
+    let res = await axios.get(this.apiAuto + "/"+auto_id,config)
+    return res;
+}    
 }
