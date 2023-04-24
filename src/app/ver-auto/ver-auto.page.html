@@ -52,12 +52,15 @@
               </article>
 
               <article>
-                <span [routerLink]="`['/edit-auto/${Carro.id}']`">
+                <span (click)="editar(Carro.id)">
+                  editar
+                </span>
+                <!-- <span [routerLink]="`['/edit-auto/${Carro.id}']`">
                   editar
                 </span>
                 <span (click)="eliminar(Carro.id)">
                   eliminar
-                </span>
+                </span> -->
 
               </article>
         </section>

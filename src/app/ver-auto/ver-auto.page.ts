@@ -38,10 +38,10 @@ export class VerAutoPage implements OnInit {
   }
 
   editar(auto_id:any){
-    window.location.href="edit-auto/"+auto_id
+    this.router.navigate(["edit-auto", auto_id]);
   }
   eliminar(auto_id:any){
-    this.router.navigate(["editar_auto/"+auto_id])
+    
   } 
   
 }

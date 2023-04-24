@@ -21,6 +21,8 @@ export class EditAutoPage implements OnInit {
   }
 
   getVehiculos(){
+    const lastUrlSegment = this.router.url.split('?')[0].split('/').pop()
+    console.log("🚀 ~ file: edit-auto.page.ts:25 ~ EditAutoPage ~ getVehiculos ~ lastUrlSegment:", lastUrlSegment)
     // const res=this.verAutoService.getAuto();
     // res.then((response) => {
     //   console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)

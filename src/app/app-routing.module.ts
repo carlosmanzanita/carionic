@@ -14,7 +14,8 @@ const routes: Routes = [
   {
     path: 'registro',
     loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
-  },  {
+  },
+  {
     path: 'feed',
     loadChildren: () => import('./feed/feed.module').then( m => m.FeedPageModule)
   },
@@ -39,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./ver-auto/ver-auto.module').then( m => m.VerAutoPageModule)
   },
   {
-    path: 'edit-auto',
+    path: 'edit-auto/:id',
     loadChildren: () => import('./edit-auto/edit-auto.module').then( m => m.EditAutoPageModule)
   },
 
