@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-maps',
@@ -15,9 +16,10 @@ export class MapsPage implements OnInit {
   public nombre: String="";
   public lat_sel: String="";
   public lng_sel: String="";
-
+  
   constructor(
-    public geolocation:Geolocation,
+    public router:Router,
+    public geolocation:Geolocation
   ) { }
 
   ngOnInit() {
@@ -27,7 +29,8 @@ export class MapsPage implements OnInit {
   guardarDestino(){
     this.nombre
     this.lat_sel
-    this.lng_sel
+    this.lng_sel  
+    
     
   }
   

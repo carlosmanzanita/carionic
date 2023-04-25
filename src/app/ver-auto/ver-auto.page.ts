@@ -34,8 +34,8 @@ export class VerAutoPage implements OnInit {
       if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
       this.router.navigate(["inicio-sesion"])
     }) 
-  
   }
+
 
   editar(auto_id:any){
     this.router.navigate(["edit-auto", auto_id]);

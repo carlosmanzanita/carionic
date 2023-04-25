@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GoogleMap } from '@capacitor/google-maps';
 // import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
@@ -10,14 +11,28 @@ import { GoogleMap } from '@capacitor/google-maps';
 export class DestinosPage implements OnInit {
   public newMap: any;
   public marker: any;
+  
+  // public Destinos:any[]
+
 
   constructor(
+    
+    public router:Router
     // public geolocation:Geolocation,
   ) { }
 
   ngOnInit() {
     this.mapa();
   }
+
+
+
+
+
+
+
+
+  
 
   async mapa(){
     const apiKey = 'AIzaSyDV-H5sPIyGH5EgU-pkrJ6WIetYiaryN1c';
