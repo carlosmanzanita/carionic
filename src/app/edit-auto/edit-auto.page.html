@@ -1,72 +1,90 @@
-<section class=" bg-gray-900 text-white grid-cols-5 text-center p-8 h-full">
-  <!-- <article></article>
-  <article class="col-span-3">
-    <p class="titulo-esime">
-      Tus Autos
-    </p>
-  </article> -->
+<section class="bg-slate-900 text-white gir gir-cols-5 gap-2 text-center p-8 h-full">
+
+  <article></article>
+  <article class="col-span-3">  
+  <p class="titulo-esime">
+    ESIME Carpool
+  </p>
   <ion-item>
-    <button [routerLink]="['/feed']" class= "bg-gray-800 rounded-2xl w-full py-2 px-3 text-white p-8 h-full" >
+    <button [routerLink]="['/ver-auto']" class= "bg-gray-800 rounded-2xl w-full py-2 px-3 text-white" >
       <ion-icon slot="start" name="car-sport-outline"></ion-icon>
       Volver</button>
   </ion-item>
-<!-- 
-    <article class="col-span-3 bg-gray-900">
-        <button [routerLink]="['/feed']" class="bg-elementos rounded-2xl w-full py-3 px-4 text-white"></button>
-        <ion-icon slot="start" name="chevron-back-circle-outline"></ion-icon>
-        <ion-label> Volver </ion-label>
-    </article> -->
-    <!-- <ion-item *ngFor="let  of list; trackBy:.id">
-      <ion-label>
-        
-      </ion-label>
-    </ion-item> -->
+  </article>
+  <article></article>
 
-    <h1 class="container bg-gray-900 text-white text-center my-4 py-4">[Tus autos]</h1>
-
-    <div>
-        <section class="grid grid-cols-5" >
-              <article >
-                <p class="uppercase">
-                  placa
-                </p>
-                {{ Carro.placa }}
-              </article>
-              <article >
-                <p class="uppercase">
-                  color
-                </p>
-                {{ Carro.color }}
-              </article>
-              <article >
-                <p class="uppercase">
-                  tipo
-                </p>
-                {{ Carro.tipo }}
-              </article>
-              <article >
-                <p class="uppercase">
-                  marca
-                </p>
-                {{ Carro.marca }}
-              </article>
-
-              <article>
-              
-              </article>
-        </section>
-        
-    </div>
-
-  <p class="col-span-3">
-   
+  <p class="col-span-5 text-left p-4">
+    Ingresa los datos de tu auto
   </p>
   
+  <p class="col-span-5 text-left p-4">
+    
+  </p>
+
+  <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Placa
+      </label>
+      <div class="md:w-2/3">
+      <input [(ngModel)]="Carro.placa" [ngModelOptions]=" {standalone: true}" 
+      class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" placeholder="Introduce la placa" >
+    </div>
+  </div>
+  </form>
+  
+  <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Marca
+      </label>
+        <div class="md:w-2/3">
+      <input [(ngModel)]="Carro.marca" [ngModelOptions]=" {standalone: true}" 
+      class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" placeholder="Introduce la marca" >
+        </div>
+    </div>
+  </form>
+
+  <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Color
+      </label>
+      <div class="md:w-2/3">
+      <input [(ngModel)]="Carro.color" [ngModelOptions]=" {standalone: true}" 
+      class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" placeholder="Introduce el color" >
+    </div>
+  </div>
+  </form>
+
+    
+  <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Tipo
+      </label>
+      <div class="md:w-2/3">
+      <select
+        [(ngModel)]="Carro.tipo" 
+        [ngModelOptions]=" {standalone: true}"
+        class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" 
+      > 
+        <option value="-">Selecciona un tipo de vehículo</option> 
+        <option value="moto">Moto</option> 
+        <option value="camioneta">Camioneta</option> 
+        <option value="auto">Auto</option>
+
+      </select>
+    </div>
+  </div>
+  </form>
+
+
+  <button class="" (click) ="guardarAuto()"> 
+    Guardar  
+  </button>
+  
+
+
+
 </section>
-
-
-  <ion-item>
-    <button [routerLink]="['/auto']" class= "bg-black rounded-2xl w-full py-3 px-4 text-white" >
-    <ion-icon slot="start" name="car-sport-outline"></ion-icon>
-    Registrar Auto</button>
-</ion-item>

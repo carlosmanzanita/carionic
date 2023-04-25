@@ -41,7 +41,17 @@ export class VerAutoPage implements OnInit {
     this.router.navigate(["edit-auto", auto_id]);
   }
   eliminar(auto_id:any){
-    
+    if(confirm("¿Deseas eliminar el vehículo?")){
+      const res=this.verAutoService.deleteAuto(auto_id);
+      res.then((response) => {
+        this.getVehiculos()
+      }).catch((error) => {
+        console.log(error.response.status);
+        console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
+        if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+        this.router.navigate(["inicio-sesion"])
+      })
+    }
   } 
   
 }
