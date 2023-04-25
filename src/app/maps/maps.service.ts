@@ -26,7 +26,7 @@ export class MapsService {
     return res;
 }
 
-async getDestino(destino_id:any){
+async getDestino(){
   // obtenemos el token de localStorage
   const token = localStorage.getItem('token')
   // asignamos el token a la validacion para comprobar si existe una sesion
@@ -37,10 +37,10 @@ async getDestino(destino_id:any){
     }
   }
   //pertición http a la URI de laravel
-  let res = await axios.get(this.apiDestino + "/"+ destino_id,config)
+  let res = await axios.get(this.apiDestino,config)
   return res;
 }
-async guardarDestino(registroAuto:any, destino_id:any ){
+async guardarDestino(registroDestino:any, destino_id:any ){
   // obtenemos el token de localStorage
   const token = localStorage.getItem('token')
   // asignamos el token a la validacion para comprobar si existe una sesion
@@ -51,7 +51,7 @@ async guardarDestino(registroAuto:any, destino_id:any ){
     }
   }
   //pertición http a la URI de laravel
-  let res = await axios.put(this.apiDestino + "/" + destino_id, registroAuto,config)
+  let res = await axios.put(this.apiDestino + "/" + destino_id, registroDestino,config)
   return res;
 }
 

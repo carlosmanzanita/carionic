@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { Router } from '@angular/router';
+import { MapsService } from './maps.service';
 
 @Component({
   selector: 'app-maps',
@@ -16,23 +17,38 @@ export class MapsPage implements OnInit {
   public nombre: String="";
   public lat_sel: String="";
   public lng_sel: String="";
+  public tipo: String ="";
   
   constructor(
+    public verDestino:MapsService,
     public router:Router,
     public geolocation:Geolocation
   ) { }
 
   ngOnInit() {
     this.mapa();
+    this.getDestino();
   }
 
-  guardarDestino(){
-    this.nombre
-    this.lat_sel
-    this.lng_sel  
+  getDestino(){
+    // this.nombre
+    // this.lat_sel
+    // this.lng_sel  
     
+    const res=this.verDestino.getDestino();
+    res.then((response) => {
+      console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
+      // Si hay sesion, no se hace nada
+      this.nombre=response.data;
     
+    }).catch((error) => {
+      console.log(error.response.status);
+      console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
+      if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+      this.router.navigate(["inicio-sesion"])
+    }) 
   }
+  
   
   
   

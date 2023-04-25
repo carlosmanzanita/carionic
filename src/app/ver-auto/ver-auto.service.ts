@@ -36,7 +36,7 @@ export class VerAutoService {
       }
     }
     //pertición http a la URI de laravel
-    let res = await axios.get(this.apiAuto + "/"+auto_id,config)
+    let res = await axios.get(this.apiAuto + "/"+ auto_id,config)
     return res;
   }
   
@@ -66,7 +66,7 @@ export class VerAutoService {
       }
     }
     //pertición http a la URI de laravel
-    let res = await axios.delete(this.apiAuto + "/"+auto_id,config)
+    let res = await axios.delete(this.apiAuto + "/"+ auto_id,config)
     return res;
   }
   
