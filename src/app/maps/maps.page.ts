@@ -12,6 +12,9 @@ export class MapsPage implements OnInit {
 
   public newMap: any;
   public marker: any;
+  public nombre: String="";
+  public lat_sel: String="";
+  public lng_sel: String="";
 
   constructor(
     public geolocation:Geolocation,
@@ -21,6 +24,22 @@ export class MapsPage implements OnInit {
     this.mapa();
   }
 
+  guardarDestino(){
+    this.nombre
+    this.lat_sel
+    this.lng_sel
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   async mapa(){
     const apiKey = 'AIzaSyDV-H5sPIyGH5EgU-pkrJ6WIetYiaryN1c';
     const mapRef = document.getElementById('map');
@@ -63,7 +82,9 @@ export class MapsPage implements OnInit {
    
   }
   async addMarker(nuevoPunto:any){
-    console.log("🚀 ~ ", nuevoPunto)
+    console.log("AustinCejudo ", nuevoPunto)
+    this.lat_sel=nuevoPunto.latitude
+    this.lng_sel=nuevoPunto.longitude
 
   
     this.marker = await this.newMap.addMarker({

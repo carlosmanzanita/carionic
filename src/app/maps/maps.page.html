@@ -1,13 +1,17 @@
 <section class="bg-gray-900 text-white text-center p-8 h-full">
 
+  <ion-item>
+    <button [routerLink]="['/destinos']" class="AutoStyle">Volver</button>
+    <ion-icon slot="start" name="chevron-back-circle-outline"></ion-icon>
+  </ion-item>
 
-<ion-content>
-  <capacitor-google-map id="map"></capacitor-google-map>
-</ion-content>
-
-<ion-item>
-  <button [routerLink]="['/feed']" class="AutoStyle">Volver</button>
-  <ion-icon slot="start" name="chevron-back-circle-outline"></ion-icon>
-</ion-item>
+  <ion-content class="border-2 border-red-500 h-96">
+    <capacitor-google-map id="map" ></capacitor-google-map>
+  </ion-content>
+  
+  <input type="text" [(ngModel)] = "nombre" placeholder="Nombre">
+  <button (click) = "guardarDestino()">
+    Guardar Destino 
+  </button>
 
 </section>
