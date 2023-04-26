@@ -1,13 +1,25 @@
-<section class=" bg-gray-900 text-white grid-cols-5 p-8 h-full">
+<section class=" bg-gray-900 text-white grid-cols-1 p-8 h-full">
   <article>
     <button [routerLink]="['/maps']" >
       Agregar Destino
     </button>
   </article>
 
-  <h1 class="container bg-gray-900 text-black text-center my-4 py-4"></h1>
+  <h1 class="container bg-gray-900 text-center my-4 py-4"></h1>
+  <h1 class="container bg-gray-700 text-center my-4 py-4">TUS DESTINOS</h1>
 
-  <section class="text-center">
+  <ion-list class="grid grid-cols-2 bg-gray-900 text-white text-left text-xs " *ngFor="let destino of destinos">
+
+    <ion-item>
+      <ion-label class=" bg-gray-600  w-full py-3 px-3 text-white" >
+        <p class="uppercase text-center grid">
+        </p>
+        {{ destino.nombre }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- <section class="text-center">
         <article >
           <p class="uppercase">
             Tus destinos
@@ -20,5 +32,5 @@
       (click)="verDestino(destino.id)"
     >
     {{ destino.nombre }}
-    </article>
+    </article> -->
   </section>
