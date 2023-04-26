@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ver-Destino</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-item>
+  <button [routerLink]="['/destinos']" class="AutoStyle">Volver</button>
+  <ion-icon slot="start" name="chevron-back-circle-outline"></ion-icon>
+</ion-item>
+
+<ion-content class="border-2 border-red-500 h-96">
+  <capacitor-google-map id="map-destino" ></capacitor-google-map>
+</ion-content>
+
+<ion-content>
+  {{ destino.longitud }}
+</ion-content>

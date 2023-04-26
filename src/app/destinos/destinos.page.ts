@@ -39,7 +39,9 @@ export class DestinosPage implements OnInit {
     }) 
     
   }
-
+  verDestino(destino_id:any){
+    this.router.navigate(["ver-destino", destino_id]);
+  }
 
 
 

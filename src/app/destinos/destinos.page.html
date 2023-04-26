@@ -17,6 +17,7 @@
   <section class="grid grid-cols-3">
     <article
       *ngFor="let destino of destinos"
+      (click)="verDestino(destino.id)"
     >
     {{ destino.nombre }}
     </article>

@@ -43,6 +43,11 @@ const routes: Routes = [
     path: 'edit-auto/:id',
     loadChildren: () => import('./edit-auto/edit-auto.module').then( m => m.EditAutoPageModule)
   },
+  {
+    path: 'ver-destino/:id',
+    loadChildren: () => import('./ver-destino/ver-destino.module').then( m => m.VerDestinoPageModule)
+  },
+
 
 
 ];
