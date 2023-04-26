@@ -4,6 +4,7 @@ import { GoogleMap } from '@capacitor/google-maps';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { Router } from '@angular/router';
 import { MapsService } from './maps.service';
+import { Destino } from './destino';
 
 @Component({
   selector: 'app-maps',
@@ -14,39 +15,48 @@ export class MapsPage implements OnInit {
 
   public newMap: any;
   public marker: any;
-  public nombre: String="";
-  public lat_sel: String="";
-  public lng_sel: String="";
-  public tipo: String ="";
-  
+
+  public destino:Destino ={
+    nombre:"",
+    latitud:"",
+    longitud:"",
+    tipo:"",
+  }
   constructor(
-    public verDestino:MapsService,
+    public mapsService:MapsService,
     public router:Router,
     public geolocation:Geolocation
   ) { }
 
   ngOnInit() {
     this.mapa();
-    this.getDestino();
   }
 
-  getDestino(){
+  postDestino(){
     // this.nombre
     // this.lat_sel
-    // this.lng_sel  
-    
-    const res=this.verDestino.getDestino();
-    res.then((response) => {
-      console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
-      // Si hay sesion, no se hace nada
-      this.nombre=response.data;
-    
-    }).catch((error) => {
-      console.log(error.response.status);
-      console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
-      if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
-      this.router.navigate(["inicio-sesion"])
-    }) 
+    // this.lng_sel
+    let val=0;
+    if(this.destino.nombre=="") val++;  
+    if(this.destino.latitud=="") val++;  
+    if(this.destino.longitud=="") val++;  
+    if(val == 0){
+      const res=this.mapsService.guardarDestino(this.destino)
+      
+      res.then((response) => {
+        console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
+        // Si hay sesion, no se hace nada      
+      }).catch((error) => {
+        console.log(error.response.status);
+        console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
+        if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+        this.router.navigate(["inicio-sesion"])
+      }) 
+      
+    }
+    else {
+      //Faltan datos
+    }
   }
   
   
@@ -102,8 +112,8 @@ export class MapsPage implements OnInit {
   }
   async addMarker(nuevoPunto:any){
     console.log("AustinCejudo ", nuevoPunto)
-    this.lat_sel=nuevoPunto.latitude
-    this.lng_sel=nuevoPunto.longitude
+    this.destino.latitud=nuevoPunto.latitude
+    this.destino.longitud=nuevoPunto.longitude
 
   
     this.marker = await this.newMap.addMarker({

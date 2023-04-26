@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { Destino } from './destino';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class MapsService {
     }
     //pertición http a la URI de laravel
     let res = await axios.get(this.apiDestino,config)
-    return res;
+    return res;   
 }
 
 async getDestino(){
@@ -40,7 +41,8 @@ async getDestino(){
   let res = await axios.get(this.apiDestino,config)
   return res;
 }
-async guardarDestino(registroDestino:any, destino_id:any ){
+
+async guardarDestino(destino:Destino ){
   // obtenemos el token de localStorage
   const token = localStorage.getItem('token')
   // asignamos el token a la validacion para comprobar si existe una sesion
@@ -51,7 +53,7 @@ async guardarDestino(registroDestino:any, destino_id:any ){
     }
   }
   //pertición http a la URI de laravel
-  let res = await axios.put(this.apiDestino + "/" + destino_id, registroDestino,config)
+  let res = await axios.post(this.apiDestino, destino,config)
   return res;
 }
 

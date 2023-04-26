@@ -7,12 +7,17 @@
 
   <h1 class="container bg-gray-900 text-black text-center my-4 py-4"></h1>
 
-    <div>
-        <section class="text-center">
-              <article >
-                <p class="uppercase">
-                  Tus destinos
-                </p>
-              </article>
-    
-</section>
+  <section class="text-center">
+        <article >
+          <p class="uppercase">
+            Tus destinos
+          </p>
+        </article>
+  </section>
+  <section class="grid grid-cols-3">
+    <article
+      *ngFor="let destino of destinos"
+    >
+    {{ destino.nombre }}
+    </article>
+  </section>
