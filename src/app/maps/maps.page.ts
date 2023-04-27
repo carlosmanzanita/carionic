@@ -91,7 +91,7 @@ export class MapsPage implements OnInit {
         },
         zoom: 15, // The initial zoom level to be rendered by the map
         // disableDefaultUI: true,
-        // clickableIcons: false,
+        clickableIcons: false,
       },
     });
 

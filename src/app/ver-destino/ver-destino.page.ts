@@ -49,8 +49,13 @@ verDestino(){
 
 
 async mapa(latitud:any,longitud:any){
+  latitud = parseFloat(latitud)
+  longitud = parseFloat(longitud)
+  console.log(typeof latitud);
+  console.log(typeof latitud);
+  console.log(typeof latitud);
   const apiKey = 'AIzaSyDV-H5sPIyGH5EgU-pkrJ6WIetYiaryN1c';
-  const mapRef = document.getElementById('map-destino');
+  const mapRef = document.getElementById('map-2');
   const el1: HTMLElement = mapRef!;
   const resp = await this.geolocation.getCurrentPosition();
   
@@ -58,7 +63,7 @@ async mapa(latitud:any,longitud:any){
   console.log("Coordenadas longitud: ", longitud);
 
   this.newMap = await GoogleMap.create({
-    id: 'my-map-destino', // Unique identifier for this map instance
+    id: 'my-map-2', // Unique identifier for this map instance
     element: el1, // reference to the capacitor-google-map element
     apiKey: apiKey, // Your Google Maps API Key
     config: {
