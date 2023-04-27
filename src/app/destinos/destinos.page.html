@@ -1,14 +1,14 @@
-<section class=" bg-gray-900 text-white grid-cols-1 p-8 h-full">
-  <article>
-    <button [routerLink]="['/maps']" >
-      Agregar Destino
-    </button>
-  </article>
+<section class=" bg-gray-900 text-white grid-cols-3 p-8 h-full">
+  <ion-item>
+    <button [routerLink]="['/feed']" class= "bg-gray-800 rounded-2xl w-full py-2 px-3 text-white p-8 h-full" >
+      <ion-icon slot="start" name="car-sport-outline"></ion-icon>
+      Volver</button>
+  </ion-item>
 
   <h1 class="container bg-gray-900 text-center my-4 py-4"></h1>
   <h1 class="container bg-gray-700 text-center my-4 py-4">TUS DESTINOS</h1>
 
-  <ion-list class="grid grid-cols-2 bg-gray-900 text-white text-left text-xs " *ngFor="let destino of destinos">
+  <ion-list class="grid grid-span-2 bg-gray-900 text-white text-left text-xs " *ngFor="let destino of destinos">
 
     <ion-item>
       <ion-label class=" bg-gray-600  w-full py-3 px-3 text-white" >
@@ -18,6 +18,8 @@
       </ion-label>
     </ion-item>
   </ion-list>
+
+  
 
   <!-- <section class="text-center">
         <article >
@@ -33,4 +35,9 @@
     >
     {{ destino.nombre }}
     </article> -->
+    <article class="bg-slate-800 w-full py-3 px-3">
+      <button [routerLink]="['/maps']" >
+        Agregar Destino
+      </button>
+    </article>
   </section>

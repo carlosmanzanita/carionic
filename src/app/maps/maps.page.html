@@ -11,7 +11,7 @@
   
   <input type="text" [(ngModel)] = "destino.nombre" placeholder="Nombre" class="bg-slate-900 text-bla
   ">
-  <button (click) = "postDestino()">
+  <button (click) = "postDestino()" [routerLink]="['/destinos']">
     Guardar Destino 
   </button>
 

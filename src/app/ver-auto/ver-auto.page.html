@@ -6,10 +6,16 @@
       Tus Autos
     </p>
   </article> -->
-  <ion-item>
-    <button [routerLink]="['/feed']" class= "bg-gray-800 rounded-2xl w-full py-2 px-3 text-white p-8 h-full" >
+  <ion-item
+    class="border-2 w-20 rounded-full"
+  >
+    <!-- class= "bg-gray-800 rounded-2xl w-full py-2 px-3 text-white p-8 h-full"  -->
+    <button 
+      [routerLink]="['/feed']" 
+    >
+      <
       <ion-icon slot="start" name="car-sport-outline"></ion-icon>
-      Volver</button>
+      </button>
   </ion-item>
 <!-- 
     <article class="col-span-3 bg-gray-900">
@@ -84,47 +90,35 @@
   </ion-list> -->
 
     <div>
-        <section class="grid grid-cols-5 bg-slate-900 my-4 py-4 h-full text-justify" *ngFor="let Carro of Carros">
-          <article class="text-center">
-              <ion-label >
-                <p class="uppercase">
-                  <ion-icon name="barcode-outline"></ion-icon>
-                </p>
+        <section 
+          class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+          *ngFor="let Carro of Carros"
+        >
+            <article>
+                <span class="uppercase">
+                  {{ Carro.tipo }}
+                </span>
+                <hr class="my-2">
+                <ion-icon name="car-sport-outline"></ion-icon>
+                {{ Carro.marca }} {{ Carro.color }}
+                <br>
+                <ion-icon name="barcode-outline"></ion-icon>
                 {{ Carro.placa }}
-              </ion-label>
+                <br>
+                <p
+                  class="text-right"
+                >
+                  <span (click)="editar(Carro.id)">
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </span>
+                  &nbsp;
+                  <span (click)="eliminar(Carro.id)">
+                    <ion-icon name="pencil-outline"></ion-icon>
+                  </span>
+                </p>
             </article>
-            <article class="text-center" >
-                <p class="uppercase">
-                  <ion-icon name="color-filter-outline"></ion-icon>
-                </p>
-                {{ Carro.color }}
-              </article>
-              <article >
-                <p class="uppercase">
-                  <ion-icon name="bicycle-outline"></ion-icon>
-                </p>
-                {{ Carro.tipo }}
-              </article>
-              <article >
-                <p class="uppercase">
-                  <ion-icon name="car-sport-outline"></ion-icon>
-                </p>
-                {{ Carro.marca }}
-              </article>
-
-              <article>
-                <span (click)="editar(Carro.id)">
-                  <ion-icon name="trash-outline"></ion-icon>
-                  editar
-                </span>
-                <p>
-                </p>
-                <span (click)="eliminar(Carro.id)">
-                  <ion-icon name="pencil-outline"></ion-icon>
-                  eliminar
-                </span>
-
-              </article>
+            <article>
+            </article>
         </section>
         
     </div>
