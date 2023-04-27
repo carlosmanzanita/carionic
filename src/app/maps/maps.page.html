@@ -1,17 +1,30 @@
 <section class="bg-gray-900 text-white text-center p-8 h-full">
-
-  <ion-item>
-    <button [routerLink]="['/destinos']" class="AutoStyle">Volver</button>
-    <ion-icon slot="start" name="chevron-back-circle-outline"></ion-icon>
+  <ion-item
+  class="border-2 w-20 rounded-full"
+>
+  <button 
+    [routerLink]="['/destinos']" 
+  >
+    <
+    <ion-icon slot="start" name="location-outline"></ion-icon>
+    </button>
   </ion-item>
+    &nbsp;
 
   <ion-content class="border-2 border-red-500 h-96">
     <capacitor-google-map id="map" ></capacitor-google-map>
   </ion-content>
-  
-  <input type="text" [(ngModel)] = "destino.nombre" placeholder="Nombre" class="bg-slate-900 text-bla
-  ">
-  <button (click) = "postDestino()">
+    &nbsp;
+  <input 
+    type="text" 
+    [(ngModel)] = "destino.nombre"
+    placeholder="Nombre" 
+    class=" bg-gray-800 my-4 py-4 text-justify p-4 rounded-full"
+    >
+
+  <button 
+  (click) = "postDestino()"
+  >
     Guardar Destino 
   </button>
 

@@ -43,7 +43,19 @@ export class DestinosPage implements OnInit {
     this.router.navigate(["ver-destino", destino_id]);
   }
 
-
+  eliminar(destino_id:any){
+    if(confirm("¿Deseas eliminar el vehículo?")){
+      const res=this.destinosService.deleteAuto(destino_id);
+      res.then((response) => {
+        this.getDestinos()
+      }).catch((error) => {
+        console.log(error.response.status);
+        console.log("🚀 ~ file: ver-auto.page.ts:50 ~ VerAutoPage ~ res.then ~ console:", console)
+        if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+        this.router.navigate(["inicio-sesion"])
+      })
+    }
+  } 
 
 
 

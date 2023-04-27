@@ -22,7 +22,7 @@
       </ion-label>
     </ion-item> -->
 
-    <h1 class="container bg-gray-900 text-white text-center my-4 py-4">Tus autos</h1>
+    <h1 class="container bg-gray-700 text-white  text-center rounded-xl my-4 py-4">Tus autos</h1>
 
     <!-- <ion-list class="grid bg-slate-900 my-4 py-4 text-white text-justify text-xs" *ngFor="let Carro of Carros">
 
@@ -102,11 +102,11 @@
                   class="text-right"
                 >
                   <span (click)="editar(Carro.id)">
-                    <ion-icon name="trash-outline"></ion-icon>
+                    <ion-icon name="pencil-outline"></ion-icon>
                   </span>
                   &nbsp;
                   <span (click)="eliminar(Carro.id)">
-                    <ion-icon name="pencil-outline"></ion-icon>
+                    <ion-icon name="trash-outline"></ion-icon>
                   </span>
                 </p>
             </article>
@@ -122,10 +122,10 @@
   
 </section>
 
-
-  <ion-item>
-    <button [routerLink]="['/auto']" class= "bg-black rounded-2xl w-full py-3 px-4 text-white" >
-    <ion-icon slot="start" name="car-sport-outline"></ion-icon>
-    Registrar Auto</button>
+<ion-item>
+  <button [routerLink]="['/auto']" class= "bg-black rounded-2xl w-full py-3 px-4 text-white" >
+  <ion-icon slot="start" name="car-sport-outline"></ion-icon>
+  Registrar Auto</button>
 </ion-item>
+
 
