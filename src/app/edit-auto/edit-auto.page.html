@@ -3,17 +3,21 @@
   <article></article>
   <article class="col-span-3">  
   <p class="titulo-esime">
-    ESIME Carpool
   </p>
-  <ion-item>
-    <button [routerLink]="['/ver-auto']" class= "bg-gray-800 rounded-2xl w-full py-2 px-3 text-white" >
-      <ion-icon slot="start" name="car-sport-outline"></ion-icon>
-      Volver</button>
+  <ion-item
+  class="border-2 w-20 rounded-full"
+>
+  <button 
+    [routerLink]="['/ver-auto']" 
+  >
+    <
+    <ion-icon slot="start" name="car-outline"></ion-icon>
+    </button>
   </ion-item>
   </article>
   <article></article>
 
-  <p class="col-span-5 text-left p-4">
+  <p class="col-span-5 text-center p-4">
     Ingresa los datos de tu auto
   </p>
   
@@ -70,9 +74,9 @@
         class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" 
       > 
         <option value="-">Selecciona un tipo de vehículo</option> 
-        <option value="moto">Moto</option> 
-        <option value="camioneta">Camioneta</option> 
-        <option value="auto">Auto</option>
+        <option value="moto">MOTO</option> 
+        <option value="camioneta">CAMIONETA</option> 
+        <option value="auto">AUTO</option>
 
       </select>
     </div>
