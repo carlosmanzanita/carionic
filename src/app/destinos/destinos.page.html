@@ -1,41 +1,37 @@
-<section class=" bg-gray-900 text-white grid-cols-3 p-8 h-full">
-  <ion-item>
-    <button [routerLink]="['/feed']" class= "bg-gray-800 rounded-2xl w-full py-2 px-3 text-white p-8 h-full" >
-      <ion-icon slot="start" name="car-sport-outline"></ion-icon>
-      Volver</button>
-  </ion-item>
-
-  <h1 class="container bg-gray-900 text-center my-4 py-4"></h1>
-  <h1 class="container bg-gray-700 text-center my-4 py-4">TUS DESTINOS</h1>
-
-  <ion-list class="grid grid-span-2 bg-gray-900 text-white text-left text-xs " *ngFor="let destino of destinos">
-
-    <ion-item>
-      <ion-label class=" bg-gray-600  w-full py-3 px-3 text-white" >
-        <p class="uppercase text-center grid">
-        </p>
-        {{ destino.nombre }}
-      </ion-label>
+<section class=" bg-gray-900 text-white  grid-cols-4 text-center p-8 h-full">
+  <ion-item
+    class="border-2 w-20 rounded-full"
+  >
+    <button 
+      [routerLink]="['/feed']" 
+    >
+      <
+      <ion-icon slot="start" name="location-outline"></ion-icon>
+      </button>
     </ion-item>
-  </ion-list>
+    
+    <h1 class="container bg-gray-800 text-white grid-span-3 text-center my-6 py-4">TUS DESTINOS</h1>
+    <hr class="my-2">
 
-  
-
-  <section class="text-center">
-        <article >
-          <p class="uppercase">
-            Tus destinos
-          </p>
-        </article>
-  </section>
-  <section class="grid grid-cols-3">
+  <section class=" ">
     <article
       *ngFor="let destino of destinos"
       (click)="verDestino(destino.id)"
+      class="bg-gray-700 text-center rounded-3xl grid-span-3 p-4 my-5"
     >
-    {{ destino.nombre }}
+    {{ destino.nombre }} 
     </article>
-    <article class="bg-slate-800 w-full py-3 px-3">
+
+      <article>
+        <span class="uppercase">
+        </span>
+        <hr class="my-2">
+        <ion-icon name="location-outline">
+
+        </ion-icon>
+      </article>
+
+    <article class="bg-slate-900 w-full py-3 px-3 text-end ">
       <button [routerLink]="['/maps']" >
         Agregar Destino
       </button>
