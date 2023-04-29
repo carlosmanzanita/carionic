@@ -44,8 +44,9 @@ export class MapsPage implements OnInit {
       const res=this.mapsService.guardarDestino(this.destino)
       
       res.then((response) => {
-        console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
-        // Si hay sesion, no se hace nada      
+        console.log("🚀 ~ file: maps.page.ts:47 ~ MapsPage ~ res.then ~ response:", response)
+        // Si hay sesion, no se hace nada    
+        this.router.navigate(["destinos"])
       }).catch((error) => {
         console.log(error.response.status);
         console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
