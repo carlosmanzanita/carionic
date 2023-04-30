@@ -46,7 +46,7 @@ export class InicioSesionPage implements OnInit {
     const res = this.inicioSesionService.iniciosesionUsuario(this.iniciosesion)
     
     res.then((response) => {
-      console.log("🚀 ~ file: inicio-sesion.page.ts:48 ~ InicioSesionPage ~ res.then ~ response:", response)
+      console.log("🚀 ~ file: inicio-sesion.page.ts:49 ~ InicioSesionPage ~ res.then ~ response:", response)
       // colocamos el token el LocalStorage
       localStorage.setItem('token', response.data.token)
       console.log("🚀 ~ file: inicio-sesion.page.ts:50 ~ InicioSesionPage ~ res.then ~ response:", response)
@@ -95,7 +95,7 @@ export class InicioSesionPage implements OnInit {
   verSiSesion(){
     const res = this.inicioSesionService.verSiSesion();
     res.then((response) => {
-      console.log("🚀 ~ file: inicio-sesion.page.ts:95 ~ InicioSesionPage ~ res.then ~ response:", response)
+      console.log("🚀 ~ file: inicio-sesion.page.ts:98 ~ InicioSesionPage ~ res.then ~ response:", response)
       this.router.navigate(["feed"])
             
     }).catch((error) => {
