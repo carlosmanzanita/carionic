@@ -10,7 +10,7 @@ import { ModalidadPieService } from './modalidad-pie.service';
 export class ModalidadPiePage implements OnInit {
 
   public encuentro_id:any = 0
-  public Encuentro:any = []
+  public encuentro:any = []
 
   constructor(
     public modalidadPieService:ModalidadPieService,
@@ -18,7 +18,7 @@ export class ModalidadPiePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getEncuentro
+    this.getEncuentro();
   }
 
   getEncuentro(){
@@ -28,8 +28,8 @@ export class ModalidadPiePage implements OnInit {
     res.then((response) => {
       console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
       // Si hay sesion, no se hace nada
-      this.Encuentro=response.data;
-      console.log("🚀 ~ file: ver-auto.page.ts:29 ~ VerAutoPage ~ res.then ~ this.Carros:", this.Encuentro)
+      this.encuentro=response.data;
+      console.log("🚀 ~ file: ver-auto.page.ts:29 ~ VerAutoPage ~ res.then ~ this.Carros:", this.encuentro)
     
     }).catch((error) => {
       console.log(error.response.status);

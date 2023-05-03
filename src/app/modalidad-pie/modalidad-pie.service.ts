@@ -8,7 +8,7 @@ import axios from 'axios';
 export class ModalidadPieService {
   private apiMod = "http://carpool.test/api/auth/modalidad-pie";
   private apiCerrar = "http://carpool.test/api/auth/cerrar-sesion";
-  private apiEncuentro = "http://carpool.test/api/auth/encuentros"
+  private apiEncuentro = "http://carpool.test/api/encuentro";
 
 
   constructor(
@@ -41,7 +41,7 @@ export class ModalidadPieService {
       }
     }
     //pertición http a la URI de laravel
-    let res = await axios.get(this.apiEncuentro + "/"+ encuentro_id,config)
+    let res = await axios.get(this.apiEncuentro,config)
     return res;
   }
 

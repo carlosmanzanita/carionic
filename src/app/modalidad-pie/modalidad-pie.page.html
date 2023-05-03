@@ -26,14 +26,14 @@
         </label>
         <div class="md:w-2/3">
         <select
-          [(ngModel)]="Encuentro.tipo" 
-          [ngModelOptions]=" {standalone: true}"
-          class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" 
-        > 
+          class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+          [(ngModel)]="modalidad-pie"
+        >
           <option value="-">Selecciona un punto de encuentro</option> 
-          <option value="moto">Estacionamiento 1</option> 
-          <option value="camioneta">Edificio de Gobierno</option> 
-          <option value="auto">Salida Av Santa Ana</option>
+          <option *ngFor="let encuentro of encuentro"  value="encuentros.id">
+            {{ encuentro.nombre }}
+          </option> 
+         
   
         </select>
       </div>
