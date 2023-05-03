@@ -46,7 +46,19 @@ const routes: Routes = [
   {
     path: 'ver-destino/:id',
     loadChildren: () => import('./ver-destino/ver-destino.module').then( m => m.VerDestinoPageModule)
+  },  {
+    path: 'modalidades',
+    loadChildren: () => import('./modalidades/modalidades.module').then( m => m.ModalidadesPageModule)
   },
+  {
+    path: 'modalidad-pie',
+    loadChildren: () => import('./modalidad-pie/modalidad-pie.module').then( m => m.ModalidadPiePageModule)
+  },
+  {
+    path: 'modalidad-aventon',
+    loadChildren: () => import('./modalidad-aventon/modalidad-aventon.module').then( m => m.ModalidadAventonPageModule)
+  },
+
 
 
 
