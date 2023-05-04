@@ -9,7 +9,7 @@ export class ModalidadPieService {
   private apiMod = "http://carpool.test/api/auth/modalidad-pie";
   private apiCerrar = "http://carpool.test/api/auth/cerrar-sesion";
   private apiEncuentro = "http://carpool.test/api/encuentro";
-
+  private apiDestino="http://carpool.test/api/destino";
 
   constructor(
     public router:Router,
@@ -44,6 +44,20 @@ export class ModalidadPieService {
     let res = await axios.get(this.apiEncuentro,config)
     return res;
   }
+  async getDestinos(){
+    // obtenemos el token de localStorage
+    const token = localStorage.getItem('token')
+    // asignamos el token a la validacion para comprobar si existe una sesion
+    const config = {
+      headers:{
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+token 
+      }
+    }
+    //pertición http a la URI de laravel
+    let res = await axios.get(this.apiDestino,config)
+    return res;
+}
 
   async cerrarSesion(){
     // obtenemos el token de localStorage

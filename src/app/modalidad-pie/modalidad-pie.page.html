@@ -16,9 +16,6 @@
       Selecciona el punto de encuentro
     </p>
 
-
-
-      
     <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2">
@@ -38,6 +35,47 @@
        </div>
     </form>
 
+    <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">
+          TAG
+        </label>
+        <div class="md:w-2/3">
+          <select
+           class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+           [(ngModel)]="encuentro.name" [ngModelOptions]="{standalone: true}">
+           >
+          <option value="-">Selecciona una opción</option> 
+          <!-- <option *ngFor="let encuentros of encuentro"  value="encuentro_id">
+            {{ encuentros.descripcion }}
+          </option> -->
+           </select>
+        </div>
+       </div>
+    </form>
+
+    <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">
+          DESTINOS
+        </label>
+        <div class="md:w-2/3">
+          <select
+           class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+           [(ngModel)]="destinos.name" [ngModelOptions]="{standalone: true}">
+           >
+          <option value="-">Selecciona una opción</option> 
+          <option *ngFor="let destino of destinos"  value="destinos_id">
+            {{ destino.nombre }}
+          </option>
+           </select>
+        </div>
+       </div>
+    </form>
+
+    <button class="bg-white text-center text-gray-900 my-4 py-4 p-4 rounded-md">
+      Unirse a viaje
+    </button>
 
     </section>
   </div>
