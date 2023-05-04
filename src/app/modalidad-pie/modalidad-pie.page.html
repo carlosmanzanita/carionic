@@ -25,20 +25,19 @@
           Punto de encuentro
         </label>
         <div class="md:w-2/3">
-        <select
-          class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
-          [(ngModel)]="modalidad-pie"
-        >
+          <select
+           class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+           [(ngModel)]="encuentro.name" [ngModelOptions]="{standalone: true}">
+           >
           <option value="-">Selecciona un punto de encuentro</option> 
-          <option *ngFor="let encuentro of encuentro"  value="encuentros.id">
-            {{ encuentro.nombre }}
-          </option> 
-         
-  
-        </select>
-      </div>
-    </div>
+          <option *ngFor="let encuentros of encuentro"  value="encuentro_id">
+            {{ encuentros.descripcion }}
+          </option>
+           </select>
+        </div>
+       </div>
     </form>
+
 
     </section>
   </div>
