@@ -9,11 +9,27 @@ export class FeedService {
 
   private apiVer = "http://carpool.test/api/auth/ver-sesion";
   private apiCerrar = "http://carpool.test/api/auth/cerrar-sesion";
+  private apiAventon ="http://carpool.test/api/aventon" ;
+
 
   constructor(
     public router:Router,
   ) { }
 
+  async getAutos(){
+    // obtenemos el token de localStorage
+    const token = localStorage.getItem('token')
+    // asignamos el token a la validacion para comprobar si existe una sesion
+    const config = {
+      headers:{
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+token 
+      }
+    }
+    //pertición http a la URI de laravel
+    let res = await axios.get(this.apiAventon,config)
+    return res;
+}
   async verNoSesion(){
     // obtenemos el token de localStorage
     const token = localStorage.getItem('token')

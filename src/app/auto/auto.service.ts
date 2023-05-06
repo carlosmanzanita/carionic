@@ -15,21 +15,7 @@ export class AutoService {
     public router:Router,
   ) { }
 
-  async verNoSesion(){
-    // obtenemos el token de localStorage
-    const token = localStorage.getItem('token')
-    // asignamos el token a la validacion para comprobar si existe una sesion
-    const config = {
-      headers:{
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer '+token 
-      }
-    }
-    //pertición http a la URI de laravel
-    let res = await axios.get(this.apiVer,config)
-    return res;
-  }
-
+  
   async guardarAuto(registroAuto:Auto){
         // obtenemos el token de localStorage
         const token = localStorage.getItem('token')
@@ -43,22 +29,40 @@ export class AutoService {
         //pertición http a la URI de laravel
         let res = await axios.post(this.apiAuto, registroAuto,config)
         return res;
-  }  
-
-  async cerrarSesion(){
-    // obtenemos el token de localStorage
-    const token = localStorage.getItem('token')
-    // asignamos el token a la validacion para comprobar si existe una sesion
-    const config = {
-      headers:{
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer '+token 
+      }  
+      
+      async cerrarSesion(){
+        // obtenemos el token de localStorage
+        const token = localStorage.getItem('token')
+        // asignamos el token a la validacion para comprobar si existe una sesion
+        const config = {
+          headers:{
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer '+token 
+          }
+        }
+        //pertición http a la URI de laravel
+        let res = await axios.get(this.apiCerrar,config)
+        this.router.navigate(["inicio-sesion"])
+        return res;
       }
-    }
-    //pertición http a la URI de laravel
-    let res = await axios.get(this.apiCerrar,config)
-    this.router.navigate(["inicio-sesion"])
-    return res;
-  }
-}
 
+      async verNoSesion(){
+        // obtenemos el token de localStorage
+        const token = localStorage.getItem('token')
+        // asignamos el token a la validacion para comprobar si existe una sesion
+        const config = {
+          headers:{
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer '+token 
+          }
+        }
+        //pertición http a la URI de laravel
+        let res = await axios.get(this.apiVer,config)
+        return res;
+      }
+
+      
+    }
+    
+    

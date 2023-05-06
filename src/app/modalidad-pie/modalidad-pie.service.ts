@@ -30,6 +30,21 @@ export class ModalidadPieService {
     return res;
   }
 
+  async guardarPie(postPie:ModalidadPieService){
+    // obtenemos el token de localStorage
+    const token = localStorage.getItem('token')
+    // asignamos el token a la validacion para comprobar si existe una sesion
+    const config = {
+      headers:{
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+token 
+      }
+    }
+    //pertición http a la URI de laravel
+    let res = await axios.post(this.apiMod, postPie,config)
+    return res;
+  }  
+
   async getEncuentro(encuentro_id:any){
     // obtenemos el token de localStorage
     const token = localStorage.getItem('token')

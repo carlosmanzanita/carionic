@@ -5,3 +5,15 @@ ion-toolbar{
 .AutoStyle{
     background-color: var(-webkit-linear-gradient);
 }
+
+.block {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  ion-modal {
+    --height: auto;
+  }

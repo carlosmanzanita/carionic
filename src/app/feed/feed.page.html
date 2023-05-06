@@ -44,10 +44,34 @@
           </ion-menu-toggle>
         </ion-buttons>
       </ion-toolbar>
+      </div>
+    </ion-split-pane>
+    
+    <section class= "bg-slate-900 text-white gir gir-cols-5 gap-2 text-center my-4 py-1 p-8 h-full w-full">
       
-      <ion-content class="ion-padding">
-        <h1>Aqui van las publicaciones del feed</h1>
-      </ion-content>
+      <div>
+        <section 
+          class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+          *ngFor="let Aventon of aventon"
+        >
+            <article>
+                <span class="uppercase">
+                  {{ aventon.tipo }}
+                </span>
+                <hr class="my-2">
+                <ion-icon name="car-sport-outline"></ion-icon>
+                {{ aventon.marca }} {{ aventon.color }}
+                <br>
+                <ion-icon name="barcode-outline"></ion-icon>
+                {{ aventon.placa }}
+                <br>
+   
+            </article>
+            <article>
+            </article>
+        </section>
+        
     </div>
-  </ion-split-pane>
-</ion-app>
+        
+    </section>
+  </ion-app>
