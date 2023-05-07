@@ -1,13 +1,9 @@
 <section class=" fondo-ipn bg-gray-900 text-white  grid-cols-5 text-center p-8 h-full">
   <ion-item
-    class="border-2 w-20 rounded-full"
-  >
-    <button 
-      [routerLink]="['/feed']" 
-    >
-      <
-      <ion-icon slot="start" name="location-outline"></ion-icon>
-      </button>
+    class="border-2 w-20 rounded-full">
+      <ion-icon
+        [routerLink]="['/feed']" size= "large" name="arrow-back-circle-outline">
+      </ion-icon>      
   </ion-item>
 
   <h1 class="container bg-gray-700 text-white  text-center rounded-xl my-4 py-4">TUS DESTINOS</h1>
@@ -16,16 +12,14 @@
     <hr class="my-2">
     <section 
       *ngFor="let destino of destinos"
-      class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md"
-      >
+      class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md">
         <article>
         <span (click)="verDestino(destino.id)">
           {{ destino.nombre }}  
         </span>
         &nbsp;
         <p
-          class="text-right"
-        >
+          class="text-right" >
           <span (click)="eliminar(destino.id)">
         <ion-icon name="trash-outline"></ion-icon>
           </span>
