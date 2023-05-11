@@ -48,8 +48,8 @@ postAventon(){
   console.log(this.posAventon);
   const res=this.modalidadAventon.guardarAventon(this.posAventon)
   res.then((response) => {
-    console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
-    this.router.navigate(["ver-auto"])
+    console.log("🚀 ~ file: modalidad-aventon.page.ts:51 ~ ModalidadAventonPage ~ res.then ~ response:", response)
+    this.router.navigate(["modalidad-aventon"])
     // Si hay sesion, no se hace nada
   }).catch((error) => {
     console.log(error.response.status);

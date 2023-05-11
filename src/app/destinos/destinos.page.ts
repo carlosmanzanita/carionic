@@ -50,7 +50,7 @@ export class DestinosPage implements OnInit {
         this.getDestinos()
       }).catch((error) => {
         console.log(error.response.status);
-        console.log("🚀 ~ file: ver-auto.page.ts:50 ~ VerAutoPage ~ res.then ~ console:", console)
+        console.log("🚀 ~ file: destinos.page.ts:53 ~ DestinosPage ~ res.then ~ console:", console)
         if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
         this.router.navigate(["inicio-sesion"])
       })
