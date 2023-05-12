@@ -17,12 +17,14 @@ export class ModalidadAventonPage implements OnInit {
   public encuentro:any = []
   public destinos:any=[]
   public Carros:any=[]
+  public modalidades:any=[]
   public aventonTag: any = []
+  public tagSeleccion: any = ''
+
 
   public posAventon:ModalidadAventon = {
     asientos:"",
-    confirmar_id:"",
-    user_id:"",
+    tags:new Set(),
     encuentro_id:"",
     destino_id:"",
     auto_id:"",
@@ -41,32 +43,44 @@ export class ModalidadAventonPage implements OnInit {
   this.getEncuentro();
   this.getDestinos();
   this.getVehiculos();
-  this.postAventon();
+  this.getAventonTag();
+  this.getModalidad();
 }
 
 postAventon(){
   console.log(this.posAventon);
-  const res=this.modalidadAventon.guardarAventon(this.posAventon)
-  res.then((response) => {
-    console.log("🚀 ~ file: modalidad-aventon.page.ts:51 ~ ModalidadAventonPage ~ res.then ~ response:", response)
-    this.router.navigate(["modalidad-aventon"])
-    // Si hay sesion, no se hace nada
-  }).catch((error) => {
-    console.log(error.response.status);
-    console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
-    if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
-    this.router.navigate(["inicio-sesion"])
-  }) 
+
+  let val = 0;
+  if(this.posAventon.asientos == "") val++;
+  if(this.posAventon.encuentro_id == "") val++;
+  if(this.posAventon.destino_id == "") val++;
+  if(this.posAventon.auto_id == "") val++;
+  if(this.posAventon.modalidad_id == "") val++;
+  if (val == 0){
+    const res=this.modalidadAventon.guardarAventon(this.posAventon)
+    res.then((response) => {
+      console.log("🚀 ~ file: modalidad-aventon.page.ts:51 ~ ModalidadAventonPage ~ res.then ~ response:", response)
+    // this.router.navigate(["modalidad-aventon"])
+      // Si hay sesion, no se hace nada
+    }).catch((error) => {
+      console.log(error.response.status);
+      console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
+      if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+      this.router.navigate(["inicio-sesion"])
+    }) 
+
+  }else{
+    alert("Indica todos los campos correctos")
+  }
+
 }
  //PARA TAG 
 getAventonTag(){
-  const aventontag_id = this.router.url.split('?')[0].split('/').pop()
-  this.aventonTag=aventontag_id
-  const res=this.modalidadPieService.getEncuentro(aventontag_id);
+  const res=this.modalidadPieService.getTags();
   res.then((response) => {
     console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
     // Si hay sesion, no se hace nada
-    this.encuentro=response.data;
+    this.aventonTag=response.data;
     console.log("🚀 ~ file: ver-auto.page.ts:29 ~ VerAutoPage ~ res.then ~ this.Carros:", this.encuentro)
   
   }).catch((error) => {
@@ -126,4 +140,33 @@ getVehiculos(){
     this.router.navigate(["inicio-sesion"])
   }) 
 }
+
+getModalidad(){
+  const res=this.modalidadAventon.getModalidad();
+  res.then((response) => {
+    console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
+    // Si hay sesion, no se hace nada
+    this.modalidades=response.data;
+    console.log("🚀 ~ file: ver-auto.page.ts:29 ~ VerAutoPage ~ res.then ~ this.Carros:", this.Carros)
+  
+  }).catch((error) => {
+    console.log(error.response.status);
+    console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
+    if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+    this.router.navigate(["inicio-sesion"])
+  }) 
+}
+
+setTags(){
+  console.log(this.tagSeleccion);
+  this.posAventon.tags.add(this.tagSeleccion)
+  console.log(this.posAventon.tags);
+}
+
+removeTag(tag:any){
+  console.log(tag);
+  this.posAventon.tags.delete(tag)
+  console.log(this.posAventon.tags);
+}
+
 }

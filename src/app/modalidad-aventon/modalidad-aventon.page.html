@@ -2,7 +2,7 @@
   <ion-item
     class="border-2 w-20 rounded-full">
       <ion-icon
-        [routerLink]="['/feed']" size= "large" name="arrow-back-circle-outline">
+        [routerLink]="['/feed']" size= "large" name="arrow-back-circle-sharp">
       </ion-icon>      
   </ion-item>
 
@@ -28,10 +28,10 @@
         <div class="md:w-2/3">
           <select
            class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
-           [(ngModel)]="encuentro.name" [ngModelOptions]="{standalone: true}">
+           [(ngModel)]="posAventon.encuentro_id" [ngModelOptions]="{standalone: true}">
            >
           <option value="-">Selecciona un punto de encuentro</option> 
-          <option *ngFor="let encuentros of encuentro"  value="encuentro_id">
+          <option *ngFor="let encuentros of encuentro"  value="{{ encuentros.id }}">
             {{ encuentros.descripcion }}
           </option>
            </select>
@@ -67,10 +67,10 @@
         <div class="md:w-2/3">
           <select
            class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
-           [(ngModel)]="destinos.name" [ngModelOptions]="{standalone: true}">
+           [(ngModel)]="posAventon.destino_id" [ngModelOptions]="{standalone: true}">
            >
           <option value="-">Selecciona una opción</option> 
-          <option *ngFor="let destino of destinos"  value="destinos_id">
+          <option *ngFor="let destino of destinos"  value="{{ destino.id }}">
             {{ destino.nombre }}
           </option>
            </select>
@@ -86,16 +86,62 @@
         <div class="md:w-2/3">
           <select
            class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
-           [(ngModel)]="Carros.placa" [ngModelOptions]="{standalone: true}">
+           [(ngModel)]="posAventon.auto_id" [ngModelOptions]="{standalone: true}">
            >
           <option value="-">Selecciona una opción</option> 
-          <option *ngFor="let Carro of Carros"  value="Carros_id">
+          <option *ngFor="let Carro of Carros"  value="{{ Carro.id }}">
             {{ Carro.marca }} {{ Carro.color }} {{ Carro.placa }}
           </option>
            </select>
         </div>
        </div>
     </form>
+
+    <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">
+          MODALIDAD
+        </label>
+        <div class="md:w-2/3">
+          <select
+           class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+           [(ngModel)]="posAventon.modalidad_id" [ngModelOptions]="{standalone: true}">
+           >
+          <option value="-">Selecciona una opción</option>
+          <option *ngFor="let modalidad of modalidades"  value="{{ modalidad.id }}">
+            {{ modalidad.nombre }} 
+          </option>
+           </select>
+        </div>
+       </div>
+    </form>
+
+    <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">
+          TAGS
+        </label>
+        <div class="md:w-2/3">
+          <select
+           class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+           [(ngModel)]="tagSeleccion" [ngModelOptions]="{standalone: true}">
+           >
+          <option value="-">Selecciona una opción</option>
+          <option *ngFor="let tag of aventonTag"  value="{{ tag.nombre }}">
+            {{ tag.nombre }} 
+          </option>
+           </select>
+           <button (click)="setTags()">Añadir TAG</button>
+        </div>
+       </div>
+    </form>
+
+    <section class="grid grid-cols-3 gap-2 text-center p-2 h-full">
+      <article *ngFor="let tag of posAventon.tags">
+        {{ tag }}
+        <i (click)="removeTag(tag)" class="fa-solid fa-circle-xmark"></i>
+      </article>
+    </section>
 
     <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
       <div class="mb-4">
@@ -108,10 +154,10 @@
            [(ngModel)]="posAventon.asientos" [ngModelOptions]="{standalone: true}">
            >
           <option value="-">Selecciona una opción</option> 
-          <option value="asientos">1</option> 
-          <option value="asientos">2</option> 
-          <option value="asientos">3</option>
-          <option value="asientos">4</option>
+          <option value="1">1 asiento</option> 
+          <option value="2">2 asientos</option> 
+          <option value="3">3 asientos</option>
+          <option value="4">4 asientos</option>
 
            </select>
         </div>

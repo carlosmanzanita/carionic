@@ -14,6 +14,7 @@ export class ModalidadAventonService {
   private apiDestino="http://carpool.test/api/destino";
   private apiAuto ="http://carpool.test/api/autos";
   private apiAventonTag ="http://carpool.test/api/aventon-tag";
+  private apiModalidad ="http://carpool.test/api/modalidades";
 
   constructor(
     public router:Router,
@@ -93,7 +94,22 @@ export class ModalidadAventonService {
       let res = await axios.get(this.apiAuto,config)
       return res;
     }
-    
+
+
+      async getModalidad(){
+      // obtenemos el token de localStorage
+      const token = localStorage.getItem('token')
+      // asignamos el token a la validacion para comprobar si existe una sesion
+      const config = {
+        headers:{
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer '+token 
+        }
+      }
+      //pertición http a la URI de laravel
+      let res = await axios.get(this.apiModalidad,config)
+      return res;
+    }
     
     async cerrarSesion(){
       // obtenemos el token de localStorage
