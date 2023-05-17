@@ -22,7 +22,7 @@
         <input 
           [(ngModel)]="iniciosesion.email" 
           [ngModelOptions]=" {standalone: true}" 
-          class=" rounded-2xl w-full py-3 px-4 text" 
+          class=" rounded-2xl w-full py-3 px-4 text-black" 
           placeholder="|" >
       </div>
     </div> 
@@ -51,7 +51,7 @@
     <p>
       Si no estas registrado entonces
       <span
-        class = " text-blue-300 font-extrabold"
+        class = " text-dark font-extrabold"
         (click) = "registro()"
       >
         Registrate
@@ -59,7 +59,7 @@
     </p>
     <br>
     <br>
-    <i 
+    <i
       *ngIf="cargando"
       class="fa-2x fa-solid fa-frog fa-bounce text-green-600"
       style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "
