@@ -50,17 +50,26 @@ export class ModalidadAventonPage implements OnInit {
 postAventon(){
   console.log(this.posAventon);
 
+  let tagSeleccion=[]
+  for (const tag of this.posAventon.tags){
+    console.log(tag);
+    tagSeleccion.push(tag)
+  }
+  console.log(tagSeleccion);
+  this.posAventon.tags=tagSeleccion
   let val = 0;
   if(this.posAventon.asientos == "") val++;
   if(this.posAventon.encuentro_id == "") val++;
   if(this.posAventon.destino_id == "") val++;
   if(this.posAventon.auto_id == "") val++;
   if(this.posAventon.modalidad_id == "") val++;
+  if(this.posAventon.tags.lenght == 0) val++;
   if (val == 0){
+    
     const res=this.modalidadAventon.guardarAventon(this.posAventon)
     res.then((response) => {
       console.log("🚀 ~ file: modalidad-aventon.page.ts:51 ~ ModalidadAventonPage ~ res.then ~ response:", response)
-    // this.router.navigate(["modalidad-aventon"])
+      this.router.navigate(["feed"])
       // Si hay sesion, no se hace nada
     }).catch((error) => {
       console.log(error.response.status);

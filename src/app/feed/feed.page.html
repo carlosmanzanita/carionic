@@ -59,26 +59,40 @@
       </div>
     </ion-split-pane>
     
-    <section class= "bg-slate-900 text-white gir gir-cols-5 gap-2 text-center my-4 py-1 p-8 h-full w-full">
+    <section class= "pt-10 bg-slate-900 text-white gir gir-cols-5 gap-2 text-center my-4 py-1 p-8 h-full w-full">
       
       <div>
         <section 
           class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
-          *ngFor="let Aventon of aventon"
-        >
+          *ngFor="let aventon of aventones">
             <article>
                 <span class="uppercase">
-                  {{ aventon.tipo }}
+                  Aventón
+                  {{ aventon.modalidad.nombre }}
+                  <ion-icon name="people-circle-outline"></ion-icon>
+                  {{ aventon.asientos }}
                 </span>
                 <hr class="my-2">
+                {{ aventon.user.name }}
+                <br>
+                <img src="{{ aventon.user.foto }}" alt="foto" class="w-10">
+                <hr class="my-2">
                 <ion-icon name="car-sport-outline"></ion-icon>
-                {{ aventon.marca }} {{ aventon.color }}
+                  {{ aventon.auto.marca }} {{ aventon.auto.color }}
                 <br>
                 <ion-icon name="barcode-outline"></ion-icon>
-                {{ aventon.placa }}
+                  {{ aventon.auto.placa }}
                 <br>
-   
-            </article>
+                <hr class="my-2">
+                {{ aventon.encuentro.nombre }}
+                <br>
+                {{ aventon.encuentro.descripcion }}
+                <hr class="my-2">
+                                              <!-- http://www.google.com/maps/place/19.3991001,-99.1242842 -->
+                <a target="_blank" href='{{ "https://www.google.com/maps/place/"+aventon.destino.latitud+","+aventon.destino.longitud+"" }}'>
+                  <ion-icon name="location-sharp"></ion-icon>
+                </a>
+              </article>
             <article>
             </article>
         </section>
@@ -87,3 +101,7 @@
         
     </section>
   </ion-app>
+  
+
+
+  <!--https://www.google.com.mx/maps/@19.3558016,-99.0672235,16z-->

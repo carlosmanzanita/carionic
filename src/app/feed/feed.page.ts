@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class FeedPage implements OnInit {
 
-  public aventon:any= []
+  public aventones:any= []
 
   constructor(
     public router:Router,
@@ -19,16 +19,17 @@ export class FeedPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.verNoSesion()
+    this.getAventones()
+    // this.verNoSesion()
   }
 
-  getVehiculos(){
-    const res=this.modalidadAventonService.getAutos();
+  getAventones(){
+    const res=this.modalidadAventonService.getAventones();
     res.then((response) => {
       console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
       // Si hay sesion, no se hace nada
-      this.aventon=response.data;
-      console.log("🚀 ~ file: ver-auto.page.ts:29 ~ VerAutoPage ~ res.then ~ this.Carros:", this.aventon)
+      this.aventones=response.data;
+      console.log("🚀 ~ file: feed.page.ts:31 ~ FeedPage ~ res.then ~ this.aventones:", this.aventones)
     
     }).catch((error) => {
       console.log(error.response.status);
