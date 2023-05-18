@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { ModalidadPie } from './modalidad-pie';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,7 @@ export class ModalidadPieService {
   }
 
   
-  async guardarPie(postPie:ModalidadPieService){
+  async guardarPie(posPie:ModalidadPie){
     // obtenemos el token de localStorage
     const token = localStorage.getItem('token')
     // asignamos el token a la validacion para comprobar si existe una sesion
@@ -59,7 +60,7 @@ export class ModalidadPieService {
       }
     }
     //pertición http a la URI de laravel
-    let res = await axios.post(this.apiPie, postPie,config)
+    let res = await axios.post(this.apiPie, posPie,config)
     return res;
   }  
 

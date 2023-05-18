@@ -23,7 +23,7 @@ export class ModalidadPiePage implements OnInit {
   }
 
   constructor(
-    public modalidadPieService:ModalidadPieService,
+    public modalidadPie:ModalidadPieService,
     public router:Router,
     public destinosService:DestinosService,
   ) { }
@@ -35,10 +35,44 @@ export class ModalidadPiePage implements OnInit {
 
   }
 
+  postPie(){
+    console.log(this.posPie);
+  
+    let tagSeleccion=[]
+    for (const tag of this.posPie.tags){
+      console.log(tag);
+      tagSeleccion.push(tag)
+    }
+    console.log(tagSeleccion);
+    this.posPie.tags=tagSeleccion
+    let val = 0;
+    if(this.posPie.encuentro_id == "") val++;
+    if(this.posPie.destino_id == "") val++;
+    if(this.posPie.tags.lenght == 0) val++;
+    if (val == 0){
+      
+      const res=this.modalidadPie.guardarPie(this.posPie)
+      res.then((response) => {
+        console.log("🚀 ~ file: modalidad-aventon.page.ts:51 ~ ModalidadAventonPage ~ res.then ~ response:", response)
+        this.router.navigate(["feed"])
+        // Si hay sesion, no se hace nada
+      }).catch((error) => {
+        console.log(error.response.status);
+        console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
+        if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+        this.router.navigate(["inicio-sesion"])
+      }) 
+  
+    }else{
+      alert("Indica todos los campos correctos")
+    }
+  
+  }
+
   getEncuentro(){
     const encuentro_id = this.router.url.split('?')[0].split('/').pop()
     this.encuentro_id=encuentro_id
-    const res=this.modalidadPieService.getEncuentro(encuentro_id);
+    const res=this.modalidadPie.getEncuentro(encuentro_id);
     res.then((response) => {
       console.log("🚀 ~ file: modalidad-pie.page.ts:35 ~ ModalidadPiePage ~ res.then ~ response:", response)
       // Si hay sesion, no se hace nada
@@ -54,7 +88,7 @@ export class ModalidadPiePage implements OnInit {
   
   }
   getPieTag(){
-    const res=this.modalidadPieService.getTags();
+    const res=this.modalidadPie.getTags();
     res.then((response) => {
       console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
       // Si hay sesion, no se hace nada

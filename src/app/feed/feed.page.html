@@ -95,6 +95,28 @@
               </article>
             <article>
             </article>
+
+            
+      <div>
+        <section 
+          class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+          *ngFor="let pie of pies">
+            <article>
+                <hr class="my-2">
+                {{ pie.user.name }}
+                <br>
+                <img src="{{ pie.user.foto }}" alt="foto" class="w-10">
+                {{ pie.encuentro.nombre }}
+                <br>
+                {{ pie.encuentro.descripcion }}
+                <hr class="my-2">
+                                              <!-- http://www.google.com/maps/place/19.3991001,-99.1242842 -->
+                <a target="_blank" href='{{ "https://www.google.com/maps/place/"+aventon.destino.latitud+","+aventon.destino.longitud+"" }}'>
+                  <ion-icon name="location-sharp"></ion-icon>
+                </a>
+              </article>
+            <article>
+            </article>
         </section>
         
     </div>
