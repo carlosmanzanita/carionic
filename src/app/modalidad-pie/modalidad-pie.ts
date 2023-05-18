@@ -1,7 +1,5 @@
 export interface ModalidadPie {
-    nombre:String,
-    descripcion:String,
-    latitud:String,
-    longitud:String,
-    tipo:String,
+    encuentro_id:String;
+    destino_id:String;
+    tags:any;
 }
