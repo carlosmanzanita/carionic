@@ -45,6 +45,50 @@ export class FeedService {
     return res;
   }
 
+  async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
+    // obtenemos el token de localStorage
+    const token = localStorage.getItem('token')
+    // asignamos el token a la validacion para comprobar si existe una sesion
+    const config = {
+      headers:{
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+token 
+      }
+    }
+
+    const data = {
+      user_id:user_id,
+      destino_id:destino_id
+    };
+
+    //pertición http a la URI de laravel
+    let res = await axios.put(`http://carpool.test/api/aventon/${aventon_id}`, data, config)
+    return res;
+  }
+
+  async aceptarAventon(user_id:any, estado:any, aventon_id:any){
+    // obtenemos el token de localStorage
+    const token = localStorage.getItem('token')
+    // asignamos el token a la validacion para comprobar si existe una sesion
+    const config = {
+      headers:{
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+token 
+      }
+    }
+
+    const data = {
+      user_id:user_id,
+      estado:estado
+    };
+
+    //pertición http a la URI de laravel
+    let res = await axios.put(`http://carpool.test/api/confirma-solicitud/${aventon_id}`, data, config)
+    return res;
+  }
+
+  
+
   async cerrarSesion(){
     // obtenemos el token de localStorage
     const token = localStorage.getItem('token')
