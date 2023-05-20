@@ -87,6 +87,22 @@ export class FeedService {
     return res;
   }
 
+  async bajaAventon(aventon_id:any){
+    // obtenemos el token de localStorage
+    const token = localStorage.getItem('token')
+    // asignamos el token a la validacion para comprobar si existe una sesion
+    const config = {
+      headers:{
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+token 
+      }
+    };
+
+    //pertición http a la URI de laravel
+    let res = await axios.delete(`http://carpool.test/api/aventon/${aventon_id}`, config)
+    return res;
+  }
+
   
 
   async cerrarSesion(){

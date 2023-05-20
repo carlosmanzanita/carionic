@@ -1,4 +1,4 @@
-  <ion-split-pane when="sm" content-id="main-content">
+  <!-- <ion-split-pane when="sm" content-id="main-content">
     <ion-menu content-id="main-content">
       <ion-header>
         <ion-toolbar color="dark">
@@ -19,6 +19,7 @@
             <button [routerLink]="['/destinos']" class="AutoStyle">Destinos</button>
           <ion-icon slot="start" name="map-outline"></ion-icon>
         </ion-item>
+
 
             <ion-item button (click) = 'cerrarSesion()'>
               <ion-icon slot="start" name="key-outline"></ion-icon>
@@ -56,11 +57,25 @@
         </ion-popover>
       </ion-toolbar>
       </div>
-    </ion-split-pane>
+    </ion-split-pane> -->
     
     <section class= "pt-10 bg-slate-900 text-white gir gir-cols-5 gap-2 text-center my-4 py-1 p-8 h-full w-full">
       
-      <div>
+      <p
+        class="m-4 text-lg"
+      >
+        Bienvenido 
+        <br>
+        {{ user_name }}
+      </p>
+
+      <hr class="m-2">
+      <hr class="m-2">
+
+      <div
+        class=" overflow-auto"
+        style="height: 600px;"
+      >
         <section 
           class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
           *ngFor="let aventon of aventones">
@@ -82,6 +97,18 @@
                 <ion-icon name="barcode-outline"></ion-icon>
                   {{ aventon.auto.placa }}
                 <br>
+                
+                <!-- *ngIf="aventon.baja == 0" -->
+                <ion-button
+                    *ngIf="user_id == aventon.user_id"
+                    (click) = "terminarViamje(aventon.id)"
+                    class="my-2"
+                    size="small" 
+                    color="danger"
+                >
+                  Terminar viamje
+                </ion-button> 
+
                 <hr class="my-2">
                 {{ aventon.encuentro.nombre }}
                 <br>
@@ -101,9 +128,12 @@
                   class="my-2"
                   *ngIf="aventon.user_id == user_id"
                 >
-                  <p
+                  <section
                     *ngFor="let solicita of aventon.solicitando"
                   >
+                    <article
+                      *ngIf="solicita.confirma != 2"
+                    >
                       <ion-button
                         *ngIf="solicita.confirma == 0"
                         class="my-2"
@@ -122,21 +152,20 @@
                         >
                         <i class="fa-solid fa-xmark"></i>
                       </ion-button>
-
-                    
-                    &nbsp;
-                    {{ solicita.user.name.substr(0, 15) }}...
-                    &nbsp;
-                    <br>
-                    Destino: {{ solicita.destino_emergente.destino.nombre }}
-                    <a 
-                      target="_blank" 
-                      href='{{ "https://www.google.com/maps/place/"+solicita.destino_emergente.destino.latitud+","+solicita.destino_emergente.destino.longitud+"" }}'
-                    >
-                      <!-- class="rounded-md border-2 px-4 py-2 cursor-pointer inline-block" -->
-                      <ion-icon name="location-sharp"></ion-icon>
-                    </a>
-                  </p>
+                      &nbsp;
+                      {{ solicita.user.name.substr(0, 15) }}...
+                      &nbsp;
+                      <br>
+                      Destino: {{ solicita.destino_emergente.destino.nombre }}
+                      <a
+                        target="_blank" 
+                        href='{{ "https://www.google.com/maps/place/"+solicita.destino_emergente.destino.latitud+","+solicita.destino_emergente.destino.longitud+"" }}'
+                      >
+                        <!-- class="rounded-md border-2 px-4 py-2 cursor-pointer inline-block" -->
+                        <ion-icon name="location-sharp"></ion-icon>
+                      </a>
+                    </article>
+                  </section>
                 </section>
                 <section
                   *ngIf="aventon.user_id != user_id"
@@ -156,9 +185,35 @@
                 <!-- class="z-10 rounded-md border-2 px-4 py-2 cursor-pointer inline-block" -->
                   <ion-button
                     (click)="solicitarAventon(aventon.id)"
+                    *ngIf="aventon.muestra_solicitud"
                   >
                     Solicitar
                   </ion-button>
+                  
+                  
+                  <p
+                    *ngFor="let solicitado of aventon.solicitando"
+                  >
+                    <span
+                      *ngIf="solicitado.user_id == user_id"
+                    >
+                      <p
+                        *ngIf="solicitado.confirma == 0"
+                      >
+                        Esperando respuesta
+                      </p>
+                      <p
+                        *ngIf="solicitado.confirma == 1"
+                      >
+                        Encuentrate con el conductor
+                      </p>
+                      <p
+                        *ngIf="solicitado.confirma == 2"
+                      >
+                        Lo sentimos, el conductor no puede cumplir tu solicitud
+                      </p>
+                    </span>
+                  </p>
                 </section>
               </article>
             <article>
@@ -188,6 +243,4 @@
         
     </div>
     </section>
-
-
 <!-- http://www.google.com/maps/place/19.3991001,-99.1242842 -->
