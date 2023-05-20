@@ -30,6 +30,7 @@ export class FeedPage implements OnInit {
   ngOnInit() {
     this.getAventones()
     this.getDestinosEmergentes()
+    this.getPies()
     // this.verNoSesion()
   }
 
@@ -85,19 +86,22 @@ export class FeedPage implements OnInit {
     }) 
   }
   getPies(){
-    const res=this.modalidadPieService.getPie();
+    this.pies = [];
+    const res=this.modalidadPieService.getPies();
     res.then((response) => {
       // console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
       // Si hay sesion, no se hace nada
-      this.aventones=response.data;
-      // console.log("🚀 ~ file: feed.page.ts:31 ~ FeedPage ~ res.then ~ this.aventones:", this.aventones)
-    
+      this.pies=response.data.pies;
+      this.user_id=response.data.user_id;
+      this.user_name=response.data.user_name;
+      // console.log(this.pies);
+      
     }).catch((error) => {
       // console.log(error.response.status);
       // console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
       if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
       this.router.navigate(["inicio-sesion"])
-    }) 
+    })
   }
 
   verNoSesion(){
@@ -180,16 +184,37 @@ export class FeedPage implements OnInit {
   nimodo(){
 
   }
+
+ //+++++++++++++++++++++++++++ PIES +++++++++++++++++++++++++
+  terminarViamjepie(pie_id:any){
+    this.alertController.create({
+      header: 'Confirmar',
+      subHeader: '¿Deseas terminar el viaje?',
+      message: 'o te da miedo',
+      buttons: [
+        {
+          text: 'Aun no',
+          handler: () => {
+            console.log('Ta bien baboso');
+          }
+        },
+        {
+          text: 'Clarines',
+          handler: () => {
+            const res = this.feedService.bajaPie(pie_id);
+            res.then((response) => {
+              this.getAventones()
+            }).catch((error) => {
+              // console.log(error.response.status);
+              // console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
+              if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+              this.router.navigate(["inicio-sesion"])
+            })
+          }
+        }
+      ]
+    }).then(res => {
+      res.present();
+    });
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-

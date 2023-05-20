@@ -18,7 +18,7 @@ export class ModalidadPieService {
     public router:Router,
   ) { }
 
-  async getPie(){
+  async getPies(){
     // obtenemos el token de localStorage
     const token = localStorage.getItem('token')
     // asignamos el token a la validacion para comprobar si existe una sesion
