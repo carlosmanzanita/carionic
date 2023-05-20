@@ -7,7 +7,7 @@ import { ModalidadPie } from './modalidad-pie';
   providedIn: 'root'
 })
 export class ModalidadPieService {
-  private apiPie = "http://carpool.test/api/auth/modalidad-pie";
+  private apiPie = "http://carpool.test/api/pie";
   private apiCerrar = "http://carpool.test/api/auth/cerrar-sesion";
   private apiEncuentro = "http://carpool.test/api/encuentro";
   private apiDestino="http://carpool.test/api/destino";
@@ -33,6 +33,7 @@ export class ModalidadPieService {
     return res;
   }
   
+  
   async getPieTags(){
     // obtenemos el token de localStorage
     const token = localStorage.getItem('token')
@@ -49,7 +50,7 @@ export class ModalidadPieService {
   }
 
   
-  async guardarPie(posPie:ModalidadPie){
+  async guardarPie(postPie:ModalidadPie){
     // obtenemos el token de localStorage
     const token = localStorage.getItem('token')
     // asignamos el token a la validacion para comprobar si existe una sesion
@@ -60,7 +61,7 @@ export class ModalidadPieService {
       }
     }
     //pertición http a la URI de laravel
-    let res = await axios.post(this.apiPie, posPie,config)
+    let res = await axios.post(this.apiPie, postPie,config)
     return res;
   }  
 

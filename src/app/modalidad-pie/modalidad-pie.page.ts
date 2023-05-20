@@ -15,6 +15,8 @@ export class ModalidadPiePage implements OnInit {
   public encuentro:any = []
   public destinos:any=[]
   public tagSeleccion: any = ''
+  public pieTag: any = []
+
 
   public posPie:ModalidadPie = {
     tags:new Set(),
@@ -24,8 +26,8 @@ export class ModalidadPiePage implements OnInit {
 
   constructor(
     public modalidadPie:ModalidadPieService,
-    public router:Router,
     public destinosService:DestinosService,
+    public router:Router,
   ) { }
 
   ngOnInit() {
@@ -49,7 +51,7 @@ export class ModalidadPiePage implements OnInit {
     if(this.posPie.encuentro_id == "") val++;
     if(this.posPie.destino_id == "") val++;
     if(this.posPie.tags.lenght == 0) val++;
-    if (val == 0){
+    if (val != 0){
       
       const res=this.modalidadPie.guardarPie(this.posPie)
       res.then((response) => {
@@ -92,7 +94,7 @@ export class ModalidadPiePage implements OnInit {
     res.then((response) => {
       console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
       // Si hay sesion, no se hace nada
-      this.getPieTag=response.data;
+      this.pieTag=response.data;
       console.log("🚀 ~ file: ver-auto.page.ts:29 ~ VerAutoPage ~ res.then ~ this.Carros:", this.encuentro)
     
     }).catch((error) => {
@@ -118,7 +120,6 @@ export class ModalidadPiePage implements OnInit {
       this.router.navigate(["inicio-sesion"])
     }) 
   }
-
   setTags(){
     console.log(this.tagSeleccion);
     this.posPie.tags.add(this.tagSeleccion)
@@ -130,5 +131,4 @@ export class ModalidadPiePage implements OnInit {
     this.posPie.tags.delete(tag)
     console.log(this.posPie.tags);
   }
-
 }
