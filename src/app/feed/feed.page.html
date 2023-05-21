@@ -1,4 +1,4 @@
-  <!-- <ion-split-pane when="sm" content-id="main-content">
+  <ion-split-pane when="sm" content-id="main-content">
     <ion-menu content-id="main-content">
       <ion-header>
         <ion-toolbar color="dark">
@@ -57,7 +57,7 @@
         </ion-popover>
       </ion-toolbar>
       </div>
-    </ion-split-pane> -->
+    </ion-split-pane>
     
     <section class= "pt-10 bg-slate-900 text-white gir gir-cols-5 gap-2 text-center my-4 py-1 p-8 h-full w-full">
       
@@ -87,8 +87,8 @@
                   {{ aventon.asientos }}
                 </span>
                 <hr class="my-2">
-                {{ aventon.user.name }}
-                <br>
+                {{ aventon.user.name.substr(0, 12) }}..
+                <!-- <br> -->
                 <img src="{{ aventon.user.foto }}" alt="foto" class="w-10">
                 <hr class="my-2">
                 <ion-icon name="car-sport-outline"></ion-icon>
@@ -106,13 +106,18 @@
                     size="small" 
                     color="danger"
                 >
-                  Terminar viamje
+                  Terminar viaje
                 </ion-button> 
 
                 <hr class="my-2">
-                {{ aventon.encuentro.nombre }}
-                <br>
                 {{ aventon.encuentro.descripcion }}
+                <a 
+                    target="_blank" 
+                    href='{{ "https://www.google.com/maps/place/"+aventon.encuentro.latitud+","+aventon.encuentro.longitud+"" }}'
+                    class="rounded-md border-2 px-4 cursor-pointer inline-block"
+                  >
+                    <ion-icon name="location-sharp"></ion-icon>
+                  </a>
                 <hr class="my-2">
                 
                 <section>

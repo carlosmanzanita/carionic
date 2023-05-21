@@ -151,9 +151,8 @@ export class FeedPage implements OnInit {
   }
   terminarViamje(aventon_id:any){
     this.alertController.create({
-      header: 'Confirmar',
-      subHeader: '¿Deseas terminar el viaje?',
-      message: 'o te da miedo',
+      header: '¿Deseas terminar el viaje?',
+      subHeader: 'Esta acción no se podrá deshacer',
       buttons: [
         {
           text: 'Aun no',
@@ -162,7 +161,7 @@ export class FeedPage implements OnInit {
           }
         },
         {
-          text: 'Clarines',
+          text: 'Si, terminar',
           handler: () => {
             const res = this.feedService.bajaAventon(aventon_id);
             res.then((response) => {
@@ -188,9 +187,8 @@ export class FeedPage implements OnInit {
  //+++++++++++++++++++++++++++ PIES +++++++++++++++++++++++++
   terminarViamjepie(pie_id:any){
     this.alertController.create({
-      header: 'Confirmar',
-      subHeader: '¿Deseas terminar el viaje?',
-      message: 'o te da miedo',
+      header: '¿Deseas terminar el viaje?',
+      subHeader: 'Esta acción no se podrá deshacer',
       buttons: [
         {
           text: 'Aun no',
@@ -199,7 +197,7 @@ export class FeedPage implements OnInit {
           }
         },
         {
-          text: 'Clarines',
+          text: 'Si, terminar',
           handler: () => {
             const res = this.feedService.bajaPie(pie_id);
             res.then((response) => {
