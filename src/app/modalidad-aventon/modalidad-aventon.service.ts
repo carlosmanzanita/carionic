@@ -38,20 +38,20 @@ export class ModalidadAventonService {
     return res;
   }
 
-  async getPies(){
-    // obtenemos el token de localStorage
-    const token = localStorage.getItem('token')
-    // asignamos el token a la validacion para comprobar si existe una sesion
-    const config = {
-      headers:{
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer '+token 
-      }
-    }
-    //pertición http a la URI de laravel
-    let res = await axios.get(this.apiPie,config)
-    return res;
-  }
+  // async getPies(){
+  //   // obtenemos el token de localStorage
+  //   const token = localStorage.getItem('token')
+  //   // asignamos el token a la validacion para comprobar si existe una sesion
+  //   const config = {
+  //     headers:{
+  //       'Content-Type': 'application/json',
+  //       Authorization: 'Bearer '+token 
+  //     }
+  //   }
+  //   //pertición http a la URI de laravel
+  //   let res = await axios.get(this.apiPie,config)
+  //   return res;
+  // }
   
   async guardarAventon(postAventon:ModalidadAventon){
     // obtenemos el token de localStorage
