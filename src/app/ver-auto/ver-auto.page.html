@@ -1,13 +1,19 @@
+<ion-toolbar>
+  <ion-button [routerLink]="['/feed']" slot="start" color="dark" fill="outline" class="px-2">
+    <ion-icon
+      slot="start" name="arrow-back-circle-sharp" size="large">
+    </ion-icon>
+  </ion-button>
+  <ion-button [routerLink]="['/auto']" slot="end" color="dark" fill="outline" class="px-2 font">
+    <ion-icon name="add-outline"></ion-icon>
+    Nuevo
+  </ion-button>
+</ion-toolbar>  
+
 
 <section class="font bg-slate-900 text-white  grid-cols-5 text-center p-8 h-full">
-  <ion-item
-    class="border-2 w-20 rounded-full">
-      <ion-icon
-        [routerLink]="['/feed']" size= "large" name="arrow-back-circle-sharp" color="dark">
-      </ion-icon>      
-  </ion-item>
 
-    <h1 class="container bg-slate-900 text-white  text-center rounded-xl my-4 py-4">TUS AUTOS</h1>
+  <h1 class="text-center py-2">TUS AUTOS</h1>
 
     <div>
         <section 
@@ -45,11 +51,3 @@
     </div>
   
 </section>
-
-<ion-item>
-  <button [routerLink]="['/auto']" class= "bg-black rounded-2xl w-full py-3 px-4 text-white" >
-    <ion-icon slot="start" name="car-sport-outline"></ion-icon>
-    Registrar Auto
-  </button>
-</ion-item>
-

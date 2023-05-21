@@ -1,7 +1,7 @@
-  <ion-split-pane when="sm" content-id="main-content">
+  <ion-split-pane when="sm" content-id="main-content" class="font">
     <ion-menu content-id="main-content">
       <ion-header>
-        <ion-toolbar color="dark">
+        <ion-toolbar color="dark" class="font">
           <ion-title>Menu</ion-title>          
         </ion-toolbar>
       </ion-header>
@@ -11,26 +11,26 @@
           <ion-menu-toggle auto-hide="false">
             
             <ion-item>
-              <button [routerLink]="['/ver-auto']" class="AutoStyle">Tus autos</button>
+              <button [routerLink]="['/ver-auto']" class="AutoStyle font">Tus autos</button>
               <ion-icon slot="start" name="car-sport-outline"></ion-icon>
             </ion-item>
           
           <ion-item>
-            <button [routerLink]="['/destinos']" class="AutoStyle">Destinos</button>
+            <button [routerLink]="['/destinos']" class="AutoStyle font">Destinos</button>
           <ion-icon slot="start" name="map-outline"></ion-icon>
         </ion-item>
 
 
             <ion-item button (click) = 'cerrarSesion()'>
               <ion-icon slot="start" name="key-outline"></ion-icon>
-              <ion-label> Cerrar sesión </ion-label>
+              <ion-label class="font"> Cerrar sesión </ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
       </ion-content>
     </ion-menu>
 
-    <div class="ion-page" id="main-content">  
+    <div class="ion-page font" id="main-content">  
       <ion-toolbar>
         <ion-buttons slot="start">
           <ion-menu-toggle>
@@ -39,17 +39,17 @@
             </ion-button>
           </ion-menu-toggle>
         </ion-buttons>
-        <ion-button id="click-trigger" slot="end" color="dark" fill="outline" class="px-2">
+        <ion-button id="click-trigger" slot="end" color="dark" fill="outline" class="px-2 font">
           <ion-icon name="add-outline"></ion-icon>
           Crear
         </ion-button>
         <ion-popover side="left" alignment="start" trigger="click-trigger" triggerAction="click">
           <ng-template>
-            <ion-button [routerLink]="['/modalidad-pie']" color="dark" size="large">
+            <ion-button [routerLink]="['/modalidad-pie']" color="dark" size="large" class="font">
               <ion-icon name="footsteps-outline"></ion-icon>
               &nbsp;&nbsp;Viaje a pie
             </ion-button>
-            <ion-button [routerLink]="['/modalidad-aventon']" color="dark" size="large">
+            <ion-button [routerLink]="['/modalidad-aventon']" color="dark" size="large" class="font">
               <ion-icon name="car-outline"></ion-icon>
               &nbsp;&nbsp;Dar aventón
             </ion-button>
@@ -59,7 +59,7 @@
       </div>
     </ion-split-pane>
     
-    <section class= "pt-10 bg-slate-900 text-white gir gir-cols-5 gap-2 text-center my-4 py-1 p-8 h-full w-full">
+    <section class= "font pt-10 bg-slate-900 text-white gir gir-cols-5 gap-2 text-center my-4 py-1 p-8 h-full w-full">
       
       <p
         class="m-4 text-lg"
@@ -70,14 +70,13 @@
       </p>
 
       <hr class="m-2">
-      <hr class="m-2">
 
       <div
         class=" overflow-auto"
         style="height: 600px;"
       >
         <section 
-          class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+          class=" bg-gray-200 text-black font my-4 py-4 p-4 rounded-md" 
           *ngFor="let aventon of aventones">
             <article>
                 <span class="uppercase">
@@ -86,11 +85,11 @@
                   <ion-icon name="people-circle-outline"></ion-icon>
                   {{ aventon.asientos }}
                 </span>
-                <hr class="my-2">
-                {{ aventon.user.name.substr(0, 12) }}..
+                <hr class="my-2 bg-black">
+                {{ aventon.user.name }}
                 <!-- <br> -->
-                <img src="{{ aventon.user.foto }}" alt="foto" class="w-10">
-                <hr class="my-2">
+                <img src="{{ aventon.user.foto }}" alt="foto" class="w-10 mx-auto">
+                <hr class="my-2 bg-black">
                 <ion-icon name="car-sport-outline"></ion-icon>
                   {{ aventon.auto.marca }} {{ aventon.auto.color }}
                 <br>
@@ -109,22 +108,23 @@
                   Terminar viaje
                 </ion-button> 
 
-                <hr class="my-2">
-                {{ aventon.encuentro.descripcion }}
+                <hr class="my-2 bg-black">
+                {{ aventon.encuentro.descripcion }}&nbsp;
                 <a 
                     target="_blank" 
                     href='{{ "https://www.google.com/maps/place/"+aventon.encuentro.latitud+","+aventon.encuentro.longitud+"" }}'
-                    class="rounded-md border-2 px-4 cursor-pointer inline-block"
+                    class="rounded-md border-black border-2 px-2 cursor-pointer inline-block"
                   >
                     <ion-icon name="location-sharp"></ion-icon>
                   </a>
-                <hr class="my-2">
+                <hr class="my-2 bg-black">
                 
                 <section>
+                  Ver destino&nbsp;
                   <a 
                     target="_blank" 
                     href='{{ "https://www.google.com/maps/place/"+aventon.destino.latitud+","+aventon.destino.longitud+"" }}'
-                    class="rounded-md border-2 px-4 py-2 cursor-pointer inline-block"
+                    class="rounded-md border-black border-2 px-3 cursor-pointer inline-block"
                   >
                     <ion-icon name="location-sharp"></ion-icon>
                   </a>
@@ -179,7 +179,7 @@
                 <br>
                 <ion-select 
                   [(ngModel)] = "destino_id"
-                  class="w-full"
+                  class="w-full bg-gray-300 rounded-md"
                 >
                   <ion-select-option  *ngFor="let destino of destinos" value="{{ destino.id }}">
                     {{ destino.nombre }}

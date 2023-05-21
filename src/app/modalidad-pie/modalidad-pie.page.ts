@@ -55,7 +55,7 @@ export class ModalidadPiePage implements OnInit {
       
       const res=this.modalidadPie.guardarPie(this.posPie)
       res.then((response) => {
-        console.log("🚀 ~ file: modalidad-aventon.page.ts:51 ~ ModalidadAventonPage ~ res.then ~ response:", response)
+        console.log("🚀 ~ file: modalidad-pie.page.ts:58 ~ ModalidadPiePage ~ res.then ~ response:", response)
         this.router.navigate(["feed"])
         // Si hay sesion, no se hace nada
       }).catch((error) => {

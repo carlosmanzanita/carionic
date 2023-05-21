@@ -1,107 +1,120 @@
-<section class="bg-gray-900 text-white gir gir-cols-5 gap-2 text-center p-8 h-full">
+<section class="font bg-gray-900 text-white gir gir-cols-5 gap-2 text-center p-8 h-full">
   <ion-item
-  class="border-2 w-20 rounded-full"
->
-  <button 
-    [routerLink]="['/feed']" 
-  >
-    <
-    <ion-icon slot="start" name="train-outline"></ion-icon>
-    </button>
+    class="border-2 w-20 rounded-full">
+      <ion-icon
+        [routerLink]="['/feed']" size= "large" name="arrow-back-circle-sharp">
+      </ion-icon>      
   </ion-item>
-  &nbsp;
 
   <article></article>
   <article class="col-span-3 bg-gray-900">
-    Modalidad a pie
+    Viaje a pie
   </article>
   <article></article>
 
   <h1 class="container bg-gray-700 text-white  text-center rounded-xl my-4 py-4">Rellena los siguientes campos</h1>
 
-    <div 
+  <div
     class=" overflow-auto"
     style="height: 600px;"
-    >
-        <section 
-        class="bg-slate-900 my-4 py-4 h-full text-justify p-4 rounded-md"
-        >
+  >
+  <section 
+  class="bg-slate-900 my-4 py-4 h-full text-justify p-4 rounded-md"
+  >
 
 
-    <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
-      <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2">
-          Punto de encuentro
-        </label>
-        <div class="md:w-2/3">
-          <select
-           class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
-           [(ngModel)]="encuentro.name" [ngModelOptions]="{standalone: true}">
-           >
-          <option value="-">Selecciona un punto de encuentro</option> 
-          <option *ngFor="let encuentros of encuentro"  value="encuentro_id">
-            {{ encuentros.descripcion }}
-          </option>
-           </select>
-        </div>
-       </div>
-    </form>
+  <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+    <div class="mb-4">
+      <label class="block text-gray-300 text-sm font-bold mb-2">
+        Punto de encuentro
+      </label>
+      <div class="md:w-2/3">
+        <select
+         class=" w-full bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+         [(ngModel)]="posPie.encuentro_id" [ngModelOptions]="{standalone: true}">
+         >
+        <option value="-">Selecciona un punto de encuentro</option> 
+        <option *ngFor="let encuentros of encuentro"  value="{{ encuentros.id }}">
+          {{ encuentros.descripcion }}
+        </option>
+         </select>
+      </div>
+     </div>
+  </form>
+  
 
+  <!-- <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+    <div class="mb-4">
+      <label class="block text-gray-300 text-sm font-bold mb-2">
+        TAG
+      </label>
+      <div class="md:w-2/3">
+        <select
+         class=" w-full bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+         [(ngModel)]="encuentro.name" [ngModelOptions]="{standalone: true}">
+         >
+        <option value="-">Selecciona una opción</option> 
+        <option *ngFor="let encuentros of encuentro"  value="encuentro_id">
+          {{ encuentros.descripcion }}
+        </option>
+         </select>
+      </div>
+     </div>
+  </form> -->
 
-    <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
-      <div class="mb-4">
-        <label class="block text-gray-300 text-sm font-bold mb-2">
-          TAGS
-        </label>
-        <div class="md:w-2/3">
-          <select
-           class=" w-full bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
-           [(ngModel)]="tagSeleccion" [ngModelOptions]="{standalone: true}">
-           >
-          <option value="-">Selecciona una opción</option>
-          <option *ngFor="let tag of pieTag"  value="{{ tag.nombre }}">
-            {{ tag.nombre }} 
-          </option>
-           </select>
-           <button (click)="setTags()">Añadir TAG</button>
-        </div>
-       </div>
-    </form>
-    <section class="grid grid-cols-2 gap-2 text-center p-2 border-2 border-gray-700">
-      <article *ngFor="let tag of posPie.tags">
-        <i (click)="removeTag(tag)" class="fa-solid fa-circle-xmark text-red-500"></i>
-        <br>
-        {{ tag }}
-      </article>
-    </section>
+  <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+    <div class="mb-4">
+      <label class="block text-gray-300 text-sm font-bold mb-2">
+        Destino
+      </label>
+      <div class="md:w-2/3">
+        <select
+         class=" w-full bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+         [(ngModel)]="posPie.destino_id" [ngModelOptions]="{standalone: true}">
+         >
+        <option value="-">Selecciona una opción</option> 
+        <option *ngFor="let destino of destinos"  value="{{ destino.id }}">
+          {{ destino.nombre }}
+        </option>
+         </select>
+      </div>
+     </div>
+  </form>
 
-    <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
-      <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2">
-          DESTINOS
-        </label>
-        <div class="md:w-2/3">
-          <select
-           class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
-           [(ngModel)]="destinos.name" [ngModelOptions]="{standalone: true}">
-           >
-          <option value="-">Selecciona una opción</option> 
-          <option *ngFor="let destino of destinos"  value="destinos_id">
-            {{ destino.nombre }}
-          </option>
-           </select>
-        </div>
-       </div>
-    </form>
+  <form class="col-span-5 bg-fondo px-4 pt-3 pb-1">
+    <div class="mb-4">
+      <label class="block text-gray-300 text-sm font-bold mb-2">
+        Tags
+      </label>
+      <div class="md:w-2/3">
+        <select
+         class=" w-full bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+         [(ngModel)]="tagSeleccion" [ngModelOptions]="{standalone: true}">
+         >
+        <option value="-">Selecciona una opción</option>
+        <option *ngFor="let tag of pieTag"  value="{{ tag.nombre }}">
+          {{ tag.nombre }} 
+        </option>
+         </select>
+         <button (click)="setTags()">Añadir TAG</button>
+      </div>
+     </div>
+  </form>
+  <section class="grid grid-cols-2 gap-2 text-center p-2 border-2 border-gray-700">
+    <article *ngFor="let tag of posPie.tags">
+      <i (click)="removeTag(tag)" class="fa-solid fa-circle-xmark text-red-500"></i>
+      <br>
+      {{ tag }}
+    </article>
+  </section>
 
-
-
-    </section>
+  </section>
   </div>
 
-    <button class="bg-white text-center text-gray-900 my-4 py-4 p-4 rounded-md"
-    (click) = "postPie()">
-      Crear viaje
-    </button>
+    
+  <button class="bg-white text-center text-gray-900 my-4 py-4 p-4 rounded-md"
+  (click) = "postPie()">
+    Crear viaje
+  </button>
 
 </section>

@@ -1,23 +1,24 @@
-<section class="bg-gray-900 text-white text-center p-8 h-full">
+<ion-toolbar>
+  <ion-button [routerLink]="['/destinos']" slot="start" color="dark" fill="outline" class="px-2">
+    <ion-icon
+      slot="start" name="arrow-back-circle-sharp" size="large">
+    </ion-icon>
+  </ion-button>
+</ion-toolbar>  
 
-  <ion-item
-  class="border-2 w-20 rounded-full"
->
-  <button 
-    [routerLink]="['/destinos']" 
-  >
-    <
-    <ion-icon slot="start" name="location-outline"></ion-icon>
-    </button>
-  </ion-item>
-  &nbsp;
+<section class="font bg-slate-900 text-white text-center p-8 h-full">
 
   <ion-content class="border-2 border-red-500 h-96">
     <capacitor-google-map id="map-2" ></capacitor-google-map>
   </ion-content>
   
     <br>
-  <input type="text" [(ngModel)] = "destino.nombre" placeholder="Nombre" class="bg-slate-900 text-bla
-  ">
+
+    <h1 
+    class="bg-gray-200 rounded-2xl w-full py-3 px-4 text-gray-700">
+      {{ destino.nombre }}
+    </h1>
+  <!-- <input type="text" [(ngModel)] = "destino.nombre" placeholder="Nombre" 
+  class="bg-elementos rounded-2xl w-full py-3 px-4 text-gray-700"> -->
 
 </section>
