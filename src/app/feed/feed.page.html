@@ -1,4 +1,4 @@
-  <ion-split-pane when="sm" content-id="main-content" class="font">
+  <!-- <ion-split-pane when="sm" content-id="main-content" class="font">
     <ion-menu content-id="main-content">
       <ion-header>
         <ion-toolbar color="dark" class="font">
@@ -57,7 +57,7 @@
         </ion-popover>
       </ion-toolbar>
       </div>
-    </ion-split-pane>
+    </ion-split-pane> -->
     
     <section class= "font pt-10 bg-slate-900 text-white gir gir-cols-5 gap-2 text-center my-4 py-1 p-8 h-full w-full">
       
@@ -224,28 +224,28 @@
             <article>
             </article>
 
-            
-      <div>
-        <section 
-          class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
-          *ngFor="let pie of pies">
-            <article>
-                <hr class="my-2">
-                {{ pie.user.name }}
-                <br>
-                <img src="{{ pie.user.foto }}" alt="foto" class="w-10">
-                {{ pie.encuentro.nombre }}
-                <br>
-                {{ pie.encuentro.descripcion }}
-                <hr class="my-2">
-                <a target="_blank" href='{{ "https://www.google.com/maps/place/"+aventon.destino.latitud+","+aventon.destino.longitud+"" }}'>
-                  <ion-icon name="location-sharp"></ion-icon>
-                </a>
+          
+          </section>
+          <section 
+            class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
+            *ngFor="let pie of pies">
+              <article>
+                <span class="uppercase">
+                  Pie 
+                </span>
+                  <hr class="my-2">
+                  {{ pie.user.name }}
+                  <br>
+                  <img src="{{ pie.user.foto }}" alt="foto" class="w-10">
+                  {{ pie.encuentro.nombre }}
+                  <br>
+                  {{ pie.encuentro.descripcion }}
+                  <hr class="my-2">
+                  <a target="_blank" href='{{ "https://www.google.com/maps/place/"+pie.destino.latitud+","+pie.destino.longitud+"" }}'>
+                    <ion-icon name="location-sharp"></ion-icon>
+                  </a>
+                </article>
+              <article>
               </article>
-            <article>
-            </article>
-        </section>
-        
-    </div>
     </section>
 <!-- http://www.google.com/maps/place/19.3991001,-99.1242842 -->

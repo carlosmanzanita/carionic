@@ -14,8 +14,8 @@ export class ModalidadPiePage implements OnInit {
   public encuentro_id:any = 0
   public encuentro:any = []
   public destinos:any=[]
-  public tagSeleccion: any = ''
   public pieTag: any = []
+  public tagSeleccion: any = ''
 
 
   public posPie:ModalidadPie = {
@@ -51,7 +51,7 @@ export class ModalidadPiePage implements OnInit {
     if(this.posPie.encuentro_id == "") val++;
     if(this.posPie.destino_id == "") val++;
     if(this.posPie.tags.lenght == 0) val++;
-    if (val != 0){
+    if (val == 0){
       
       const res=this.modalidadPie.guardarPie(this.posPie)
       res.then((response) => {

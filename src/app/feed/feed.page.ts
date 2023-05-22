@@ -94,7 +94,8 @@ export class FeedPage implements OnInit {
       this.pies=response.data.pies;
       this.user_id=response.data.user_id;
       this.user_name=response.data.user_name;
-      // console.log(this.pies);
+      
+      console.log(this.pies);
       
     }).catch((error) => {
       // console.log(error.response.status);
