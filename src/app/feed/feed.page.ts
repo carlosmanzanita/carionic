@@ -99,14 +99,32 @@ export class FeedPage implements OnInit {
   }
   getPies(){
     this.pies = [];
-    const res=this.modalidadPieService.getPies();
+    const res=this.modalidadAventonService.getPies();
     res.then((response) => {
       // console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
       // Si hay sesion, no se hace nada
       this.pies=response.data.pies;
       this.user_id=response.data.user_id;
       this.user_name=response.data.user_name;
+      // console.log(this.pies);
+
+      let soy_yo = 0;
+      let muestra_solicitud = false;
       
+
+      for(let a in this.pies){
+        muestra_solicitud = false;
+        let solicitado = this.pies[a].solicitando;
+        for(let s in solicitado){
+          if(solicitado[s].user_id == this.user_id){
+            soy_yo++;
+          }
+        }
+        if( soy_yo == 0 ){
+          muestra_solicitud = true;
+        }
+        this.pies[a].muestra_solicitud = muestra_solicitud;
+      }
       console.log(this.pies);
       
     }).catch((error) => {
@@ -114,7 +132,7 @@ export class FeedPage implements OnInit {
       // console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
       if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
       this.router.navigate(["inicio-sesion"])
-    })
+    }) 
   }
 
   verNoSesion(){

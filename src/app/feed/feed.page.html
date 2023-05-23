@@ -273,30 +273,17 @@
        
           <section 
             class=" bg-gray-200 text-black font my-4 py-4 p-4 rounded-md" 
-            *ngFor="let aventon of aventones">
+            *ngFor="let pie of pies">
               <article>
-                  <span class="uppercase">
-                    Aventón
-                    {{ aventon.modalidad.nombre }}
-                    <ion-icon name="people-circle-outline"></ion-icon>
-                    {{ aventon.asientos }}
-                  </span>
                   <hr class="my-2 bg-black">
-                  {{ aventon.user.name }}
+                  {{ pie.user.name }}
                   <!-- <br> -->
-                  <img src="{{ aventon.user.foto }}" alt="foto" class="w-10 mx-auto">
+                  <img src="{{ pie.user.foto }}" alt="foto" class="w-10 mx-auto">
                   <hr class="my-2 bg-black">
-                  <ion-icon name="car-sport-outline"></ion-icon>
-                    {{ aventon.auto.marca }} {{ aventon.auto.color }}
                   <br>
-                  <ion-icon name="barcode-outline"></ion-icon>
-                    {{ aventon.auto.placa }}
-                  <br>
-                  
-                  <!-- *ngIf="aventon.baja == 0" -->
                   <ion-button
-                      *ngIf="user_id == aventon.user_id"
-                      (click) = "terminarViamje(aventon.id)"
+                      *ngIf="user_id == pie.user_id"
+                      (click) = "terminarViaje(pie.id)"
                       class="my-2"
                       size="small" 
                       color="danger"
@@ -305,10 +292,10 @@
                   </ion-button> 
   
                   <hr class="my-2 bg-black">
-                  {{ aventon.encuentro.descripcion }}&nbsp;
+                  {{ pie.encuentro.descripcion }}&nbsp;
                   <a 
                       target="_blank" 
-                      href='{{ "https://www.google.com/maps/place/"+aventon.encuentro.latitud+","+aventon.encuentro.longitud+"" }}'
+                      href='{{ "https://www.google.com/maps/place/"+pie.encuentro.latitud+","+pie.encuentro.longitud+"" }}'
                       class="rounded-md border-black border-2 px-2 cursor-pointer inline-block"
                     >
                       <ion-icon name="location-sharp"></ion-icon>
@@ -319,7 +306,7 @@
                     Ver destino&nbsp;
                     <a 
                       target="_blank" 
-                      href='{{ "https://www.google.com/maps/place/"+aventon.destino.latitud+","+aventon.destino.longitud+"" }}'
+                      href='{{ "https://www.google.com/maps/place/"+pie.destino.latitud+","+pie.destino.longitud+"" }}'
                       class="rounded-md border-black border-2 px-3 cursor-pointer inline-block"
                     >
                       <ion-icon name="location-sharp"></ion-icon>
@@ -327,10 +314,10 @@
                   </section>
                   <section
                     class="my-2"
-                    *ngIf="aventon.user_id == user_id"
+                    *ngIf="pie.user_id == user_id"
                   >
                     <section
-                      *ngFor="let solicita of aventon.solicitando"
+                      *ngFor="let solicita of pie.solicitando"
                     >
                       <article
                         *ngIf="solicita.confirma != 2"
@@ -338,7 +325,7 @@
                         <ion-button
                           *ngIf="solicita.confirma == 0"
                           class="my-2"
-                          (click)="confirmaSolicitud(solicita.user.id, 1, aventon.id)" 
+                          (click)="confirmaSolicitud(solicita.user.id, 1, pie.id)" 
                           size="small" 
                           color="success"
                         >
@@ -347,7 +334,7 @@
                         <ion-button
                         *ngIf="solicita.confirma == 0"
                           class="my-2"
-                          (click)="confirmaSolicitud(solicita.user.id, 2, aventon.id)"
+                          (click)="confirmaSolicitud(solicita.user.id, 2, pie.id)"
                            size="small" 
                            color="danger"
                           >
@@ -357,19 +344,11 @@
                         {{ solicita.user.name.substr(0, 15) }}...
                         &nbsp;
                         <br>
-                        Destino: {{ solicita.destino_emergente.destino.nombre }}
-                        <a
-                          target="_blank" 
-                          href='{{ "https://www.google.com/maps/place/"+solicita.destino_emergente.destino.latitud+","+solicita.destino_emergente.destino.longitud+"" }}'
-                        >
-                          <!-- class="rounded-md border-2 px-4 py-2 cursor-pointer inline-block" -->
-                          <ion-icon name="location-sharp"></ion-icon>
-                        </a>
                       </article>
                     </section>
                   </section>
                   <section
-                    *ngIf="aventon.user_id != user_id"
+                    *ngIf="pie.user_id != user_id"
                   >
                   Selecciona un destino 
                   <br>
@@ -385,15 +364,15 @@
   
                   <!-- class="z-10 rounded-md border-2 px-4 py-2 cursor-pointer inline-block" -->
                     <ion-button
-                      (click)="solicitarAventon(aventon.id)"
-                      *ngIf="aventon.muestra_solicitud"
+                      (click)="solicitarPie(pie.id)"
+                      *ngIf="pie.muestra_solicitud"
                     >
                       Solicitar
                     </ion-button>
                     
                     
                     <p
-                      *ngFor="let solicitado of aventon.solicitando"
+                      *ngFor="let solicitado of pie.solicitando"
                     >
                       <span
                         *ngIf="solicitado.user_id == user_id"
