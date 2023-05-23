@@ -1,4 +1,4 @@
-  <ion-split-pane when="sm" content-id="main-content" class="font">
+  <!-- <ion-split-pane when="sm" content-id="main-content" class="font">
     <ion-menu content-id="main-content">
       <ion-header>
         <ion-toolbar color="dark" class="font">
@@ -57,7 +57,7 @@
         </ion-popover>
       </ion-toolbar>
       </div>
-    </ion-split-pane>
+    </ion-split-pane> -->
     
     <section class= "font pt-10 bg-slate-900 text-white gir gir-cols-5 gap-2 text-center my-4 py-1 p-8 h-full w-full">
       
@@ -317,31 +317,31 @@
                     *ngIf="pie.user_id == user_id"
                   >
                     <section
-                      *ngFor="let solicita of pie.solicitando"
+                      *ngFor="let Unir of pie.unirse"
                     >
                       <article
-                        *ngIf="solicita.confirma != 2"
+                        *ngIf="Unir.confirma != 2"
                       >
                         <ion-button
-                          *ngIf="solicita.confirma == 0"
+                          *ngIf="Unir.confirma == 0"
                           class="my-2"
-                          (click)="confirmaSolicitud(solicita.user.id, 1, pie.id)" 
+                          (click)="confirmaSolicitud(Unir.user.id, 1, pie.id)" 
                           size="small" 
                           color="success"
                         >
                           <i class="fa-solid fa-check"></i>
                         </ion-button>
                         <ion-button
-                        *ngIf="solicita.confirma == 0"
+                        *ngIf="Unir.confirma == 0"
                           class="my-2"
-                          (click)="confirmaSolicitud(solicita.user.id, 2, pie.id)"
+                          (click)="confirmaSolicitud(Unir.user.id, 2, pie.id)"
                            size="small" 
                            color="danger"
                           >
                           <i class="fa-solid fa-xmark"></i>
                         </ion-button>
                         &nbsp;
-                        {{ solicita.user.name.substr(0, 15) }}...
+                        {{ Unir.user.name.substr(0, 15) }}...
                         &nbsp;
                         <br>
                       </article>
@@ -367,28 +367,28 @@
                       (click)="solicitarPie(pie.id)"
                       *ngIf="pie.muestra_solicitud"
                     >
-                      Solicitar
+                      Unir
                     </ion-button>
                     
                     
                     <p
-                      *ngFor="let solicitado of pie.solicitando"
+                      *ngFor="let unir of pie.unirse"
                     >
                       <span
-                        *ngIf="solicitado.user_id == user_id"
+                        *ngIf="unir.user_id == user_id"
                       >
                         <p
-                          *ngIf="solicitado.confirma == 0"
+                          *ngIf="unir.confirma == 0"
                         >
                           Esperando respuesta
                         </p>
                         <p
-                          *ngIf="solicitado.confirma == 1"
+                          *ngIf="unir.confirma == 1"
                         >
                           Encuentrate con el conductor
                         </p>
                         <p
-                          *ngIf="solicitado.confirma == 2"
+                          *ngIf="unir.confirma == 2"
                         >
                           Lo sentimos, el conductor no puede cumplir tu solicitud
                         </p>
