@@ -288,7 +288,7 @@ export class FeedPage implements OnInit {
             }
           },
           {
-            text: 'Me quiero volver chango',
+            text: 'Requiero ayuda',
             handler: () => {
               this.activarBotonPanico()
             }
@@ -357,7 +357,7 @@ export class FeedPage implements OnInit {
           }
         },
         {
-          text: 'que te valga',
+          text: 'Estoy en peligro',
           handler: () => {
             console.log("le valio y se murio");
           }
