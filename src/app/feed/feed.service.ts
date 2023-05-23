@@ -108,11 +108,12 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
     let res = await axios.get(this.apiPie,config)
     return res;
 }
+
   async solicitarPie(user_id:any, destino_id:any, pie_id:any){
-    // obtenemos el token de localStorage
-    const token = localStorage.getItem('token')
-    // asignamos el token a la validacion para comprobar si existe una sesion
-    const config = {
+  // obtenemos el token de localStorage
+  const token = localStorage.getItem('token')
+  // asignamos el token a la validacion para comprobar si existe una sesion
+  const config = {
       headers:{
         'Content-Type': 'application/json',
         Authorization: 'Bearer '+token 
@@ -125,7 +126,7 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
     };
     
     //pertición http a la URI de laravel
-    let res = await axios.put(`http://carpool.test/api/aventon/${pie_id}`, data, config)
+    let res = await axios.put(`http://carpool.test/api/pie/${pie_id}`, data, config)
     return res;
   }
   
@@ -162,7 +163,7 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
     };
     
     //pertición http a la URI de laravel
-    let res = await axios.delete(`http://carpool.test/api/aventon/${pie_id}`, config)
+    let res = await axios.delete(`http://carpool.test/api/pie/${pie_id}`, config)
     return res;
   }
 
@@ -197,4 +198,40 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
     this.router.navigate(["inicio-sesion"])
     return res;
   }
+
+  async botonPanico(user_id:any, latitud:any, longitud:any){
+    // obtenemos el token de localStorage
+    const token = localStorage.getItem('token')
+    // asignamos el token a la validacion para comprobar si existe una sesion
+    const config = {
+      headers:{
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+token 
+      }
+    }
+    
+    const data = {
+      user_id:user_id,
+      latitud:latitud,
+      longitud:longitud,
+    };
+    //pertición http a la URI de laravel
+    let res = await axios.put(`http://carpool.test/api/activacion-panico`, data, config)
+    return res;
+  }
+  async panicosActivados(){
+    // obtenemos el token de localStorage
+    const token = localStorage.getItem('token')
+    // asignamos el token a la validacion para comprobar si existe una sesion
+    const config = {
+      headers:{
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+token 
+      }
+    }
+    //pertición http a la URI de laravel
+    let res = await axios.get(`http://carpool.test/api/panicos-activados`, config)
+    return res;
+  }
+  
 }

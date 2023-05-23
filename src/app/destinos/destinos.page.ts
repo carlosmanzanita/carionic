@@ -55,13 +55,5 @@ export class DestinosPage implements OnInit {
         this.router.navigate(["inicio-sesion"])
       })
     }
-  } 
-
-
-
-
-  
-
- 
-  
+  }
 }

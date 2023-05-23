@@ -1,0 +1,62 @@
+<ion-toolbar>
+  <ion-button [routerLink]="['/feed']" slot="start" color="dark" fill="outline" class="px-2">
+    <ion-icon
+      slot="start" name="arrow-back-circle-sharp" size="large">
+    </ion-icon>
+  </ion-button>
+</ion-toolbar>  
+
+<section class="font bg-gray-900 text-white gir gir-cols-5 gap-2 text-center p-8 h-full">
+
+  <article></article>
+  <article class="col-span-3 bg-gray-900">
+    Alertas de pámimco
+  </article>
+  <article></article>
+
+  <div
+    class=" overflow-auto"
+    style="height: 600px;"
+  > 
+    <section
+      class="grid grid-cols-3 p-2 m-2 border-2"
+      *ngFor="let panico of panicos"
+    >
+      <article>
+        <img class="w-16" src="{{ panico.user.foto }}" alt="fototeta">
+      </article>
+      <article
+        class="col-span-2"
+      >
+        <br>
+        <i 
+          class="fa-solid fa-triangle-exclamation text-red-500"
+        ></i>
+        Aparente peligro
+        <i 
+          class="fa-solid fa-triangle-exclamation text-red-500"
+        ></i>
+        
+      </article>
+      <article
+        class="col-span-3"
+      >
+        {{ panico.user.name }}
+      </article>
+      <article
+        class="col-span-3"
+      >
+        Verifica su ubicación para asistirle
+        <br>
+        <br>
+        <a 
+        target="_blank" 
+        href='{{ "https://www.google.com/maps/place/"+panico.latitud+","+panico.longitud+"" }}'
+        class="rounded-md border-black border-2 px-2 cursor-pointer inline-block"
+        >
+          <i class="fa-solid fa-location-dot text-blue-500"></i>
+        </a>
+      </article>
+    </section>
+  </div>
+</section>

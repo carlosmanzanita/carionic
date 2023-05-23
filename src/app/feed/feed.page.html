@@ -1,4 +1,4 @@
-  <!-- <ion-split-pane when="sm" content-id="main-content" class="font">
+  <ion-split-pane when="sm" content-id="main-content" class="font">
     <ion-menu content-id="main-content">
       <ion-header>
         <ion-toolbar color="dark" class="font">
@@ -57,7 +57,7 @@
         </ion-popover>
       </ion-toolbar>
       </div>
-    </ion-split-pane> -->
+    </ion-split-pane>
     
     <section class= "font pt-10 bg-slate-900 text-white gir gir-cols-5 gap-2 text-center my-4 py-1 p-8 h-full w-full">
       
@@ -69,11 +69,50 @@
         {{ user_name }}
       </p>
 
-      <hr class="m-2">
+      <p>
+        <ion-button
+          color="danger"
+          size="small"
+          (click)="botonPanico()"
+        >
+          Botón de pánico
+        </ion-button>
+      </p>
+      <div
+      *ngIf="mis_panicos.length > 0"
+      >
+        <hr class="m-2">
+        <ion-button
+          color="success"
+          size="small"
+          (click)="quitarPanicos()"
+        >
+          Desactivar mis colicos
+        </ion-button>
+      </div>
 
+      <hr class="m-2">
+      
+      <div
+        *ngIf="panicos > 0"
+      >
+        Existen alertas de "botón de pánico"
+        <br>
+        <i
+          (click)="verPanicos()"
+          class="fa-solid fa-triangle-exclamation text-red-500 fa-beat fa-2x"
+        ></i>
+        <!-- <ion-button
+          color="tertiary"
+          (click)="verPanicos()"
+        >
+        </ion-button> -->
+      </div>
+      
+      <hr class="m-2">
       <div
         class=" overflow-auto"
-        style="height: 600px;"
+        style="height: 650px;"
       >
         <section 
           class=" bg-gray-200 text-black font my-4 py-4 p-4 rounded-md" 
@@ -224,28 +263,151 @@
             <article>
             </article>
 
-          
+            
           </section>
+
+          <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ SECCIÓN DE PIE++++++++++++++++++++++++++++++++++++++++++++ -->
+          
+          
+          
           <section 
-            class=" bg-gray-800 my-4 py-4 h-full text-justify p-4 rounded-md" 
-            *ngFor="let pie of pies">
-              <article>
+          class=" bg-gray-200 text-black font my-4 py-4 p-4 rounded-md" 
+          *ngFor="let pie of pies">
+            <article>
                 <span class="uppercase">
-                  Pie 
+                  pie
+                  {{ pie.modalidad.nombre }}
                 </span>
-                  <hr class="my-2">
-                  {{ pie.user.name }}
-                  <br>
-                  <img src="{{ pie.user.foto }}" alt="foto" class="w-10">
-                  {{ pie.encuentro.nombre }}
-                  <br>
-                  {{ pie.encuentro.descripcion }}
-                  <hr class="my-2">
-                  <a target="_blank" href='{{ "https://www.google.com/maps/place/"+pie.destino.latitud+","+pie.destino.longitud+"" }}'>
+                <hr class="my-2 bg-black">
+                {{ pie.user.name }}
+                <!-- <br> -->
+                <img src="{{ pie.user.foto }}" alt="foto" class="w-10 mx-auto">
+                <hr class="my-2 bg-black">
+                
+                <!-- *ngIf="pie.baja == 0" -->
+                <ion-button
+                    *ngIf="user_id == pie.user_id"
+                    (click) = "terminarViamje(pie.id)"
+                    class="my-2"
+                    size="small" 
+                    color="danger"
+                >
+                  Terminar viaje
+                </ion-button> 
+
+                <hr class="my-2 bg-black">
+                {{ pie.encuentro.descripcion }}&nbsp;
+                <a 
+                    target="_blank" 
+                    href='{{ "https://www.google.com/maps/place/"+pie.encuentro.latitud+","+pie.encuentro.longitud+"" }}'
+                    class="rounded-md border-black border-2 px-2 cursor-pointer inline-block"
+                  >
                     <ion-icon name="location-sharp"></ion-icon>
                   </a>
-                </article>
-              <article>
+                <hr class="my-2 bg-black">
+                
+                <section>
+                  Ver destino&nbsp;
+                  <a 
+                    target="_blank" 
+                    href='{{ "https://www.google.com/maps/place/"+pie.destino.latitud+","+pie.destino.longitud+"" }}'
+                    class="rounded-md border-black border-2 px-3 cursor-pointer inline-block"
+                  >
+                    <ion-icon name="location-sharp"></ion-icon>
+                  </a>
+                </section>
+                <section
+                  class="my-2"
+                  *ngIf="pie.user_id == user_id"
+                >
+                  <section
+                    *ngFor="let unirse of pie.unirse"
+                  >
+                    <article
+                      *ngIf="unirse.confirma != 2"
+                    >
+                      <ion-button
+                        *ngIf="unirse.confirma == 0"
+                        class="my-2"
+                        (click)="confirmaSolicitud(unirse.user.id, 1, pie.id)" 
+                        size="small" 
+                        color="success"
+                      >
+                        <i class="fa-solid fa-check"></i>
+                      </ion-button>
+                      <ion-button
+                      *ngIf="unirse.confirma == 0"
+                        class="my-2"
+                        (click)="confirmaSolicitud(unirse.user.id, 2, pie.id)"
+                         size="small" 
+                         color="danger"
+                        >
+                        <i class="fa-solid fa-xmark"></i>
+                      </ion-button>
+                      &nbsp;
+                      {{ unirse.user.name.substr(0, 15) }}...
+                      &nbsp;
+                      <br>
+                      <a
+                        target="_blank" 
+                        href='{{ "https://www.google.com/maps/place/"+unirse.destino_emergente.destino.latitud+","+unirse.destino_emergente.destino.longitud+"" }}'
+                      >
+                        <!-- class="rounded-md border-2 px-4 py-2 cursor-pointer inline-block" -->
+                        <ion-icon name="location-sharp"></ion-icon>
+                      </a>
+                    </article>
+                  </section>
+                </section>
+                <section
+                  *ngIf="pie.user_id != user_id"
+                >
+                Selecciona un destino 
+                <br>
+                <ion-select 
+                  [(ngModel)] = "destino_id"
+                  class="w-full bg-gray-300 rounded-md"
+                >
+                  <ion-select-option  *ngFor="let destino of destinos" value="{{ destino.id }}">
+                    {{ destino.nombre }}
+                  </ion-select-option>
+                </ion-select>
+                <br>
+
+                <!-- class="z-10 rounded-md border-2 px-4 py-2 cursor-pointer inline-block" -->
+                  <ion-button
+                    (click)="unirsePie(pie.id)"
+                    *ngIf="pie.muestra_solicitud"
+                  >
+                    Solicitar
+                  </ion-button>
+                  
+                  
+                  <p
+                    *ngFor="let unirse of pie.unirsePie"
+                  >
+                    <span
+                      *ngIf="unirse.user_id == user_id"
+                    >
+                      <p
+                        *ngIf="unirse.confirma == 0"
+                      >
+                        Esperando respuesta
+                      </p>
+                      <p
+                        *ngIf="unirse.confirma == 1"
+                      >
+                        Encuentrate con el conductor
+                      </p>
+                      <p
+                        *ngIf="unirse.confirma == 2"
+                      >
+                        Lo sentimos, el conductor no puede cumplir tu solicitud
+                      </p>
+                    </span>
+                  </p>
+                </section>
               </article>
+            <article>
+            </article>
     </section>
 <!-- http://www.google.com/maps/place/19.3991001,-99.1242842 -->

@@ -5,6 +5,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { PanicoService } from '../panico/panico.service';
+
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.page.html',
@@ -18,20 +21,29 @@ export class FeedPage implements OnInit {
   public aventones:any= []
   public pies:any =[]
   public destinos:any =[]
-
+  public panicos:any =[]
+  public mis_panicos:any =[]
+  
   constructor(
     public router:Router,
     public feedService:FeedService,
     public modalidadAventonService:ModalidadAventonService,
     public modalidadPieService:ModalidadPieService,
-    public alertController:AlertController
+    public alertController:AlertController,
+    public geolocation:Geolocation,
+    public panicoService:PanicoService
   ) { }
 
   ngOnInit() {
     this.getAventones()
     this.getDestinosEmergentes()
     this.getPies()
-    // this.verNoSesion()
+    this.panicosActivados()
+    setInterval(
+      ()=>{
+        this.panicosActivados()
+      }
+    , 120000);
   }
 
   getDestinosEmergentes(){
@@ -186,7 +198,36 @@ export class FeedPage implements OnInit {
   }
 
  //+++++++++++++++++++++++++++ PIES +++++++++++++++++++++++++
-  terminarViamjepie(pie_id:any){
+ solicitarPie(pie_id:any){
+  const res = this.feedService.solicitarPie(this.user_id, this.destino_id, pie_id)
+  res.then((response) => {
+    // console.log("🚀 ~ file: feed.page.ts:81 ~ FeedPage ~ res.then ~ response:", response)
+    // Si hay sesion, no se hace nada
+    this.getPies()
+  }).catch((error) => {
+    // console.log(error.response.status);
+    // console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
+    if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+    this.router.navigate(["inicio-sesion"])
+  })
+}
+  confirmarSolicitud(user_id:any, estado:any, pie_id:any){
+    // si 1 acepta que se una, si 2 rechaza solicitud
+    console.log("🚀 ", estado)
+    const res = this.feedService.aceptarPie(user_id, estado, pie_id)
+    res.then((response) => {
+      // console.log("🚀 ~ file: feed.page.ts:81 ~ FeedPage ~ res.then ~ response:", response)
+      this.getPies()
+      // Si hay sesion, no se hace nada
+      // location.reload();
+    }).catch((error) => {
+      // console.log(error.response.status);
+      // console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
+      if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+      this.router.navigate(["inicio-sesion"])
+    })
+  }
+  terminarViaje(pie_id:any){
     this.alertController.create({
       header: '¿Deseas terminar el viaje?',
       subHeader: 'Esta acción no se podrá deshacer',
@@ -202,7 +243,7 @@ export class FeedPage implements OnInit {
           handler: () => {
             const res = this.feedService.bajaPie(pie_id);
             res.then((response) => {
-              this.getAventones()
+              this.getPies()
             }).catch((error) => {
               // console.log(error.response.status);
               // console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
@@ -214,6 +255,100 @@ export class FeedPage implements OnInit {
       ]
     }).then(res => {
       res.present();
+  });
+  }
+
+  botonPanico(){
+      this.alertController.create({
+        header: '¿Te encuentras en peligro?',
+        subHeader: 'Tus datos y ubicación serán enviados a todos los usuarios registrados',
+        buttons: [
+          {
+            text: 'Toy bien',
+            handler: () => {
+              console.log('Ta bien baboso');
+            }
+          },
+          {
+            text: 'Me quiero volver chango',
+            handler: () => {
+              this.activarBotonPanico()
+            }
+          }
+        ]
+      }).then(res => {
+        res.present();
+      });
+  }
+
+  async activarBotonPanico(){
+    console.log("Alguien será violado");
+    const resp = await this.geolocation.getCurrentPosition();
+    console.log("Coordenadas latitud: ", resp.coords.latitude);
+    console.log("Coordenadas longitud: ", resp.coords.longitude);
+
+    /** */
+      const res = this.feedService.botonPanico(this.user_id, resp.coords.latitude, resp.coords.longitude);
+      res.then((response) => {
+        this.panicosActivados()
+        console.warn("tapate para que no te violen");
+      }).catch((error) => {
+        // console.log(error.response.status);
+        // console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
+        if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+        this.router.navigate(["inicio-sesion"])
+      })
+    /**/
+  }
+  async panicosActivados(){
+    //Obtenemos todos los botones de pànico activados
+      const res = this.feedService.panicosActivados();
+      res.then((response) => {
+        console.log("🚀 panicos activos", response)
+        console.warn("A un vato lo estan violando, ayudalo");
+        this.panicos = response.data.panicos_activados.length;
+        this.mis_panicos = response.data.mis_panicos_activados;
+        // 'panicos_activados', 'mis_panicos_activados'
+        console.log("🚀 cuantos pánico", this.panicos)
+      }).catch((error) => {
+        if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+        this.router.navigate(["inicio-sesion"])
+      })
+    /**/
+  }
+  verPanicos(){
+    console.log("podríamos ver los pánicos");
+    this.router.navigate(["panico"])
+  }
+  quitarPanicos(){
+
+    this.alertController.create({
+      header: '¿Te encuentras bien?',
+      subHeader: 'Se desactivaran todas tus alertas de pánico',
+      buttons: [
+        {
+          text: 'Simon',
+          handler: () => {
+            const res = this.panicoService.quitarPanicos(this.user_id);
+            res.then((response) => {
+              this.panicosActivados()
+            }).catch((error) => {
+              if(error.response.status==401) //si si 401 entonces nos pide inicio de sesion
+              this.router.navigate(["inicio-sesion"])
+            })        
+          }
+        },
+        {
+          text: 'que te valga',
+          handler: () => {
+            console.log("le valio y se murio");
+          }
+        }
+      ]
+    }).then(res => {
+      res.present();
     });
+
+    
   }
 }

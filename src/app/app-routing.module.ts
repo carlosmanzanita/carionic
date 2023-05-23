@@ -58,6 +58,10 @@ const routes: Routes = [
     path: 'modalidad-aventon',
     loadChildren: () => import('./modalidad-aventon/modalidad-aventon.module').then( m => m.ModalidadAventonPageModule)
   },
+  {
+    path: 'panico',
+    loadChildren: () => import('./panico/panico.module').then( m => m.PanicoPageModule)
+  },
 
 
 
