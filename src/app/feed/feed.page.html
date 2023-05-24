@@ -87,7 +87,7 @@
           size="small"
           (click)="quitarPanicos()"
         >
-          Desactivar mis colicos
+          Desactivar mis alertas
         </ion-button>
       </div>
 
@@ -124,6 +124,9 @@
                   <ion-icon name="people-circle-outline"></ion-icon>
                   {{ aventon.asientos }}
                 </span>
+                <span class="uppercase">
+                  TAG
+                </span>
                 <hr class="my-2 bg-black">
                 {{ aventon.user.name }}
                 <!-- <br> -->
@@ -135,7 +138,13 @@
                 <ion-icon name="barcode-outline"></ion-icon>
                   {{ aventon.auto.placa }}
                 <br>
-                
+                <span
+                *ngFor="let tag of aventon.aventon_tag"
+                >
+                {{ tag.tag.nombre }}, 
+                </span>
+                <br>
+
                 <!-- *ngIf="aventon.baja == 0" -->
                 <ion-button
                     *ngIf="user_id == aventon.user_id"
@@ -281,6 +290,12 @@
                   <img src="{{ pie.user.foto }}" alt="foto" class="w-10 mx-auto">
                   <hr class="my-2 bg-black">
                   <br>
+                  <span
+                  *ngFor="let tag of pie.pie_tag"
+                  >
+                  {{ tag.tag.nombre }}, 
+                </span>
+                <br>
                   <ion-button
                       *ngIf="user_id == pie.user_id"
                       (click) = "terminarViaje(pie.id)"
@@ -390,7 +405,7 @@
                         <p
                           *ngIf="unir.confirma == 2"
                         >
-                          Lo sentimos, el conductor no puede cumplir tu solicitud
+                          Lo sentimos, fuiste rechazado
                         </p>
                     </span>
                   </p>

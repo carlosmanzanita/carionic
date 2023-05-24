@@ -1,10 +1,9 @@
-// http://localhost:8100/assets/img/Fondob.png
 .body{
     background-image: url('/assets/img/Fondob.png');
+    background-position: center center;
+    background-size: cover;
     color: #FFFF
-}
-
-
+  }
 
 .font{
     font-family: 'Montserrat', sans-serif;

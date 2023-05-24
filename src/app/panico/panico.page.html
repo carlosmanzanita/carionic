@@ -6,10 +6,10 @@
   </ion-button>
 </ion-toolbar>  
 
-<section class="font body bg-gray-900 text-white gir gir-cols-5 gap-2 text-center p-8 h-full">
+<section class="font body text-white gir gir-cols-5 gap-2 text-center p-8 h-full">
 
   <article></article>
-  <article class="col-span-3 bg-gray-900">
+  <article class="col-span-3">
     Alertas de pámimco
   </article>
   <article></article>
@@ -21,6 +21,7 @@
     <section
       class="grid grid-cols-3 p-2 m-2 border-2"
       *ngFor="let panico of panicos"
+      style="background-color:rgba(0,0,0,0.5);"
     >
       <article>
         <img class="w-16" src="{{ panico.user.foto }}" alt="fototeta">
