@@ -1,19 +1,18 @@
-    <section class= "body font pt-10 bg-slate-900 text-white gir gir-cols-5 gap-2 text-center my-4 py-1 p-8 h-full w-full">
+<ion-toolbar>
+  <ion-button [routerLink]="['/ver']" slot="start" color="dark" fill="outline" class="px-2">
+    <ion-icon
+      slot="start" name="arrow-back-circle-sharp" size="large">
+    </ion-icon>
+  </ion-button>
+</ion-toolbar>  
+
+<section class= "body font pt-10 bg-slate-900 text-white gir gir-cols-5 gap-2 text-center  p-8 h-full w-full">
 
   <article></article>
   <article class="col-span-3">  
   <p class="titulo-esime">
   </p>
-  <ion-item
-  class="border-2 w-20 rounded-full"
->
-  <button  
-    [routerLink]="['/ver-auto']" 
-  >
-    <
-    <ion-icon slot="start" name="car-outline"></ion-icon>
-    </button>
-  </ion-item>
+  
   </article>
   <article></article>
 
@@ -32,7 +31,7 @@
       </label>
       <div class="md:w-2/3">
       <input [(ngModel)]="Carro.placa" [ngModelOptions]=" {standalone: true}" 
-      class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" placeholder="Introduce la placa" >
+      class="bg-elementos rounded-2xl w-full py-3 px-4 text-gray-900" placeholder="Introduce la placa" >
     </div>
   </div>
   </form>
@@ -44,7 +43,7 @@
       </label>
         <div class="md:w-2/3">
       <input [(ngModel)]="Carro.marca" [ngModelOptions]=" {standalone: true}" 
-      class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" placeholder="Introduce la marca" >
+      class="bg-elementos rounded-2xl w-full py-3 px-4 text-gray-900" placeholder="Introduce la marca" >
         </div>
     </div>
   </form>
@@ -56,7 +55,7 @@
       </label>
       <div class="md:w-2/3">
       <input [(ngModel)]="Carro.color" [ngModelOptions]=" {standalone: true}" 
-      class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" placeholder="Introduce el color" >
+      class="bg-elementos rounded-2xl w-full py-3 px-4 text-gray-900" placeholder="Introduce el color" >
     </div>
   </div>
   </form>
@@ -71,7 +70,7 @@
       <select
         [(ngModel)]="Carro.tipo" 
         [ngModelOptions]=" {standalone: true}"
-        class="bg-elementos rounded-2xl w-full py-3 px-4 text-fondo" 
+        class="bg-elementos rounded-2xl w-full py-3 px-4 text-gray-900" 
       > 
         <option value="-">Selecciona un tipo de vehículo</option> 
         <option value="moto">MOTO</option> 
