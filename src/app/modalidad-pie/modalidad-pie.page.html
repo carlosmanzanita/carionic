@@ -1,10 +1,13 @@
+<ion-toolbar>
+  <ion-button [routerLink]="['/feed']" slot="start" color="dark" fill="outline" class="px-2">
+    <ion-icon
+      slot="start" name="arrow-back-circle-sharp" size="large">
+    </ion-icon>
+  </ion-button>
+</ion-toolbar>  
+
 <section class="font body bg-gray-900 text-white gir gir-cols-5 gap-2 text-center p-8 h-full">
-  <ion-item
-    class="border-2 w-20 rounded-full">
-      <ion-icon
-        [routerLink]="['/feed']" size= "large" name="arrow-back-circle-sharp">
-      </ion-icon>      
-  </ion-item>
+  
 
   <article></article>
   <article class="col-span-3">
