@@ -19,7 +19,7 @@ export class ModalidadPiePage implements OnInit {
 
 
   public posPie:ModalidadPie = {
-    tags:new Set(),
+    tags: [],
     encuentro_id:"",
     destino_id:"",
   }
@@ -40,13 +40,13 @@ export class ModalidadPiePage implements OnInit {
   postPie(){
     console.log(this.posPie);
   
-    let tagSeleccion=[]
-    for (const tag of this.posPie.tags){
-      console.log(tag);
-      tagSeleccion.push(tag)
-    }
-    console.log(tagSeleccion);
-    this.posPie.tags=tagSeleccion
+    // let tagSeleccion=[]
+    // for (const tag of this.posPie.tags){
+    //   console.log(tag);
+    //   tagSeleccion.push(tag)
+    // }
+    // console.log(tagSeleccion);
+    // this.posPie.tags=tagSeleccion
     let val = 0;
     if(this.posPie.encuentro_id == "") val++;
     if(this.posPie.destino_id == "") val++;
@@ -95,8 +95,16 @@ export class ModalidadPiePage implements OnInit {
       console.log("🚀 ~ file: auto.page.ts:34 ~ AutoPage ~ res.then ~ response:", response)
       // Si hay sesion, no se hace nada
       this.pieTag=response.data;
-      console.log("🚀 ~ file: ver-auto.page.ts:29 ~ VerAutoPage ~ res.then ~ this.Carros:", this.encuentro)
-    
+      let pietag: any = [];
+      for ( let t in this.pieTag){
+        console.log(t);
+        if ( parseInt(t) <3){
+          pietag.push(this.pieTag[t])
+        }
+      }
+      console.log("🚀 ~ file: modalidad-pie.page.ts:98 ~ ModalidadPiePage ~ res.then ~ this.pieTag:", this.pieTag)
+      console.log(pietag);
+      this.pieTag=pietag
     }).catch((error) => {
       console.log(error.response.status);
       console.log("🚀 ~ file: inicio-sesion.page.ts:103 ~ InicioSesionPage ~ res.then ~ error:", error)
@@ -121,9 +129,10 @@ export class ModalidadPiePage implements OnInit {
     }) 
   }
   setTags(){
-    console.log(this.tagSeleccion);
-    this.posPie.tags.add(this.tagSeleccion)
-    console.log(this.posPie.tags);
+    // console.log(this.tagSeleccion);
+    // this.posPie.tags.add(this.tagSeleccion)
+    // console.log(this.posPie.tags);
+    this.posPie.tags[0]= this.tagSeleccion;
   }
   
   removeTag(tag:any){

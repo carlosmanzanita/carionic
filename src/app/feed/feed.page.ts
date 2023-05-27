@@ -114,15 +114,20 @@ export class FeedPage implements OnInit {
 
       for(let a in this.pies){
         muestra_solicitud = false;
-        let solicitado = this.pies[a].solicitando;
+        let solicitado = this.pies[a].unirse;
         for(let s in solicitado){
+          console.log(solicitado[s].user_id, " == ", this.user_id);
           if(solicitado[s].user_id == this.user_id){
             soy_yo++;
           }
         }
-        if( soy_yo == 0 ){
+        console.log({soy_yo:soy_yo});
+        
+        if(soy_yo == 0 ){
           muestra_solicitud = true;
         }
+        console.log({muestra_solicitud:muestra_solicitud});
+        
         this.pies[a].muestra_solicitud = muestra_solicitud;
       }
       console.log(this.pies);

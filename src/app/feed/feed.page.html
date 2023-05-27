@@ -1,4 +1,4 @@
-  <ion-split-pane when="sm" content-id="main-content" class="font">
+  <!-- <ion-split-pane when="sm" content-id="main-content" class="font">
     <ion-menu content-id="main-content">
       <ion-header>
         <ion-toolbar color="dark" class="font">
@@ -57,7 +57,7 @@
         </ion-popover>
       </ion-toolbar>
       </div>
-    </ion-split-pane>
+    </ion-split-pane> -->
     
     <section class= "body font pt-10 bg-slate-900 text-white gir gir-cols-5 gap-2 text-center my-4 py-1 p-8 h-full w-full">
       <!-- <img src="/assets/img/Fondob.png" alt="">  -->
@@ -144,6 +144,12 @@
                 {{ tag.tag.nombre }}, 
                 </span>
                 <br>
+                <ion-icon name="fa-regular fa-clock">
+                </ion-icon>
+                {{ aventon.created_at.substring(0,10 ) }}  
+                <br>
+                {{ aventon.created_at.substring(11,19 ) }} 
+                <br> 
 
                 <!-- *ngIf="aventon.baja == 0" -->
                 <ion-button
@@ -156,8 +162,10 @@
                   Terminar viaje
                 </ion-button> 
 
+
+
                 <hr class="my-2 bg-black">
-                {{ aventon.encuentro.descripcion }}&nbsp;
+                {{ aventon.encuentro.nombre }}&nbsp;
                 <a 
                     target="_blank" 
                     href='{{ "https://www.google.com/maps/place/"+aventon.encuentro.latitud+","+aventon.encuentro.longitud+"" }}'
@@ -227,7 +235,7 @@
                 <br>
                 <ion-select 
                   [(ngModel)] = "destino_id"
-                  class="w-full bg-gray-300 rounded-md"
+                  class="w-full rounded-md"
                 >
                   <ion-select-option  *ngFor="let destino of destinos" value="{{ destino.id }}">
                     {{ destino.nombre }}
@@ -277,7 +285,7 @@
 
           <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ SECCIÓN DE PIE++++++++++++++++++++++++++++++++++++++++++++ -->
           
-          
+         
           
        
           <section 
@@ -296,6 +304,12 @@
                   {{ tag.tag.nombre }}, 
                 </span>
                 <br>
+                <ion-icon name="fa-regular fa-clock">
+                </ion-icon>
+                {{ pie.created_at.substring(0,10 ) }}  
+                <br>
+                {{ pie.created_at.substring(11,19 ) }} 
+                <br>
                   <ion-button
                       *ngIf="user_id == pie.user_id"
                       (click) = "terminarViaje(pie.id)"
@@ -307,7 +321,7 @@
                   </ion-button> 
   
                   <hr class="my-2 bg-black">
-                  {{ pie.encuentro.descripcion }}&nbsp;
+                  {{ pie.encuentro.nombre }}&nbsp;
                   <a 
                       target="_blank" 
                       href='{{ "https://www.google.com/maps/place/"+pie.encuentro.latitud+","+pie.encuentro.longitud+"" }}'
@@ -365,7 +379,7 @@
                   <section
                     *ngIf="pie.user_id != user_id"
                   >
-                  Selecciona un destino 
+                  <!-- Selecciona un destino 
                   <br>
                   <ion-select 
                     [(ngModel)] = "destino_id"
@@ -375,7 +389,7 @@
                       {{ destino.nombre }}
                     </ion-select-option>
                   </ion-select>
-                  <br>
+                  <br> -->
   
                   <!-- class="z-10 rounded-md border-2 px-4 py-2 cursor-pointer inline-block" -->
                     <ion-button
@@ -384,7 +398,6 @@
                     >
                       Unir
                     </ion-button>
-                    
                     
                     <p
                       *ngFor="let unir of pie.unirse"
@@ -400,13 +413,14 @@
                         <p
                           *ngIf="unir.confirma == 1"
                         >
-                          Encuentrate con el conductor
+                          Encuentrate con tus compas
                         </p>
                         <p
                           *ngIf="unir.confirma == 2"
                         >
                           Lo sentimos, fuiste rechazado
                         </p>
+                    
                     </span>
                   </p>
                 </section>

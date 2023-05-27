@@ -33,12 +33,12 @@
       </label>
       <div class="md:w-2/3">
         <select
-        class="bg-elementos rounded-2xl w-full py-3 px-4 text-gray-700" 
-         [(ngModel)]="posPie.encuentro_id" [ngModelOptions]="{standalone: true}">
-         >
+          class="bg-elementos rounded-2xl w-full py-3 px-4 text-gray-700" 
+          [(ngModel)]="posPie.encuentro_id" [ngModelOptions]="{standalone: true}">
+        >
         <option value="-">Selecciona un punto de encuentro</option> 
         <option *ngFor="let encuentros of encuentro"  value="{{ encuentros.id }}">
-          {{ encuentros.descripcion }}
+          {{ encuentros.nombre }}
         </option>
          </select>
       </div>
