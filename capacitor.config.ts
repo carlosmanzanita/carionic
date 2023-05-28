@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.esime-carpool.www',
-  appName: 'Carpool',
+  appId: 'com.example.app',
+  appName: 'carpool',
   webDir: 'www',
   bundledWebRuntime: false
 };

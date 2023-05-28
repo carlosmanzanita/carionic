@@ -24,8 +24,8 @@ export class RegistroPage implements OnInit {
   }
 
   public cargando:boolean = false;
-  public ip_por_asignar:string = 'carpool.test';
-  // public ip_por_asignar:string = '192.168.0.10';
+  // public ip_por_asignar:string = 'carpool.test';
+  public ip_por_asignar:string = '192.168.0.10';
   
   constructor(
     public router:Router,
