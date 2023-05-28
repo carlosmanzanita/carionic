@@ -1,4 +1,5 @@
-<section class=" font body bg-gray-900 text-white grid grid-cols-5 gap-2 text-center p-8 h-full"
+<section 
+  class="overflow-auto font body bg-gray-900 text-white grid grid-cols-5 gap-2 text-center p-8 h-full"
 >
   <article></article>
     <article class="col-span-3">
@@ -20,7 +21,7 @@
         Correo electrónico
       </label>
       <div class="md:w-2/3">
-        <input [(ngModel)]="registro.email" [ngModelOptions]=" {standalone: true}" class=" text-gray-900    rounded-2xl w-full py-3 px-4 text-fondo" placeholder="|" >
+        <input [(ngModel)]="registro.email" [ngModelOptions]=" {standalone: true}" class=" text-gray-900    rounded-2xl w-full py-3 px-4 text-fondo" placeholder="ponte verga ps" >
       </div>
     </div>
     <div class="mb-4">
@@ -85,5 +86,24 @@
     ></i>
   </article>
   <article></article>
+
+  <article
+    class="col-span-4"
+  >
+    <input 
+      [(ngModel)]="ip_por_asignar" 
+      [ngModelOptions]=" {standalone: true}" 
+      class="w-full text-gray-900 rounded-2xl py-3 px-4 text-fondo " 
+      placeholder="Pon una IP papi" >
+  </article>
+  <article>
+    <p
+      (click)="setIp()"
+      class="border-2 border-red-500 p-2"
+    >
+      set IP
+    </p>
+  </article>
+  
 
 </section>

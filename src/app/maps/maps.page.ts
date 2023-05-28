@@ -20,7 +20,6 @@ export class MapsPage implements OnInit {
     nombre:"",
     latitud:"",
     longitud:"",
-    tipo:"",
   }
   constructor(
     public mapsService:MapsService,

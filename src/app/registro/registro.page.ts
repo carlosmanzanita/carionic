@@ -14,7 +14,7 @@ export class RegistroPage implements OnInit {
   public registro:Registro = {
     email:"",
     telefono:"",
-    url:""
+    url:"https://servicios.dae.ipn.mx/vcred/?h=a92e57ee3e871b88e2c28d74559503ca618f68e79b155ce25fc3b9f55fd62"
   }
 
   public errores:Registro = {
@@ -24,7 +24,9 @@ export class RegistroPage implements OnInit {
   }
 
   public cargando:boolean = false;
-
+  public ip_por_asignar:string = 'carpool.test';
+  // public ip_por_asignar:string = '192.168.0.10';
+  
   constructor(
     public router:Router,
     public registroService:RegistroService
@@ -32,7 +34,11 @@ export class RegistroPage implements OnInit {
 
   ngOnInit() {
     this.verSiSesion()
-    localStorage.setItem('ip','192.168.0.10')
+    this.setIp()
+  }
+  
+  setIp(){
+    localStorage.setItem('ip',this.ip_por_asignar)
   }
 
   registroUsuario(){
