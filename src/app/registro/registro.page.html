@@ -1,5 +1,5 @@
 <section 
-  class="overflow-auto font body bg-gray-900 text-white grid grid-cols-5 gap-2 text-center p-8 h-full"
+  class="overflow-auto font body text-white grid grid-cols-5 gap-2 text-center p-8 h-full"
 >
   <article></article>
     <article class="col-span-3">
@@ -21,7 +21,7 @@
         Correo electrónico
       </label>
       <div class="md:w-2/3">
-        <input [(ngModel)]="registro.email" [ngModelOptions]=" {standalone: true}" class=" text-gray-900    rounded-2xl w-full py-3 px-4 text-fondo" placeholder="ponte verga ps" >
+        <input [(ngModel)]="registro.email" [ngModelOptions]=" {standalone: true}" class=" dark:text-white text-gray-900    rounded-2xl w-full py-3 px-4 text-fondo" placeholder="e-mail" >
       </div>
     </div>
     <div class="mb-4">
@@ -29,7 +29,7 @@
         Teléfono
       </label>
       <div class="md:w-2/3">
-        <input [(ngModel)]="registro.telefono" [ngModelOptions]=" {standalone: true}" class=" text-gray-900   rounded-2xl w-full py-3 px-4 text-fondo" placeholder="|" >
+        <input [(ngModel)]="registro.telefono" [ngModelOptions]=" {standalone: true}" class=" dark:text-white text-gray-900   rounded-2xl w-full py-3 px-4 text-fondo" placeholder="teléfono" >
       </div>
     </div>
     </form>
@@ -94,7 +94,7 @@
       [(ngModel)]="ip_por_asignar" 
       [ngModelOptions]=" {standalone: true}" 
       class="w-full text-gray-900 rounded-2xl py-3 px-4 text-fondo " 
-      placeholder="Pon una IP papi" >
+      placeholder="Ingresa tu IP" >
   </article>
   <article>
     <p

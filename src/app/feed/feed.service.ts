@@ -235,5 +235,18 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
     let res = await axios.get(`http://${this.ip}/api/panicos-activados`, config)
     return res;
   }
-  
+  async verSiSesion(){
+    // obtenemos el token de localStorage
+    const token = localStorage.getItem('token')
+    // asignamos el token a la validacion para comprobar si existe una sesion
+    const config = {
+      headers:{
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+token 
+      }
+    }
+    //pertición http a la URI de laravel
+    let res = await axios.get(this.apiVer,config)
+    return res;
+  }
 }
