@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'carpool',
+  appId: 'com.esime-carpool.www',
+  appName: 'Carpool',
   webDir: 'www',
   bundledWebRuntime: false
 };

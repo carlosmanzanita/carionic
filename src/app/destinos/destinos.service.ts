@@ -6,7 +6,10 @@ import axios from 'axios';
 })
 export class DestinosService {
 
-  public apiDestino="http://carpool.test/api/destino"
+  private ip = localStorage.getItem('ip')
+
+  public apiDestino=`http://${this.ip}/api/destino`
+
   constructor() { }
   async getDestinos(){
     // obtenemos el token de localStorage

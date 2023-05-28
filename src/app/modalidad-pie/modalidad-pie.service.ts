@@ -7,12 +7,15 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class ModalidadPieService {
-  private apiPie = "http://carpool.test/api/pie";
-  private apiCerrar = "http://carpool.test/api/auth/cerrar-sesion";
-  private apiEncuentro = "http://carpool.test/api/encuentro";
-  private apiDestino="http://carpool.test/api/destino";
-  private apiPieTags = "http://carpool.test/api/pie-tag";
-  private apiTags = "http://carpool.test/api/tags";
+
+  private ip = localStorage.getItem('ip')
+
+  private apiPie = `http://${this.ip}/api/pie`;
+  private apiCerrar = `http://${this.ip}/api/auth/cerrar-sesion`;
+  private apiEncuentro = `http://${this.ip}/api/encuentro`;
+  private apiDestino=`http://${this.ip}/api/destino`;
+  private apiPieTags = `http://${this.ip}/api/pie-tag`;
+  private apiTags = `http://${this.ip}/api/tags`;
 
   constructor(
     public router:Router,

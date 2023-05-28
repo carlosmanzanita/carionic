@@ -7,9 +7,12 @@ import { Auto } from './auto';
   providedIn: 'root'
 })
 export class AutoService {
-  private apiVer = "http://carpool.test/api/auth/ver-sesion";
-  private apiAuto = "http://carpool.test/api/autos";
-  private apiCerrar = "http://carpool.test/api/auth/cerrar-sesion";
+
+  private ip = localStorage.getItem('ip')
+
+  private apiVer = `http://${this.ip}/api/auth/ver-sesion`;
+  private apiAuto = `http://${this.ip}/api/autos`;
+  private apiCerrar = `http://${this.ip}/api/auth/cerrar-sesion`;
 
   constructor(
     public router:Router,

@@ -7,9 +7,11 @@ import { InicioSesion } from './inicio-sesion';
 })
 export class InicioSesionService {
 
+  private ip = localStorage.getItem('ip')
+
   // URI para iniciar sesión
-  private apiURI = "http://carpool.test/api/auth/iniciar-sesion";
-  private apiVer = "http://carpool.test/api/auth/ver-sesion";
+  private apiURI = `http://${this.ip}/api/auth/iniciar-sesion`;
+  private apiVer = `http://${this.ip}/api/auth/ver-sesion`;
   
   constructor() { }
 

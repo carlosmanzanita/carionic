@@ -7,8 +7,9 @@ import { Destino } from './destino';
 })
 export class MapsService {
 
-  
-  private apiDestino = "http://carpool.test/api/destino";
+  private ip = localStorage.getItem('ip')
+
+  private apiDestino = `http://${this.ip}/api/destino`;
 
   constructor() { }
 

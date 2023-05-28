@@ -7,6 +7,8 @@ import axios from 'axios';
 })
 export class PanicoService {
 
+  private ip = localStorage.getItem('ip')
+
   constructor(
     public router:Router,
   ) { }
@@ -22,7 +24,7 @@ export class PanicoService {
       }
     }
     //pertición http a la URI de laravel
-    let res = await axios.get(`http://carpool.test/api/panicos-activados`, config)
+    let res = await axios.get(`http://${this.ip}/api/panicos-activados`, config)
     return res;
   }
   async quitarPanicos(user_id:any){
@@ -36,7 +38,7 @@ export class PanicoService {
       }
     }
     //pertición http a la URI de laravel
-    let res = await axios.get(`http://carpool.test/api/quitar-panico`, config)
+    let res = await axios.get(`http://${this.ip}/api/quitar-panico`, config)
     return res;
   }
 

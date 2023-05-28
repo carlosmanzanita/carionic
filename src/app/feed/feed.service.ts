@@ -7,10 +7,12 @@ import axios from 'axios';
 })
 export class FeedService {
 
-  private apiVer = "http://carpool.test/api/auth/ver-sesion";
-  private apiCerrar = "http://carpool.test/api/auth/cerrar-sesion";
-  private apiAventon ="http://carpool.test/api/aventon" ;
-  private apiPie ="http://carpool.test/api/pie" ;
+  private ip = localStorage.getItem('ip')
+
+  private apiVer = `http://${this.ip}/api/auth/ver-sesion`;
+  private apiCerrar = `http://${this.ip}/api/auth/cerrar-sesion`;
+  private apiAventon =`http://${this.ip}/api/aventon` ;
+  private apiPie =`http://${this.ip}/api/pie` ;
 
 
   constructor(
@@ -51,7 +53,7 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
     };
     
     //pertición http a la URI de laravel
-    let res = await axios.put(`http://carpool.test/api/aventon/${aventon_id}`, data, config)
+    let res = await axios.put(`http://${this.ip}/api/aventon/${aventon_id}`, data, config)
     return res;
   }
   
@@ -72,7 +74,7 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
     };
     
     //pertición http a la URI de laravel
-    let res = await axios.put(`http://carpool.test/api/confirma-solicitud/${aventon_id}`, data, config)
+    let res = await axios.put(`http://${this.ip}/api/confirma-solicitud/${aventon_id}`, data, config)
     return res;
   }
   
@@ -88,7 +90,7 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
     };
     
     //pertición http a la URI de laravel
-    let res = await axios.delete(`http://carpool.test/api/aventon/${aventon_id}`, config)
+    let res = await axios.delete(`http://${this.ip}/api/aventon/${aventon_id}`, config)
     return res;
   }
 
@@ -126,7 +128,7 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
     };
     
     //pertición http a la URI de laravel
-    let res = await axios.put(`http://carpool.test/api/pie/${pie_id}`, data, config)
+    let res = await axios.put(`http://${this.ip}/api/pie/${pie_id}`, data, config)
     return res;
   }
   
@@ -147,7 +149,7 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
     };
     
     //pertición http a la URI de laravel
-    let res = await axios.put(`http://carpool.test/api/confirma-solicitud/${pie_id}`, data, config)
+    let res = await axios.put(`http://${this.ip}/api/confirma-solicitud/${pie_id}`, data, config)
     return res;
   }
   
@@ -163,7 +165,7 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
     };
     
     //pertición http a la URI de laravel
-    let res = await axios.delete(`http://carpool.test/api/pie/${pie_id}`, config)
+    let res = await axios.delete(`http://${this.ip}/api/pie/${pie_id}`, config)
     return res;
   }
 
@@ -216,7 +218,7 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
       longitud:longitud,
     };
     //pertición http a la URI de laravel
-    let res = await axios.put(`http://carpool.test/api/activacion-panico`, data, config)
+    let res = await axios.put(`http://${this.ip}/api/activacion-panico`, data, config)
     return res;
   }
   async panicosActivados(){
@@ -230,7 +232,7 @@ async solicitarAventon(user_id:any, destino_id:any, aventon_id:any){
       }
     }
     //pertición http a la URI de laravel
-    let res = await axios.get(`http://carpool.test/api/panicos-activados`, config)
+    let res = await axios.get(`http://${this.ip}/api/panicos-activados`, config)
     return res;
   }
   

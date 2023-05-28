@@ -6,9 +6,11 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class VerAutoService {
+  
+  private ip = localStorage.getItem('ip')
 
-  private apiAuto = "http://carpool.test/api/autos";
-  private apiCerrar = "http://carpool.test/api/auth/cerrar-sesion";
+  private apiAuto = `http://${this.ip}/api/autos`;
+  private apiCerrar = `http://${this.ip}/api/auth/cerrar-sesion`;
 
 
   constructor(

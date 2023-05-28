@@ -32,6 +32,7 @@ export class RegistroPage implements OnInit {
 
   ngOnInit() {
     this.verSiSesion()
+    localStorage.setItem('ip','192.168.0.10')
   }
 
   registroUsuario(){
@@ -81,11 +82,16 @@ export class RegistroPage implements OnInit {
   
     const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
   
+    document.body.style.opacity = '0';
+    document.body.style.background = 'transparent';
+
     // if the result has content
     if (result.hasContent) {
       console.log(result.content); // log the raw scanned content
       this.registro.url = result.content
+      document.body.style.opacity = '1';
     }
+    
   };
 
     stopScan () {

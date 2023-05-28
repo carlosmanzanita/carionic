@@ -7,9 +7,11 @@ import { Registro } from './registro';
 })
 export class RegistroService {
 
+  private ip = localStorage.getItem('ip') //poner en todos los services
+
   //Uri para registro de usuario
-  private apiURI = "http://carpool.test/api/auth/registro";
-  private apiVer = "http://carpool.test/api/auth/ver-sesion";
+  private apiURI = `http://${this.ip}/api/auth/registro`;
+  private apiVer = `http://${this.ip}/api/auth/ver-sesion`;
 
   constructor() { }
 

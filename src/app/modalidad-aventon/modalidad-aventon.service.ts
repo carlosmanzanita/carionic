@@ -8,14 +8,16 @@ import axios from 'axios';
 })
 export class ModalidadAventonService {
 
-  private apiAventon ="http://carpool.test/api/aventon" ;
-  private apiPie ="http://carpool.test/api/pie" ;
-  private apiCerrar = "http://carpool.test/api/auth/cerrar-sesion";
-  private apiEncuentro = "http://carpool.test/api/encuentro";
-  private apiDestino="http://carpool.test/api/destino";
-  private apiAuto ="http://carpool.test/api/autos";
-  private apiAventonTag ="http://carpool.test/api/aventon-tag";
-  private apiModalidad ="http://carpool.test/api/modalidades";
+  private ip = localStorage.getItem('ip')
+
+  private apiAventon =`http://${this.ip}/api/aventon` ;
+  private apiPie =`http://${this.ip}/api/pie` ;
+  private apiCerrar = `http://${this.ip}/api/auth/cerrar-sesion`;
+  private apiEncuentro = `http://${this.ip}/api/encuentro`;
+  private apiDestino=`http://${this.ip}/api/destino`;
+  private apiAuto =`http://${this.ip}/api/autos`;
+  private apiAventonTag =`http://${this.ip}/api/aventon-tag`;
+  private apiModalidad =`http://${this.ip}/api/modalidades`;
 
   constructor(
     public router:Router,
