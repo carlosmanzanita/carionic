@@ -194,7 +194,19 @@
                   >
                     <article
                       *ngIf="solicita.confirma != 2"
+                    
+                    
                     >
+                                      <p
+                                  
+                                          class="my-2 grid-cols-3 border-2 border-orange-400 rounded-2xl"
+                                          size="medium" 
+                                          color="success"
+                                        >
+                                        Falta confirmar
+                                        &nbsp;
+                                          <i class="fa-solid fa-triangle-exclamation" style="color: #c29801;"></i>
+                                    </p>
                       <ion-button
                         *ngIf="solicita.confirma == 0"
                         class="my-2"
@@ -214,6 +226,8 @@
                         <i class="fa-solid fa-xmark"></i>
                       </ion-button>
                       &nbsp;
+
+                      
                       {{ solicita.user.name.substr(0, 15) }}...
                       &nbsp;
                       <br>
@@ -269,42 +283,37 @@
                         Encuentrate con el conductor
 
                         <br>
+
                         ¿Haz llegado a tu destino?
+                        <br>
+                        <ion-button
+                 
+                            class="my-2 grid-cols-3"
+                            size="small" 
+                            color="success"
+                          >
+                          Si
+                          &nbsp;
+                            <i class="fa-solid fa-check"></i>
+                        </ion-button>
                       </p>
+
                       <p
                         *ngIf="solicitado.confirma == 2"
                       >
                         Lo sentimos, el conductor no puede cumplir tu solicitud
                       </p>
+                      <p
+                        *ngIf="solicitado.confirma == 3"
+                      >
+                        Manzana
+                      </p>
+
                     </span>
                   </p>
                 
-                  <ion-button
-                 
-                  class="my-2"
-                  size="small" 
-                  color="success"
-                >
-                Si
-                &nbsp;
-                  <i class="fa-solid fa-check"></i>
-                </ion-button>
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                <ion-button
-               
-                  class="my-2"
-                   size="small" 
-                   color="danger"
-                  >
-                  No
-                  &nbsp;
-                  <i class="fa-solid fa-xmark"></i>
-                </ion-button>
-              
+                  
+             
 
                 </section>
               </article>
