@@ -62,6 +62,10 @@ const routes: Routes = [
     path: 'panico',
     loadChildren: () => import('./panico/panico.module').then( m => m.PanicoPageModule)
   },
+  {
+    path: 'codigoqr',
+    loadChildren: () => import('./codigoqr/codigoqr.module').then( m => m.CodigoqrPageModule)
+  },
 
 
 
