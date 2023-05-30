@@ -14,7 +14,7 @@ export class RegistroPage implements OnInit {
   public registro:Registro = {
     email:"",
     telefono:"",
-    url:"https://servicios.dae.ipn.mx/vcred/?h=a92e57ee3e871b88e2c28d74559503ca618f68e79b155ce25fc3b9f55fd62"
+    url:"https://www.dae.ipn.mx/vcred/?h=5d5fb568d6e4baad9f68be2641a12acebd1fd8fda7a6379580110bfb423f5b8"
   }
 
   public errores:Registro = {
@@ -25,7 +25,7 @@ export class RegistroPage implements OnInit {
 
   public cargando:boolean = false;
   // public ip_por_asignar:string = 'carpool.test';
-  public ip_por_asignar:string = '192.168.1.80';
+  public ip_por_asignar:string = '192.168.50.65';
   
   constructor(
     public router:Router,

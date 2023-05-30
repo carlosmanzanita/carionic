@@ -12,8 +12,8 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 export class InicioSesionPage implements OnInit {
 
   public iniciosesion:InicioSesion = {
-    email:"miguel@ipn.mx",
-    url:"https://servicios.dae.ipn.mx/vcred/?h=a92e57ee3e871b88e2c28d74559503ca618f68e79b155ce25fc3b9f55fd62"
+    email:"carlos@ipn.mx",
+    url:"https://www.dae.ipn.mx/vcred/?h=5d5fb568d6e4baad9f68be2641a12acebd1fd8fda7a6379580110bfb423f5b8"
   }
 
   public errores:InicioSesion = {
@@ -69,9 +69,28 @@ export class InicioSesionPage implements OnInit {
     this.router.navigate(['registro']);
   }
 
-  async scanInit(){
-    this.router.navigate(["codigoqr"])
-  }
+  async startScan (){
+    // Check camera permission
+    // This is just a simple example, check out the better checks below
+    await BarcodeScanner.checkPermission({ force: true });
+  
+    // make background of WebView transparent
+    // note: if you are using ionic this might not be enough, check below
+    BarcodeScanner.hideBackground();
+  
+    const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
+  
+    // if the result has content
+    if (result.hasContent) {
+      console.log(result.content); // log the raw scanned content
+      this.iniciosesion.url = result.content
+    }
+  };
+
+    stopScan () {
+    BarcodeScanner.showBackground();
+    BarcodeScanner.stopScan();
+  };
 
   verSiSesion(){
     const res = this.inicioSesionService.verSiSesion();
