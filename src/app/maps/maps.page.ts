@@ -62,13 +62,6 @@ export class MapsPage implements OnInit {
   
   
   
-  
-  
-  
-  
-  
-  
-  
   async mapa(){
     const apiKey = 'AIzaSyDV-H5sPIyGH5EgU-pkrJ6WIetYiaryN1c';
     const mapRef = document.getElementById('map');
