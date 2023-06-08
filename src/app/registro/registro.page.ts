@@ -25,7 +25,11 @@ export class RegistroPage implements OnInit {
 
   public cargando:boolean = false;
   // public ip_por_asignar:string = 'carpool.test';
+<<<<<<< Updated upstream
   public ip_por_asignar:string = 'http://174.138.42.115/APICarpool/public';
+=======
+  public ip_por_asignar:string = '192.168.0.11';
+>>>>>>> Stashed changes
   
   constructor(
     public router:Router,
