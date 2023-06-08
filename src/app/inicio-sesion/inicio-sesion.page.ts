@@ -12,8 +12,8 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 export class InicioSesionPage implements OnInit {
 
   public iniciosesion:InicioSesion = {
-    email:"carlos@ipn.mx",
-    url:"https://www.dae.ipn.mx/vcred/?h=5d5fb568d6e4baad9f68be2641a12acebd1fd8fda7a6379580110bfb423f5b8"
+    email:"",
+    url:""
   }
 
   public errores:InicioSesion = {
