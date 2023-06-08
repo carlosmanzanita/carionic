@@ -25,7 +25,7 @@ export class RegistroPage implements OnInit {
 
   public cargando:boolean = false;
   // public ip_por_asignar:string = 'carpool.test';
-  public ip_por_asignar:string = '192.168.50.65';
+  public ip_por_asignar:string = 'http://174.138.42.115/APICarpool/public';
   
   constructor(
     public router:Router,
