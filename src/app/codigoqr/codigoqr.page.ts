@@ -19,6 +19,7 @@ export class CodigoqrPage implements OnInit {
   ) {   }
 
   ngOnInit() {
+    this.startScan()
   }
 
   async startScan (){
@@ -35,8 +36,11 @@ export class CodigoqrPage implements OnInit {
     // if the result has content
     if (result.hasContent) {
       console.log(result.content); // log the raw scanned content
+      localStorage.setItem('url', result.content);
       this.iniciosesion.url = result.content
-      this.router.navigate(["inicio-sesion"])
+      
+      const viene_de = this.router.url.split('?')[0].split('/').pop()
+      this.router.navigate([viene_de])
     }
   };
 

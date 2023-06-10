@@ -1,3 +1,4 @@
+import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { RegistroService } from './registro.service';
 import { Component, OnInit } from '@angular/core';
@@ -23,18 +24,36 @@ export class RegistroPage implements OnInit {
     url:""
   }
 
+  public error_axios:any = {
+    message:"",
+  };
+
   public cargando:boolean = false;
   // public ip_por_asignar:string = 'carpool.test';
   public ip_por_asignar:string = '174.138.42.115/APICarpool/public';
   
   constructor(
     public router:Router,
-    public registroService:RegistroService
+    public registroService:RegistroService,
+    public alertController:AlertController,
   ) { }
 
   ngOnInit() {
     this.verSiSesion()
     this.setIp()
+    this.verSiUrl()
+    
+  }
+
+  verSiUrl(){
+    const url = localStorage.getItem('url');
+    if(url == undefined || url == "-"){
+      localStorage.setItem('url', "-");
+      console.log({url:"No hay papi"});
+    }else{
+      console.log({url:url});
+      this.registro.url = url;
+    }
   }
   
   setIp(){
@@ -60,16 +79,30 @@ export class RegistroPage implements OnInit {
       localStorage.setItem('token', response.data.token)
       //Matamos a la rana
       this.cargando = false;
+      localStorage.setItem('url', "-");
       this.router.navigate(['feed']);
       
     }).catch((error) => {
       console.log("🚀 ~ error:", error)
       // console.error(error.response.status);
       // if(error.response.status == 422) 
-      this.errores = error.response.data.errors;
+      this.cargando = false;
+      this.error_axios = error;
+      this.presentAlert()
     });
 
     console.log("🚀 ~ res:", res)
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      subHeader: 'No te puedes registrar',
+      message: 'Verifica tus datos',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 
   inicioSesion(){
@@ -78,29 +111,10 @@ export class RegistroPage implements OnInit {
   }
 
   async startScan (){
-    // Check camera permission
-    // This is just a simple example, check out the better checks below
-    await BarcodeScanner.checkPermission({ force: true });
-  
-    // make background of WebView transparent
-    // note: if you are using ionic this might not be enough, check below
-    BarcodeScanner.hideBackground();
-  
-    const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
-  
-    document.body.style.opacity = '0';
-    document.body.style.background = 'transparent';
-
-    // if the result has content
-    if (result.hasContent) {
-      console.log(result.content); // log the raw scanned content
-      this.registro.url = result.content
-      document.body.style.opacity = '1';
-    }
-    
+    this.router.navigate(["codigoqr/registro"])
   };
 
-    stopScan () {
+  stopScan () {
     BarcodeScanner.showBackground();
     BarcodeScanner.stopScan();
   };

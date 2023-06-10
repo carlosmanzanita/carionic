@@ -21,6 +21,10 @@ export class InicioSesionPage implements OnInit {
     url:""
   }
 
+  public error_axios:any = {
+    message:"",
+  };
+
   public cargando:boolean = false;
 
   constructor(
@@ -30,7 +34,23 @@ export class InicioSesionPage implements OnInit {
 
   ngOnInit() {
     this.verSiSesion()
+    this.verSiUrl()
   }
+
+  verSiUrl(){
+    const url = localStorage.getItem('url');
+    if(url == undefined || url == "-"){
+      localStorage.setItem('url', "-");
+      console.log({url:"No hay papi"});
+    }else{
+      console.log({url:url});
+      this.iniciosesion.url = url;
+    }
+  }
+
+  async startScan (){
+    this.router.navigate(["codigoqr/inicio-sesion"])
+  };
 
   inicioSesionUsuario(){
     //este es para que salte la ranita
@@ -52,12 +72,13 @@ export class InicioSesionPage implements OnInit {
       console.log("🚀 ~ file: inicio-sesion.page.ts:50 ~ InicioSesionPage ~ res.then ~ response:", response)
       //Matamos a la rana
       this.cargando = false;
+      localStorage.setItem('url', "-");
       this.router.navigate(['feed']);
       
     }).catch((error) => {
+      this.cargando = false;
       console.log("🚀 ~ error:", error)
-      // console.error(error.response.status);
-      // if(error.response.status == 422) 
+      this.error_axios = error;
       this.errores = error.response.data.errors;
     });
 
@@ -68,29 +89,6 @@ export class InicioSesionPage implements OnInit {
     // Para redirigir a la pagina de inicio de sesion
     this.router.navigate(['registro']);
   }
-
-  async startScan (){
-    // Check camera permission
-    // This is just a simple example, check out the better checks below
-    await BarcodeScanner.checkPermission({ force: true });
-  
-    // make background of WebView transparent
-    // note: if you are using ionic this might not be enough, check below
-    BarcodeScanner.hideBackground();
-  
-    const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
-  
-    // if the result has content
-    if (result.hasContent) {
-      console.log(result.content); // log the raw scanned content
-      this.iniciosesion.url = result.content
-    }
-  };
-
-    stopScan () {
-    BarcodeScanner.showBackground();
-    BarcodeScanner.stopScan();
-  };
 
   verSiSesion(){
     const res = this.inicioSesionService.verSiSesion();

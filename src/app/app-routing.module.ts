@@ -46,7 +46,8 @@ const routes: Routes = [
   {
     path: 'ver-destino/:id',
     loadChildren: () => import('./ver-destino/ver-destino.module').then( m => m.VerDestinoPageModule)
-  },  {
+  },
+  {
     path: 'modalidades',
     loadChildren: () => import('./modalidades/modalidades.module').then( m => m.ModalidadesPageModule)
   },
@@ -63,7 +64,7 @@ const routes: Routes = [
     loadChildren: () => import('./panico/panico.module').then( m => m.PanicoPageModule)
   },
   {
-    path: 'codigoqr',
+    path: 'codigoqr/:origen',
     loadChildren: () => import('./codigoqr/codigoqr.module').then( m => m.CodigoqrPageModule)
   },
 
