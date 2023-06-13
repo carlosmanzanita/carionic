@@ -1,6 +1,6 @@
   <ion-split-pane when="sm" content-id="main-content" 
         class="overflow-auto"
-        style="height: 180px;">
+        style="height: 180px; width: 200;">
     <ion-menu when="sm" content-id="main-content">
       <ion-header>
         <ion-toolbar color="dark" class="font">
@@ -47,11 +47,11 @@
         </ion-button>
         <ion-popover side="left" alignment="start" trigger="click-trigger" triggerAction="click">
           <ng-template>
-            <ion-button [routerLink]="['/modalidad-pie']" color="dark" size="large" class="font">
+            <ion-button [routerLink]="['/modalidad-pie']" color="dark" size="medium" class="font">
               <ion-icon name="footsteps-outline"></ion-icon>
               &nbsp;&nbsp;Viaje a pie
             </ion-button>
-            <ion-button [routerLink]="['/modalidad-aventon']" color="dark" size="large" class="font">
+            <ion-button [routerLink]="['/modalidad-aventon']" color="dark" size="medium" class="font">
               <ion-icon name="car-outline"></ion-icon>
               &nbsp;&nbsp;Dar aventón
             </ion-button>
@@ -115,7 +115,7 @@
       <hr class="m-2 py-1 p-10">
       <div
         class="overflow-auto"
-        style="height: 360px;"
+        style="height: 375px;"
       >
         <section 
           class=" bg-gray-200 text-black font my-4 py-4 p-4 rounded-md" 
