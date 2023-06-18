@@ -16,3 +16,18 @@ capacitor-google-map {
   }
 
 
+  .miubicacion {
+    position: fixed;
+    bottom: 10px; 
+    nav-down: 50px;
+    left: 5px; 
+    background: rgb(55, 65, 81);
+    // background: #ffd740;
+  }
+  
+  .aceptar {
+      position: fixed;
+      top: 50px;
+      right: 5px;
+      background: #80d894;
+  }

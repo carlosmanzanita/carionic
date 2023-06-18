@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Destino } from './destino';
   templateUrl: './maps.page.html',
   styleUrls: ['./maps.page.scss'],
 })
-export class MapsPage implements OnInit {
+export class MapsPage implements AfterViewInit {
 
   public newMap: any;
   public marker: any;
@@ -27,18 +27,17 @@ export class MapsPage implements OnInit {
     public geolocation:Geolocation
   ) { }
 
-  ngOnInit() {
-    this.mapa();
+  async ngAfterViewInit(){
+    setTimeout(()=> {this.mapa()}, 3000); 
   }
 
   postDestino(){
-    // this.nombre
-    // this.lat_sel
-    // this.lng_sel
+    
     let val=0;
     if(this.destino.nombre=="") val++;  
     if(this.destino.latitud=="") val++;  
     if(this.destino.longitud=="") val++;  
+    console.log("postDestino");
     if(val == 0){
       const res=this.mapsService.guardarDestino(this.destino)
       
@@ -55,7 +54,7 @@ export class MapsPage implements OnInit {
       
     }
     else {
-      //Faltan datos
+      alert("Faltan datos")
     }
   }
   
@@ -117,6 +116,5 @@ export class MapsPage implements OnInit {
       },
       draggable: true,
     });
-
   }
 }

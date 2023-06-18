@@ -63,6 +63,14 @@ yarn-error.log
 testem.log
 /typings
 
+# ignoramos esto tmb
+/android
+/www
+
 # System files
 .DS_Store
 Thumbs.db
+
+# evitamos android y www para no saturar git
+/android
+/www

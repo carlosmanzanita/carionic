@@ -1,4 +1,24 @@
-<ion-toolbar>
+<ion-toolbar class="bg-transparent">
+  <ion-button [routerLink]="['/destinos']" slot="start" color="dark" fill="outline" class="px-2">
+    <ion-icon
+      slot="start" name="arrow-back-circle-sharp" size="large">
+    </ion-icon>
+  </ion-button>
+</ion-toolbar> 
+
+<capacitor-google-map id="map-2" ></capacitor-google-map>
+
+
+
+<ion-chip class="miubicacion h-9 p-4">
+      <div class="w-full text-white">
+        {{ destino.nombre }}
+      </div>
+</ion-chip>
+
+
+
+<!-- <ion-toolbar>
   <ion-button [routerLink]="['/destinos']" slot="start" color="dark" fill="outline" class="px-2">
     <ion-icon
       slot="start" name="arrow-back-circle-sharp" size="large">
@@ -18,7 +38,4 @@
     class="bg-gray-200 rounded-2xl w-full py-3 px-4 text-gray-700">
       {{ destino.nombre }}
     </h1>
-  <!-- <input type="text" [(ngModel)] = "destino.nombre" placeholder="Nombre" 
-  class="bg-elementos rounded-2xl w-full py-3 px-4 text-gray-700"> -->
-
-</section>
+</section> -->

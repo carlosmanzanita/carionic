@@ -1,0 +1,116 @@
+Esto solo sirve para el APK, no para subir a play store
+
+/*Asegurarnos que existan dos variables de entorno*/
+Es necesario ver archivos ocultos para confirmar las rutas
+
+ANDROID_HOME
+C:\Users\franc\AppData\Local\Android\Sdk
+
+y
+
+JAVA_HOME
+
+C:\Program Files\Android\Android Studio\jbr
+
+
+/*Asegurarse que android studio está cerrado*/
+
+en gitbash no en CMD
+
+cd /c/xampp/htdocs/carionic
+clear
+echo "/---borrando android---/"
+rm -rf /c/xampp/htdocs/carionic/android
+clear
+echo "/---borrando www---/"
+rm -rf /c/xampp/htdocs/carionic/www
+clear
+echo "/---ionic build---/"
+ionic build
+clear
+echo "/---add android---/"
+ionic cap add android
+clear
+echo "/---instalando capacitor-assets---/"
+npm install @capacitor/assets
+clear
+echo "/---capacitor-assets---/"
+npx capacitor-assets generate
+
+clear
+echo "/---copy AndroidManifest---/"
+cp -f /c/xampp/htdocs/carionic/assets/AndroidManifest.xml /c/xampp/htdocs/carionic/android/app/src/main
+
+clear
+echo "/---cap copy---/"
+ionic cap copy
+clear
+echo "/---cap sync---/"
+ionic cap sync
+
+clear
+echo "/---borrando apk---/"
+cd /c/xampp/htdocs/carionic/android/app/build/outputs/apk/debug
+rm app-debug.apk
+clear
+echo "/---capacitor create apk---/"
+cd /c/xampp/htdocs/carionic
+ionic capacitor copy android && cd android && ./gradlew assembleDebug && cd ..
+cd /c/xampp/htdocs/carionic
+
+
+/*el APK se encuentra en:*/
+/*cd c:/xampp/htdocs/carionic/android/app/build/outputs/apk/debug*/
+
+/************************/
+/************************/
+/************************/
+/************************/
+/************************/
+/************************/
+
+/* Solo sirve para abrir android studio en caso de necesitar abrir desde terminal*/
+clear
+echo "/---open android---/"
+ionic cap open android
+
+/*el APK se encuentra en:*/
+/*cd /c/xampp/htdocs/carionic/android/app/build/outputs/apk/debug*/
+
+
+
+
+
+
+
+Permisos que colocar en el manifiesto:
+
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="com.example.towntour.permission.MAPS_RECEIVE" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+
+modificar 
+
+<application
+    ....
+    android:usesCleartextTraffic="true"
+    ....>
+
+Agregar la API KEY DE MAPS
+<meta-data
+      android:name="com.google.android.geo.API_KEY"
+      android:value="AIzaSyDV-H5sPIyGH5EgU-pkrJ6WIetYiaryN1c"/>
+
+
+
+
+  googleMapsPlayServicesVersion = '18.1.0'
+  googleMapsUtilsVersion = '3.4.0'
+  googleMapsKtxVersion = '3.4.0'
+  googleMapsUtilsKtxVersion = '3.4.0'
+  kotlinxCoroutinesVersion = '1.6.4'
+  androidxCoreKTXVersion = '1.10.0'
+  kotlin_version = '1.8.20'

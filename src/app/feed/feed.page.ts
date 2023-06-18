@@ -23,6 +23,9 @@ export class FeedPage implements OnInit {
   public destinos:any =[]
   public panicos:any =[]
   public mis_panicos:any =[]
+  public ver_menu:any = false
+
+  
   
   constructor(
     public router:Router,

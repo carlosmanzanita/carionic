@@ -20,7 +20,9 @@ export class DestinosPage implements OnInit {
     public router:Router,
     public destinosService:DestinosService
     // public geolocation:Geolocation,
-  ) { }
+  ) {
+    this.getDestinos();
+  }
 
   ngOnInit() {
     this.getDestinos();
@@ -48,6 +50,7 @@ export class DestinosPage implements OnInit {
       const res=this.destinosService.deleteAuto(destino_id);
       res.then((response) => {
         this.getDestinos()
+        this.getDestinos();
       }).catch((error) => {
         console.log(error.response.status);
         console.log("🚀 ~ file: destinos.page.ts:53 ~ DestinosPage ~ res.then ~ console:", console)

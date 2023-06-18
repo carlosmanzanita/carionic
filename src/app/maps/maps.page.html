@@ -4,33 +4,26 @@
       slot="start" name="arrow-back-circle-sharp" size="large">
     </ion-icon>
   </ion-button>
-</ion-toolbar>  
+</ion-toolbar> 
 
-<section class="bg-transparent overflow-auto font body bg-gray-900 text-white text-center p-8 h-full">
-    &nbsp;
+<capacitor-google-map id="map" ></capacitor-google-map>
 
-  <ion-content class="border-2 border-red-500 h-96">
-    <capacitor-google-map id="map" ></capacitor-google-map>
-  </ion-content>
-    &nbsp;
 
-    <form class="col-span-5 bg-fondo px-4">
-      <div class="mb-4">
-        <label class="block text-gray-200 text-sm font-bold mb-2">
-          Nombre del destino
-        </label>
-        <div class="md:w-2/3">
-          <input [(ngModel)]="destino.nombre" [ngModelOptions]=" {standalone: true}" 
-          class="bg-elementos rounded-2xl w-full py-3 px-4 text-gray-700" placeholder="Introduce el nombre" >
-        </div>
+
+<ion-chip class="miubicacion h-9 p-4">
+      <div class="w-full">
+        <input 
+          [(ngModel)]="destino.nombre"
+          [ngModelOptions]=" {standalone: true}" 
+          class="bg-elementos rounded-2xl w-full py-3 px-4 bg-gray-700 text-white" 
+          placeholder="Introduce el nombre"
+        >
       </div>
-    </form>
+</ion-chip>
 
-
-  <button (click) = "postDestino()" size="large" shape="round" color="light"
-  class="bg-white hover:bg-black text-gray-700 py-3 px-6 rounded-full">
-    <ion-icon name="save-sharp" color="dark"></ion-icon>
-    Guardar Destino 
-  </button>
-
-</section>
+<ion-chip class="aceptar text-center" (click)="postDestino()">
+  <ion-label class="normal">
+    Guardar Destino
+  </ion-label>
+  <ion-icon name="checkmark" ></ion-icon>
+</ion-chip>
