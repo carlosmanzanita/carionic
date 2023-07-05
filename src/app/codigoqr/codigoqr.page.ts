@@ -1,7 +1,6 @@
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Codigoqr } from './codigoqr';
 
 @Component({
   selector: 'app-codigoqr',
@@ -9,10 +8,6 @@ import { Codigoqr } from './codigoqr';
   styleUrls: ['./codigoqr.page.scss'],
 })
 export class CodigoqrPage implements OnInit {
-
-  public iniciosesion:Codigoqr = {
-    url:""
-  }
 
   constructor(
     public router:Router
@@ -37,7 +32,6 @@ export class CodigoqrPage implements OnInit {
     if (result.hasContent) {
       console.log(result.content); // log the raw scanned content
       localStorage.setItem('url', result.content);
-      this.iniciosesion.url = result.content
       
       const viene_de = this.router.url.split('?')[0].split('/').pop()
       this.router.navigate([viene_de])
