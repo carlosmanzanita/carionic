@@ -1,4 +1,4 @@
-<ion-toolbar>
+  <ion-toolbar>
   <ion-button [routerLink]="['/feed']" slot="start" color="dark" fill="outline" class="px-2">
     <ion-icon
       slot="start" name="arrow-back-circle-sharp" size="large">
@@ -21,7 +21,6 @@
     <section
       class="grid grid-cols-3 p-2 m-2 border-2"
       *ngFor="let panico of panicos"
-      style="background-color:rgba(0,0,0,0.5);"
     >
       <article>
         <img class="w-16" src="{{ panico.user.foto }}" alt="foto">
